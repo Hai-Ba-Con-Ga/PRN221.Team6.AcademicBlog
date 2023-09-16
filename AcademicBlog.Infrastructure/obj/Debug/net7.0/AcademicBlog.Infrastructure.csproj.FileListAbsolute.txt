@@ -1,0 +1,17 @@
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.AssemblyInfo.cs
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Infrastructure.deps.json
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Infrastructure.dll
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Infrastructure.pdb
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Domain.dll
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Domain.pdb
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.csproj.CopyComplete
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.dll
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\refint\AcademicBlog.Infrastructure.dll
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.pdb
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\ref\AcademicBlog.Infrastructure.dll
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\bin\Debug\net7.0\AcademicBlog.Infrastructure.runtimeconfig.json
+C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Infrastructure\obj\Debug\net7.0\AcademicBlog.Infrastructure.genruntimeconfig.cache
