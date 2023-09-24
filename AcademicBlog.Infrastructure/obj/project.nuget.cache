@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/uLnlTxZmSMcJFVNBERys/lRF8XKnJLWqgWd3s6H/+5+wwNsNDUOtTdOo8Ykx5zwiyYJvxLuYfp9iD590kgtQg==",
+  "dgSpecHash": "pwg/PEAUMDKm2sWldInXQ2kgwLE+NmmKOEwWy4FHhnx/p8VeX17wzcEBxCrhTVoh+mBhlKV6uWs4Hi/1KzM3cQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tklin\\Desktop\\2023_Semester7_FALL\\PRN221\\hands-on\\PRN221.Team6.AcademicBlog\\AcademicBlog.Infrastructure\\AcademicBlog.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.11\\microsoft.entityframeworkcore.tools.7.0.11.nupkg.sha512",
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\tklin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
