@@ -10,3 +10,15 @@ C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.Academic
 C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\refint\AcademicBlog.Domain.dll
 C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.pdb
 C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\ref\AcademicBlog.Domain.dll
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\bin\Debug\net7.0\AcademicBlog.Domain.deps.json
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\bin\Debug\net7.0\AcademicBlog.Domain.dll
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\bin\Debug\net7.0\AcademicBlog.Domain.pdb
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.csproj.AssemblyReference.cache
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.AssemblyInfoInputs.cache
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.AssemblyInfo.cs
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.csproj.CoreCompileInputs.cache
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.dll
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\refint\AcademicBlog.Domain.dll
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\AcademicBlog.Domain.pdb
+X:\Project\prn221\AcademicBlog\AcademicBlog.Domain\obj\Debug\net7.0\ref\AcademicBlog.Domain.dll

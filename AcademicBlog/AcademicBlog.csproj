@@ -12,12 +12,23 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
-
+	<ItemGroup>
+		<UpToDateCheckBuilt Include="postcss.config.js" Set="Css" />
+		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcademicBlog.Domain\AcademicBlog.Domain.csproj" />
     <ProjectReference Include="..\AcademicBlog.Infrastructure\AcademicBlog.Infrastructure.csproj" />
   </ItemGroup>
+	<Target Name="Tailwind" BeforeTargets="Build">
+		<Exec Command="npm run css:build" />
+	</Target>
 
 </Project>

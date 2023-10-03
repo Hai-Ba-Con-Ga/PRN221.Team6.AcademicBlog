@@ -518,19 +518,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tklin\\.nuget\\packages\\": {}
+    "C:\\Users\\phong\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tklin\\Desktop\\2023_Semester7_FALL\\PRN221\\hands-on\\PRN221.Team6.AcademicBlog\\AcademicBlog.Domain\\AcademicBlog.Domain.csproj",
+      "projectUniqueName": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog.Domain\\AcademicBlog.Domain.csproj",
       "projectName": "AcademicBlog.Domain",
-      "projectPath": "C:\\Users\\tklin\\Desktop\\2023_Semester7_FALL\\PRN221\\hands-on\\PRN221.Team6.AcademicBlog\\AcademicBlog.Domain\\AcademicBlog.Domain.csproj",
-      "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tklin\\Desktop\\2023_Semester7_FALL\\PRN221\\hands-on\\PRN221.Team6.AcademicBlog\\AcademicBlog.Domain\\obj\\",
+      "projectPath": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog.Domain\\AcademicBlog.Domain.csproj",
+      "packagesPath": "C:\\Users\\phong\\.nuget\\packages\\",
+      "outputPath": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\phong\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -577,7 +577,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

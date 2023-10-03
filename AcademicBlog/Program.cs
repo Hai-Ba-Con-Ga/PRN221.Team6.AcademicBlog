@@ -1,12 +1,17 @@
 
 using AcademicBlog.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddRazorPages();
+builder.Services.AddMvc().AddRazorPagesOptions(opt =>
+{
+    opt.Conventions.AddPageRoute("/Auth/Login", "/login");
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
