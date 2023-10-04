@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AcademicBlogDB"));
 });
