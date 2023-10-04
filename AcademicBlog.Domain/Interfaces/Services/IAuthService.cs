@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcademicBlog.Application.Services
+namespace AcademicBlog.Domain.Interfaces.Services
 {
-    internal class AccountService
+    public interface IAuthService
     {
     }
 }

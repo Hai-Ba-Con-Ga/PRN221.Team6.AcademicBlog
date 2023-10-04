@@ -1,7 +1,8 @@
-﻿using System;
+﻿using AcademicBlog.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
-namespace AcademicBlog.Infrastructure.Entities;
+namespace AcademicBlog.Domain.Entities;
 
 public partial class Post
 {

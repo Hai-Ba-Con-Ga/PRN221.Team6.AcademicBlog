@@ -20,4 +20,8 @@
     <ProjectReference Include="..\AcademicBlog.Infrastructure\AcademicBlog.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\" />
+  </ItemGroup>
+
 </Project>

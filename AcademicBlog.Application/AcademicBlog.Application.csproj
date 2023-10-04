@@ -9,11 +9,16 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
 	<PackageReference Include="LinqKit" Version="1.2.4" />
     
 	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcademicBlog.Domain\AcademicBlog.Domain.csproj" />
   </ItemGroup>
 
 </Project>
