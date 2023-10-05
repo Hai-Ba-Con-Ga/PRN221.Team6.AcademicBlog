@@ -17,188 +17,48 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\fonts\\Inter-Bold.otf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Bold.otf"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\fonts\\Inter-Regular.otf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Regular.otf"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\.DS_Store",
+      "PackagePath": "staticwebassets\\img\\.DS_Store"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\logo-white.svg",
+      "PackagePath": "staticwebassets\\img\\logo-white.svg"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\logo.svg",
+      "PackagePath": "staticwebassets\\img\\logo.svg"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\opengraph.jpg",
+      "PackagePath": "staticwebassets\\img\\opengraph.jpg"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\skeleton.svg",
+      "PackagePath": "staticwebassets\\img\\skeleton.svg"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\vercel.svg",
+      "PackagePath": "staticwebassets\\img\\vercel.svg"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\img\\w3t-logo.svg",
+      "PackagePath": "staticwebassets\\img\\w3t-logo.svg"
+    },
+    {
       "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "PackagePath": "staticwebassets\\lib\\bootstrap"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
-    },
-    {
-      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
       "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
@@ -247,6 +107,10 @@
     {
       "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\logo.svg",
+      "PackagePath": "staticwebassets\\logo.svg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AcademicBlog.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -13,7 +13,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(opt =>
     opt.Conventions.AddPageRoute("/Auth/Login", "/login");
 });
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AcademicBlogDB"));
 });

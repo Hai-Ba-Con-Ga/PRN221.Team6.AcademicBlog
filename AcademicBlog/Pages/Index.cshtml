@@ -3,231 +3,889 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-    <div class="flex h-screen flex-col justify-between font-sans">
-        <header class="flex items-center justify-between py-10">
-            <div>
-                <a aria-label="TailwindBlog" href="/">
-                    <div class="flex items-center justify-between">
-                        <div class="mr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53.87" height="43.61" viewBox="344.564 330.278 111.737 91.218">
-                                <defs>
-                                    <linearGradient id="logo_svg__b" x1="420.97" x2="420.97" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1"></stop>
-                                        <stop offset="100%" style="stop-color:#67e8f9;stop-opacity:1"></stop>
-                                    </linearGradient>
-                                    <linearGradient id="logo_svg__d" x1="377.89" x2="377.89" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1"></stop>
-                                        <stop offset="100%" style="stop-color:#67e8f9;stop-opacity:1"></stop>
-                                    </linearGradient>
-                                    <path id="logo_svg__a" d="M453.3 331.28v28.57l-64.66 58.65v-30.08l64.66-57.14Z"></path>
-                                    <path id="logo_svg__c" d="M410.23 331.28v28.57l-64.67 58.65v-30.08l64.67-57.14Z"></path>
-                                </defs>
-                                <use xlink:href="#logo_svg__a" fill="url(#logo_svg__b)"></use>
-                                <use xlink:href="#logo_svg__c" fill="url(#logo_svg__d)"></use>
-                            </svg>
+@{
+    // Layout = "/Pages/Shared/_BlankLayout.cshtml";
+}
+
+<div class="bg-white ">
+        <div class="container px-8 mx-auto xl:px-5  max-w-screen-xl py-5 lg:py-8">
+            <div class="grid gap-10 md:grid-cols-2 lg:gap-10 ">
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-video"
+                           href="/post/architectural-engineering-wonders-of-the-modern-era-for-your-inspiration">
+                            <img alt="Thumbnail" fetchpriority="high" decoding="async" data-nimg="fill"
+                                 class="object-cover transition-all" sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F05951a0ec1a6ffc54f615ab160649e92fea982d0-800x764.png%3Frect%3D0%2C0%2C800%2C468%26w%3D800%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/technology">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">Technology</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/architectural-engineering-wonders-of-the-modern-era-for-your-inspiration">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        Architectural
+                                        Engineering Wonders of the modern era for your Inspiration
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/architectural-engineering-wonders-of-the-modern-era-for-your-inspiration">
+                                        Reinvention
+                                        often comes in spurts, after a long period of silence. Just as modern
+                                        architecture recently enjoyed a comeback, brand architecture, a field with
+                                        well-established principles for decades
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Mario Sanchez</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-21T15:48:00.000Z">October 21, 2022</time>
+                            </div>
                         </div>
-                        <div class="hidden h-6 text-2xl font-semibold sm:block">TailwindBlog</div>
                     </div>
-                </a>
-            </div>
-            <div class="flex items-center leading-5 space-x-4 sm:space-x-6">
-                <a class="hidden sm:block font-medium text-gray-900 dark:text-gray-100" href="/blog">Blog</a><a class="hidden sm:block font-medium text-gray-900 dark:text-gray-100" href="/tags">Tags</a><a class="hidden sm:block font-medium text-gray-900 dark:text-gray-100" href="/projects">Projects</a><a class="hidden sm:block font-medium text-gray-900 dark:text-gray-100" href="/about">About</a><button aria-label="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-900 dark:text-gray-100 h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-                    </svg>
-                </button><button aria-label="Toggle Dark Mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-gray-900 dark:text-gray-100 h-6 w-6">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg>
-                </button><button aria-label="Toggle Menu" class="sm:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-gray-900 dark:text-gray-100 h-8 w-8">
-                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <div class="fixed left-0 top-0 z-10 h-full w-full transform opacity-95 dark:opacity-[0.98] bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full">
-                    <div class="flex justify-end">
-                        <button class="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-gray-900 dark:text-gray-100">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-video"
+                           href="/post/5-effective-brain-recharging-activities-no-one-is-talking-about">
+                            <img alt="Graphics" fetchpriority="high" decoding="async" data-nimg="fill"
+                                 class="object-cover transition-all" sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.png%3Frect%3D0%2C279%2C987%2C607%26w%3D987%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
                     </div>
-                    <nav class="fixed mt-8 h-full">
-                        <div class="px-12 py-4"><a class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/">Home</a></div>
-                        <div class="px-12 py-4"><a class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/blog">Blog</a></div>
-                        <div class="px-12 py-4"><a class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/tags">Tags</a></div>
-                        <div class="px-12 py-4"><a class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/projects">Projects</a></div>
-                        <div class="px-12 py-4"><a class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/about">About</a></div>
-                    </nav>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/lifestyle">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-purple-600">Lifestyle</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/5-effective-brain-recharging-activities-no-one-is-talking-about">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        5
+                                        Effective Brain Recharging Activities No One is Talking About
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/5-effective-brain-recharging-activities-no-one-is-talking-about">
+                                        No
+                                        wonder mental health issues are at an all-time high. As my friend John called
+                                        it, we’re already in the third world war — and the battlegrounds are our
+                                        heads.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/joshua-wood">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Joshua Wood"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Joshua Wood</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-21T10:50:00.000Z">October 21, 2022</time>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </header>
-        <main class="mb-auto">
-            <div class="divide-y divide-gray-200 dark:divide-gray-700">
-                <div class="space-y-2 pb-8 pt-6 md:space-y-5">
-                    <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Latest</h1>
-                    <p class="text-lg leading-7 text-gray-500 dark:text-gray-400">A blog created with Next.js and Tailwind.css</p>
+            <div class="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 ">
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/14-architectural-design-ideas-for-spacious-interior">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F12301f301772ed723724302aef7c70c5c1c0151f-4500x8000.jpg%3Frect%3D0%2C1080%2C4500%2C5330%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/design">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">Design</span>
+                                </a><a href="/category/lifestyle">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-purple-600">Lifestyle</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/14-architectural-design-ideas-for-spacious-interior">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        14
+                                        Architectural Design Ideas for a Spacious Interior
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/14-architectural-design-ideas-for-spacious-interior">
+                                        It is a cliche
+                                        philosophical question, but it touches on something fundamental about how humans
+                                        relate to the world around them.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Mario Sanchez</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-21T06:05:00.000Z">October 21, 2022</time>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-                    <li class="py-12">
-                        <article>
-                            <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                                <dl>
-                                    <dt class="sr-only">Published on</dt>
-                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2023-08-05T00:00:00.000Z">August 5, 2023</time></dd>
-                                </dl>
-                                <div class="space-y-5 xl:col-span-3">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">Release of Tailwind Nextjs Starter Blog v2.0</a></h2>
-                                            <div class="flex flex-wrap"><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/feature">feature</a></div>
-                                        </div>
-                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">Release of Tailwind Nextjs Starter Blog template v2.0, refactored with Nextjs App directory and React Server Components setup.Discover the new features and how to migrate from V1.</div>
-                                    </div>
-                                    <div class="text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;Release of Tailwind Nextjs Starter Blog v2.0&quot;" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">Read more →</a></div>
-                                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/every-next-level-of-your-life-will-demand-a-different-you">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F2786bf808843b56a0e0feda1c1747cf73673d989-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/lifestyle">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-purple-600">Lifestyle</span>
+                                </a><a href="/category/personal-growth">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-emerald-700">
+                                        Personal
+                                        Growth
+                                    </span>
+                                </a>
                             </div>
-                        </article>
-                    </li>
-                    <li class="py-12">
-                        <article>
-                            <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                                <dl>
-                                    <dt class="sr-only">Published on</dt>
-                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2021-08-07T15:32:14.000Z">August 7, 2021</time></dd>
-                                </dl>
-                                <div class="space-y-5 xl:col-span-3">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/new-features-in-v1">New features in v1</a></h2>
-                                            <div class="flex flex-wrap"><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a></div>
-                                        </div>
-                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">An overview of the new features released in v1 - code block copy, multiple authors, frontmatter layout and more</div>
-                                    </div>
-                                    <div class="text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/new-features-in-v1">Read more →</a></div>
-                                </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/every-next-level-of-your-life-will-demand-a-different-you">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        Every
+                                        Next Level of Your Life Will Demand a Different You
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/every-next-level-of-your-life-will-demand-a-different-you">
+                                        That was
+                                        so fun! I’ve got a new addiction! my athlete friend exclaimed, tired but happy
+                                        in the car on the way home. “Let’s do it again tomorrow.”
+                                    </a>
+                                </p>
                             </div>
-                        </article>
-                    </li>
-                    <li class="py-12">
-                        <article>
-                            <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                                <dl>
-                                    <dt class="sr-only">Published on</dt>
-                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2021-05-02T00:00:00.000Z">May 2, 2021</time></dd>
-                                </dl>
-                                <div class="space-y-5 xl:col-span-3">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/nested-route/introducing-multi-part-posts-with-nested-routing">Introducing Multi-part Posts with Nested Routing</a></h2>
-                                            <div class="flex flex-wrap"><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/multi-author">multi-author</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/feature">feature</a></div>
-                                        </div>
-                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">The blog template supports posts in nested sub-folders. This can be used to group posts of similar content e.g. a multi-part course. This post is itself an example of a nested route!</div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Mario Sanchez</span>
                                     </div>
-                                    <div class="text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;Introducing Multi-part Posts with Nested Routing&quot;" href="/blog/nested-route/introducing-multi-part-posts-with-nested-routing">Read more →</a></div>
-                                </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-20T12:28:00.000Z">October 20, 2022</time>
                             </div>
-                        </article>
-                    </li>
-                    <li class="py-12">
-                        <article>
-                            <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                                <dl>
-                                    <dt class="sr-only">Published on</dt>
-                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2021-01-31T00:00:00.000Z">January 31, 2021</time></dd>
-                                </dl>
-                                <div class="space-y-5 xl:col-span-3">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/my-fancy-title">My fancy title</a></h2>
-                                            <div class="flex flex-wrap"><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/hello">hello</a></div>
-                                        </div>
-                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">draft post</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/this-bread-pudding-will-give-you-all-the-fall-feels">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/travel">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-orange-700">Travel</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/this-bread-pudding-will-give-you-all-the-fall-feels">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        This
+                                        Bread Pudding Will Give You All the Fall Feels
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/this-bread-pudding-will-give-you-all-the-fall-feels">
+                                        I learned this
+                                        when I traveled to a remote resort to deliver what was supposed to be a talk for
+                                        a group of tech investors. It turned out to be something of a “consult” to five
+                                        ultra-wealthy men.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/erika-oliver">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Erika Oliver"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Erika Oliver</span>
                                     </div>
-                                    <div class="text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;My fancy title&quot;" href="/blog/my-fancy-title">Read more →</a></div>
-                                </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-19T13:34:00.000Z">October 19, 2022</time>
                             </div>
-                        </article>
-                    </li>
-                    <li class="py-12">
-                        <article>
-                            <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                                <dl>
-                                    <dt class="sr-only">Published on</dt>
-                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2021-01-12T00:00:00.000Z">January 12, 2021</time></dd>
-                                </dl>
-                                <div class="space-y-5 xl:col-span-3">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/introducing-tailwind-nextjs-starter-blog">Introducing Tailwind Nextjs Starter Blog</a></h2>
-                                            <div class="flex flex-wrap"><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a><a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a></div>
-                                        </div>
-                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/i-moved-across-the-country-and-never-looked-back">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fa5bd8977e7fd82666c00a45948583b1f9912d392-3847x5583.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/travel">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-orange-700">Travel</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/i-moved-across-the-country-and-never-looked-back">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        I
+                                        Moved Across the Country and Never Looked Back
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/i-moved-across-the-country-and-never-looked-back">
+                                        I recently went to
+                                        the mountains with my friends. We were celebrating 50 years of friendship. It
+                                        was very special. Six of us were to be together spending time in the
+                                        mountains.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/joshua-wood">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Joshua Wood"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Joshua Wood</span>
                                     </div>
-                                    <div class="text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;Introducing Tailwind Nextjs Starter Blog&quot;" href="/blog/introducing-tailwind-nextjs-starter-blog">Read more →</a></div>
-                                </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-19T12:34:00.000Z">October 19, 2022</time>
                             </div>
-                        </article>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex justify-end text-base font-medium leading-6"><a class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="All posts" href="/blog">All Posts →</a></div>
-            <div class="flex items-center justify-center pt-4">
-                <div>
-                    <div class="pb-1 text-lg font-semibold text-gray-800 dark:text-gray-100">Subscribe to the newsletter</div>
-                    <form class="flex flex-col sm:flex-row">
-                        <div><label for="email-input"><span class="sr-only">Email address</span><input autocomplete="email" class="focus:ring-primary-600 w-72 rounded-md px-4 focus:border-transparent focus:outline-none focus:ring-2 dark:bg-black" id="email-input" placeholder="Enter your email" required="" type="email" name="email"></label></div>
-                        <div class="mt-2 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3"><button class="bg-primary-500 w-full rounded-md py-2 px-4 font-medium text-white sm:py-0 hover:bg-primary-700 dark:hover:bg-primary-400 focus:ring-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-black" type="submit">Sign up</button></div>
-                    </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc366d5116a51d3f1d8b23962e6b7caac7c960f81-7855x5240.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/personal-growth">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-emerald-700">
+                                        Personal
+                                        Growth
+                                    </span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        3
+                                        Meaningful Ways to Practice Self-Care as an Introvert
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                                        While AI
+                                        has proved superior at complex calculations &amp; predictions, creativity seemed
+                                        to be the domain that machines can’t take over.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Mario Sanchez</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-18T14:49:00.000Z">October 18, 2022</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/the-rise-of-artificial-intelligence-and-the-future-of-humans">
+                            <img alt="Thumbnail" loading="lazy" decoding="async" data-nimg="fill"
+                                 class="object-cover transition-all" sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe60f8ab265df3c22fdde5469de54d225017b7323-4000x5000.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/personal-growth">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-emerald-700">
+                                        Personal
+                                        Growth
+                                    </span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/the-rise-of-artificial-intelligence-and-the-future-of-humans">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        The
+                                        Rise of Artificial Intelligence and the Future of Humans
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/the-rise-of-artificial-intelligence-and-the-future-of-humans">
+                                        While
+                                        AI has proved superior at complex calculations &amp; predictions, creativity
+                                        seemed to be the domain that machines can’t take over.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/joshua-wood">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Joshua Wood"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Joshua Wood</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-18T13:47:00.000Z">October 18, 2022</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/10-simple-practices-that-will-help-you-get-1-better-every-day">
+                            <img alt="Thumbnail" loading="lazy" decoding="async" data-nimg="fill"
+                                 class="object-cover transition-all" sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F86cb3a2f0e43610371a7184483c5567bd9e6e94f-2400x1600.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/personal-growth">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-emerald-700">
+                                        Personal
+                                        Growth
+                                    </span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/10-simple-practices-that-will-help-you-get-1-better-every-day">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        10
+                                        Simple Practices That Will Help You Get 1% Better Every Day
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/10-simple-practices-that-will-help-you-get-1-better-every-day">
+                                        How
+                                        do we become better every single day? We develop practices that will help move
+                                        us incrementally forward. Small steps, taken consistently. This is the path to a
+                                        good life.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/erika-oliver">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Erika Oliver"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Erika Oliver</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-04T15:16:00.000Z">October 04, 2022</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/every-artist-has-to-see-the-amazing-pictures-on-the-internet">
+                            <img alt="Thumbnail" loading="lazy" decoding="async" data-nimg="fill"
+                                 class="object-cover transition-all" sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F279c03681911845947cd044b4ac9e91d7a3a628c-987x1481.png%3Fw%3D987%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/design">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">Design</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/every-artist-has-to-see-the-amazing-pictures-on-the-internet">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        Every
+                                        Artist has to see the Amazing Pictures on the Internet
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/every-artist-has-to-see-the-amazing-pictures-on-the-internet">
+                                        While
+                                        AI has proved superior at complex calculations &amp; predictions, creativity
+                                        seemed to be the domain that machines can’t take over.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Mario Sanchez</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-10-02T15:15:00.000Z">October 02, 2022</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/how-technology-evolved-under-the-bright-sun-of-universe">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F123fb8836aaf097b83d4c5e8fde544dd1747af0d-5064x3376.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/technology">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">Technology</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/how-technology-evolved-under-the-bright-sun-of-universe">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        How
+                                        Technology Evolved Under the Bright Sun of Universe
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/how-technology-evolved-under-the-bright-sun-of-universe">
+                                        The
+                                        evolution of technology in astronomy and how it has impacted our understanding
+                                        of the universe. It also gives a brief history of the major figures that the
+                                        science through their innovations
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/erika-oliver">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Erika Oliver"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Erika Oliver</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-09-30T15:15:00.000Z">
+                                    September 30,
+                                    2022
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/lessons-of-happiness-i-learned-from-a-mountain-village">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F5be1635417f1814b3fb09f8e9f74f37079899f72-4032x3024.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/travel">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-orange-700">Travel</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/lessons-of-happiness-i-learned-from-a-mountain-village">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        Lessons
+                                        Of Happiness I learned from a Mountain Village
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/lessons-of-happiness-i-learned-from-a-mountain-village">
+                                        I recently
+                                        went to the mountains with my friends. We were celebrating 50 years of
+                                        friendship. It was very special. Six of us were to be together spending time in
+                                        the mountains.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/joshua-wood">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Joshua Wood"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Joshua Wood</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-09-25T15:15:00.000Z">
+                                    September 25,
+                                    2022
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/there-s-nothing-new-about-undermining-women-s-autonomy">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fc8e84acf383034b5b65181b9c4bb97069268d12e-4608x3072.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/lifestyle">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-purple-600">Lifestyle</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/there-s-nothing-new-about-undermining-women-s-autonomy">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        There’s
+                                        Nothing New About Undermining Women’s Autonomy
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/there-s-nothing-new-about-undermining-women-s-autonomy">
+                                        In2007, the
+                                        now-defunct San Antonio Independent Christian Film Festival awarded Best of
+                                        Festival to a documentary called The Monstrous Regiment of Women a film that
+                                        simultaneously.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/erika-oliver">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Erika Oliver"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Erika Oliver</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-09-23T15:15:00.000Z">
+                                    September 23,
+                                    2022
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/post/escape-fantasies-of-the-tech-billionaires">
+                            <img alt="Thumbnail" loading="lazy"
+                                 decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F35b405aec2066d3172a1e6ec7acb8f5c4136b6d6-2070x1380.png%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/technology">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">Technology</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/escape-fantasies-of-the-tech-billionaires">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        Escape
+                                        Fantasies of the Tech Billionaires
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/escape-fantasies-of-the-tech-billionaires">
+
+                                        I learned this when I traveled to a remote resort to deliver what was supposed
+                                        to be a talk for a group of tech investors. It turned out to be something of a
+                                        “consult” to five ultra-wealthy men.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/erika-oliver">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Erika Oliver"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=16&amp;q=75 16w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=32&amp;q=75 32w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=48&amp;q=75 48w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=64&amp;q=75 64w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=96&amp;q=75 96w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=128&amp;q=75 128w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=256&amp;q=75 256w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=384&amp;q=75 384w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=640&amp;q=75 640w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=750&amp;q=75 750w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=828&amp;q=75 828w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1080&amp;q=75 1080w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1200&amp;q=75 1200w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=1920&amp;q=75 1920w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=2048&amp;q=75 2048w, https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75 3840w"
+                                                 src="https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&amp;w=3840&amp;q=75"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">Erika Oliver</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="2022-09-21T15:14:00.000Z">
+                                    September 21,
+                                    2022
+                                </time>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </main>
-        <footer>
-            <div class="mt-16 flex flex-col items-center">
-                <div class="mb-3 flex space-x-4">
-                    <a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="mailto:address@yoursite.com">
-                        <span class="sr-only">mail</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                    </a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://github.com">
-                        <span class="sr-only">github</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-                        </svg>
-                    </a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://facebook.com">
-                        <span class="sr-only">facebook</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
-                        </svg>
-                    </a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://youtube.com">
-                        <span class="sr-only">youtube</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M23.499 6.203a3.008 3.008 0 00-2.089-2.089c-1.87-.501-9.4-.501-9.4-.501s-7.509-.01-9.399.501a3.008 3.008 0 00-2.088 2.09A31.258 31.26 0 000 12.01a31.258 31.26 0 00.523 5.785 3.008 3.008 0 002.088 2.089c1.869.502 9.4.502 9.4.502s7.508 0 9.399-.502a3.008 3.008 0 002.089-2.09 31.258 31.26 0 00.5-5.784 31.258 31.26 0 00-.5-5.808zm-13.891 9.4V8.407l6.266 3.604z"></path>
-                        </svg>
-                    </a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com">
-                        <span class="sr-only">linkedin</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-                        </svg>
-                    </a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://twitter.com/Twitter">
-                        <span class="sr-only">twitter</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-6 w-6">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
-                        </svg>
+            <div class="mt-10 flex justify-center">
+                <a class="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300"
+                   href="/blogs"><span>View all Posts</span></a>
+            </div>
+        </div>
+    </div>
+@*     <div class="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800">
+        <div class="text-sm text-center">Copyright © 2023 Stablo. All rights reserved.</div>
+        <div class="mt-1 text-sm text-center text-gray-500 dark:text-gray-600">
+            Made by <a href="https://www.web3templates.com/?ref=stablo-template" rel="noopener"
+                       target="_blank">Web3Templates</a>
+        </div>
+        <div class="flex items-center justify-center mt-2">
+            <div class="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                     class="w-4 h-4 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z">
+                    </path>
+                </svg><select name="themeSwitch">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+        </div><a href="https://web3templates.com/templates/stablo-minimal-blog-website-template" target="_blank"
+                 rel="noopener"
+                 class="fixed flex px-3 py-1 space-x-2 font-sans text-sm font-semibold text-gray-900 bg-white border border-gray-300 rounded shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 place-items-center right-5 bottom-5 dark:bg-trueGray-900 dark:border-trueGray-700 dark:text-trueGray-300">
+            <svg width="20" height="20" viewBox="0 0 30 30" fill="none" class="w-4 h-4"
+                 xmlns="http://www.w3.org/2000/svg">
+                <rect width="30" height="29.5385" rx="2.76923" fill="#362F78"></rect>
+                <path d="M10.14 21.94H12.24L15.44 12.18L18.64 21.94H20.74L24.88 8H22.64L19.58 18.68L16.36 8.78H14.52L11.32 18.68L8.24 8H6L10.14 21.94Z"
+                      fill="#F7FAFC"></path>
+            </svg><span> Purchase Template ↗</span>
+        </a>
+    </div> *@
+<h3 class="bg-white pt-12 sm:pt-16  max-w-screen-xl mx-auto px-6  lg:px-8 font-bold text-3xl">
+    Feature Post</h3>
+<div class="bg-white py-24 sm:py-32  max-w-screen-xl mx-auto ">
+    
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 lg:grid-cols-2 lg:px-8">
+        <article class="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-lg">
+            <time datetime="2020-03-16" class="block text-sm leading-6 text-gray-600">Mar 16, 2020</time>
+            <h2 id="featured-post" class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">We’re incredibly proud to announce we have secured $75m in Series B</h2>
+            <p class="mt-4 text-lg leading-8 text-gray-600">Libero neque aenean tincidunt nec consequat tempor. Viverra odio id velit adipiscing id. Nisi vestibulum orci eget bibendum dictum. Velit viverra posuere vulputate volutpat nunc. Nunc netus sit faucibus.</p>
+            <div class="mt-4 flex flex-col justify-between gap-6 sm:mt-8 sm:flex-row-reverse sm:gap-8 lg:mt-4 lg:flex-col">
+                <div class="flex">
+                    <a href="#" class="text-sm font-semibold leading-6 text-indigo-600" aria-describedby="featured-post">Continue reading <span aria-hidden="true">&rarr;</span></a>
+                </div>
+                <div class="flex lg:border-t lg:border-gray-900/10 lg:pt-8">
+                    <a href="#" class="flex gap-x-2.5 text-sm font-semibold leading-6 text-gray-900">
+                        <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-none rounded-full bg-gray-50">
+                        Michael Foster
                     </a>
                 </div>
-                <div class="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-                    <div>Tails Azimuth</div>
-                    <div> • </div>
-                    <div>© 2023</div>
-                    <div> • </div><a href="/">Next.js Starter Blog</a>
-                </div>
-                <div class="mb-8 text-sm text-gray-500 dark:text-gray-400"><a target="_blank" rel="noopener noreferrer" href="https://github.com/timlrx/tailwind-nextjs-starter-blog">Tailwind Nextjs Theme</a></div>
             </div>
-        </footer>
+        </article>
+        <div class="mx-auto w-full max-w-2xl border-t border-gray-900/10 pt-12 sm:pt-16 lg:mx-0 lg:max-w-none lg:border-t-0 lg:pt-0">
+            <div class="-my-12 divide-y divide-gray-900/10">
+                <article class="py-12">
+                    <div class="group relative max-w-xl">
+                        <time datetime="2020-03-16" class="block text-sm leading-6 text-gray-600">Mar 10, 2020</time>
+                        <h2 class="mt-2 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
+                            <a href="#">
+                                <span class="absolute inset-0"></span>
+                                Boost your conversion rate
+                            </a>
+                        </h2>
+                        <p class="mt-4 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.</p>
+                    </div>
+                    <div class="mt-4 flex">
+                        <a href="#" class="relative flex gap-x-2.5 text-sm font-semibold leading-6 text-gray-900">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-none rounded-full bg-gray-50">
+                            Lindsay Walton
+                        </a>
+                    </div>
+                </article>
+                <article class="py-12">
+                    <div class="group relative max-w-xl">
+                        <time datetime="2020-03-16" class="block text-sm leading-6 text-gray-600">Mar 10, 2020</time>
+                        <h2 class="mt-2 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
+                            <a href="#">
+                                <span class="absolute inset-0"></span>
+                                Boost your conversion rate
+                            </a>
+                        </h2>
+                        <p class="mt-4 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.</p>
+                    </div>
+                    <div class="mt-4 flex">
+                        <a href="#" class="relative flex gap-x-2.5 text-sm font-semibold leading-6 text-gray-900">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-none rounded-full bg-gray-50">
+                            Lindsay Walton
+                        </a>
+                    </div>
+                </article>
+                <!-- More posts... -->
+            </div>
+        </div>
     </div>
-</section>
-<script src="/_next/static/chunks/webpack.js?v=1696259228675" async=""></script>
+</div>
+

@@ -1,5 +1,0 @@
-C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.BussinessLogic\obj\Debug\net7.0\AcademicBlog.BussinessLogic.csproj.AssemblyReference.cache
-C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.BussinessLogic\obj\Debug\net7.0\AcademicBlog.BussinessLogic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.BussinessLogic\obj\Debug\net7.0\AcademicBlog.BussinessLogic.AssemblyInfoInputs.cache
-C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.BussinessLogic\obj\Debug\net7.0\AcademicBlog.BussinessLogic.AssemblyInfo.cs
-C:\Users\tklin\Desktop\2023_Semester7_FALL\PRN221\hands-on\PRN221.Team6.AcademicBlog\AcademicBlog.BussinessLogic\obj\Debug\net7.0\AcademicBlog.BussinessLogic.csproj.CoreCompileInputs.cache

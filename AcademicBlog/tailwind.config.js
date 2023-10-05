@@ -1,12 +1,12 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 module.exports = {
-    purge: {
-        enabled: true,
-        content: ["./Pages/**/*.cshtml", "./Views/**/*.cshtml"],
-    },
-    darkMode: false, // or 'media' or 'class'
-    theme: {
+  purge: {
+    enabled: true,
+    content: ["./Pages/**/*.cshtml", "./Views/**/*.cshtml"],
+  },
+  darkMode: false, // or 'media' or 'class'
+  theme: {
         extend: {
             lineHeight: {
                 11: '2.75rem',
@@ -59,9 +59,9 @@ module.exports = {
                 },
             }),
         },
-    },
+  },
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-    variants: {
-        extend: {},
-    },
+  variants: {
+    extend: {},
+  },
 };
