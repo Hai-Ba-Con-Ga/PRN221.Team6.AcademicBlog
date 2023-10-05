@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Auth\Signup.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -33,5 +38,17 @@
 	<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />
 	</Target>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Auth\Signup.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Auth\Signup.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Auth\Signup.cshtml" />
+  </ItemGroup>
 
 </Project>

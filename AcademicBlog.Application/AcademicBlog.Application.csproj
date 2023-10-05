@@ -16,4 +16,9 @@
 	  
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AcademicBlog.Domain\AcademicBlog.Domain.csproj" />
+    <ProjectReference Include="..\AcademicBlog.Infrastructure\AcademicBlog.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

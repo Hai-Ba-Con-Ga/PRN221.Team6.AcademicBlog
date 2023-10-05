@@ -1,5 +1,6 @@
 
 using AcademicBlog.Infrastructure.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -17,7 +18,9 @@ builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AcademicBlogDB"));
 });
-
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AcademicBlogDbContext>()
+                .AddDefaultTokenProviders();
 
 var app = builder.Build();
 

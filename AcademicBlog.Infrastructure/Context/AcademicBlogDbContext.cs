@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using AcademicBlog.Infrastructure.Entities;
+using AcademicBlog.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
