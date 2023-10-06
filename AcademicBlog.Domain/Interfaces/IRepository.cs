@@ -1,4 +1,6 @@
-﻿namespace AcademicBlog.Domain.Interfaces;
+﻿using System.Linq.Expressions;
+
+namespace AcademicBlog.Domain.Interfaces;
 public interface IRepository<T> where T : class
 {
     Task DeleteAsync(int id, bool saveChange = true);
@@ -15,6 +17,7 @@ public interface IRepository<T> where T : class
     Task UpdateAsync(T entity, bool saveChange = true);
 
     Task UpdateRangeAsync(IEnumerable<T> entities, bool saveChange = true);
+    Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
 
 
 }

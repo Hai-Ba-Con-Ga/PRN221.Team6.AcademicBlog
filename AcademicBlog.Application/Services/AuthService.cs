@@ -1,92 +1,73 @@
 ﻿using AcademicBlog.Domain.Interfaces;
 using AcademicBlog.Domain.Models;
-using AcademicBlog.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AcademicBlog.Domain.Interfaces.Services;
+using AcademicBlog.Domain.Entities;
 
 namespace AcademicBlog.Application.Services
 {
     public class AuthService : IAuthService
     {
         private readonly IRepository<Account> _accountRepository;
-        private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<Role> _roleRepository; 
+
         public AuthService(IRepository<Account> accountRepository, IRepository<Role> roleRepository)
         {
             _accountRepository = accountRepository;
             _roleRepository = roleRepository;
         }
 
-        public async Task<Account> Login(string email, string password)
+        public async Task Delete(int id)
         {
-            var account = await _accountRepository.FindAsync(email, password);
-            return account;
+            var account = await _accountRepository.FindAsync(id);
+            await _accountRepository.DeleteAsync(account);
+           
         }
 
-        public async Task<Account> Register(string email, string password, string fullname)
+        public async Task<Account> Login(string email, string password)
         {
-            //var role = await _roleRepository.GetAllAsync();
-            var checkAccount = await _accountRepository.FindAsync(email);
-            if (checkAccount != null)
+            var account = await _accountRepository.FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
+            if (account == null)
             {
-                throw new Exception("Email đã tồn tại");
+                throw new Exception("Email or password is incorrect");
             }
+            return account;
 
-            var account = new Account
+        }
+
+        public async Task<Account> Register(SignupModel model)
+        {
+            var account = await _accountRepository.FirstOrDefaultAsync(x => x.Email == model.Email);
+            if (account != null)
             {
-                Email = email,
-                Password = password,
-                Fullname = fullname,
-                RoleId = 2
+                throw new Exception("Email is already in use");
+            }
+            account = new Account
+            {
+                Email = model.Email,
+                Password = model.Password,
+                Fullname = model.Fullname,
+                RoleId = (await _roleRepository.FirstOrDefaultAsync(x => x.Name == "User")).Id
             };
             await _accountRepository.InsertAsync(account);
             return account;
+            
         }
 
         public async Task<Account> Update(int id, UpdateAccountModel model)
         {
-            var account = await _accountRepository.FindAsync(id);
+            var account = _accountRepository.Find(id);
             if (account == null)
             {
-                throw new Exception("Tài khoản không tồn tại");
+                throw new Exception("Account not found");
             }
-
-            
-            account.Password = model.Password;
             account.Fullname = model.Fullname;
+            account.Password = model.Password;
             account.AvatarUrl = model.AvatarUrl;
-            
             await _accountRepository.UpdateAsync(account);
             return account;
+
         }
 
-        public async Task Delete(int id)
-        {
-            var account = await _accountRepository.FindAsync(id);
-            if (account == null)
-            {
-                throw new Exception("Tài khoản không tồn tại");
-            }
-
-            await _accountRepository.DeleteAsync(account);
-        }
-
-        Task<Account> IAuthService.Login(string email, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Account> IAuthService.Register(string email, string password, string fullname)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Account> IAuthService.Update(int id, UpdateAccountModel model)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

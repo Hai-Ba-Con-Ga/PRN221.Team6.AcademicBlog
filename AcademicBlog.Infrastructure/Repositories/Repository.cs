@@ -1,4 +1,5 @@
 ﻿using AcademicBlog.Domain.Interfaces;
+using System.Linq.Expressions;
 
 namespace AcademicBlog.Infrastructure.Repositories;
 public class Repository<T> : IRepository<T> where T : class
@@ -83,4 +84,8 @@ public class Repository<T> : IRepository<T> where T : class
     {
         Entities.UpdateRange(entities);
     }
+    //First, FirstOrDefault, Single, SingleOrDefault, Last, LastOrDefault
+    public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate) => await Entities.FirstOrDefaultAsync(predicate);
+
+
 }
