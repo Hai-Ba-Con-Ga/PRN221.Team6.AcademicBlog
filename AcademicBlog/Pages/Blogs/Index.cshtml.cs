@@ -8,6 +8,9 @@ namespace AcademicBlog.Pages.Blogs
     public class IndexModel : PageModel
     {
         public List<TabItem> Tabs { get; set; }
+
+        [BindProperty]
+        public string SearchKeyword { get;set; }
         public void OnGet()
         {
             Tabs = new List<TabItem>

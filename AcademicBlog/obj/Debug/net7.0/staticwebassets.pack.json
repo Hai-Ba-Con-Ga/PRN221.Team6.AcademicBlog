@@ -61,6 +61,306 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\ckeditor.d.ts",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\ckeditor.d.ts"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\ckeditor.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\ckeditor.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\ckeditor.js.map",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\ckeditor.js.map"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\script.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\script.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\styles.css",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\styles.css"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\af.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\af.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ar.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ar.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ast.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ast.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\az.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\az.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\bg.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\bg.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\bn.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\bn.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\bs.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\bs.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ca.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ca.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\cs.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\cs.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\da.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\da.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\de-ch.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\de-ch.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\de.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\de.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\el.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\el.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\en-au.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\en-au.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\en-gb.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\en-gb.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\eo.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\eo.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\es-co.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\es-co.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\es.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\es.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\et.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\et.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\eu.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\eu.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\fa.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\fa.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\fi.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\fi.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\fr.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\fr.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\gl.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\gl.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\gu.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\gu.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\he.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\he.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\hi.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\hi.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\hr.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\hr.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\hu.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\hu.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\hy.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\hy.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\id.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\id.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\it.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\it.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ja.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ja.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\jv.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\jv.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\kk.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\kk.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\km.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\km.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\kn.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\kn.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ko.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ko.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ku.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ku.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\lt.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\lt.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\lv.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\lv.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ms.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ms.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\nb.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\nb.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ne.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ne.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\nl.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\nl.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\no.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\no.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\oc.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\oc.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\pl.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\pl.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\pt-br.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\pt-br.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\pt.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\pt.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ro.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ro.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ru.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ru.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\si.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\si.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sk.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sk.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sl.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sl.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sq.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sq.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sr-latn.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sr-latn.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sr.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sr.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\sv.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\sv.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\th.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\th.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\tk.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\tk.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\tr.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\tr.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\tt.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\tt.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ug.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ug.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\uk.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\uk.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\ur.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\ur.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\uz.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\uz.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\vi.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\vi.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\zh-cn.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\zh-cn.js"
+    },
+    {
+      "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\ckeditor\\translations\\zh.js",
+      "PackagePath": "staticwebassets\\lib\\ckeditor\\translations\\zh.js"
+    },
+    {
       "Id": "X:\\Project\\prn221\\AcademicBlog\\AcademicBlog\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
