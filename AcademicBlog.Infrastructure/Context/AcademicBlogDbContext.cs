@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AcademicBlog.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
 namespace AcademicBlog.Infrastructure.Context;
@@ -41,7 +42,7 @@ public partial class AcademicBlogDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("server =(local); database = AcademicBlogDB;uid=sa;pwd=12345;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("server =wyvernpserver.tech; database = AcademicBlogDB;uid=sa;pwd=ThanhPhong2506;TrustServerCertificate=True");
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,7 +55,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.HasIndex(e => new { e.Username, e.Email }, "UC_Username_Email").IsUnique();
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Fullname).HasMaxLength(50);
             entity.Property(e => e.Password).HasMaxLength(20);
@@ -73,7 +74,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Bookmark");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.CreatorId).HasColumnName("CreatorID");
             entity.Property(e => e.PostId).HasColumnName("PostID");
 
@@ -94,7 +95,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Category");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.Name).HasMaxLength(20);
         });
 
@@ -104,7 +105,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Comment");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.CreatorId).HasColumnName("CreatorID");
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
@@ -129,7 +130,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Favourite");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.CreatorId).HasColumnName("CreatorID");
             entity.Property(e => e.PostId).HasColumnName("PostID");
 
@@ -147,7 +148,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.HasIndex(e => e.SessionId, "UC_SessionID").IsUnique();
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.PostId).HasColumnName("PostID");
             entity.Property(e => e.SessionId)
                 .HasMaxLength(50)
@@ -165,7 +166,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Notification");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID").HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn); ;
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.PostId).HasColumnName("PostID");
             entity.Property(e => e.ReceiverId).HasColumnName("ReceiverID");
@@ -188,7 +189,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Post");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID").HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn); 
             entity.Property(e => e.ApproveDate).HasColumnType("datetime");
             entity.Property(e => e.ApproverId).HasColumnName("ApproverID");
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
@@ -239,7 +240,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Role");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.Name).HasMaxLength(10);
         });
 
@@ -249,7 +250,7 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.ToTable("Tag");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID") .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
             entity.Property(e => e.Name).HasMaxLength(20);
         });
 

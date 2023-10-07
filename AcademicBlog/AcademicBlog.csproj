@@ -27,6 +27,9 @@
     <ProjectReference Include="..\AcademicBlog.Domain\AcademicBlog.Domain.csproj" />
     <ProjectReference Include="..\AcademicBlog.Infrastructure\AcademicBlog.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\ckeditor\" />
+  </ItemGroup>
 	<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />
 	</Target>
