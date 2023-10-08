@@ -4,6 +4,7 @@ using AcademicBlog.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,11 @@ namespace AcademicBlog.Repository
         }
         public async Task<Account> Login(string email, string password)
         {
-            return await _accountDAO.GetOneByConditionAsync(x => x.Email == email && x.Password == password);
+            return await _accountDAO.GetOneByConditionAsync(
+                    
+                    expression: x => x.Email == email && x.Password == password,
+                    includeProperties: new Expression<Func<Account, object>>[] { x => x.Role }
+                );
         }
 
         public async Task<Account> Add(Account account)

@@ -23,11 +23,11 @@ public partial class Post
 
     public int CategoryId { get; set; }
 
-    public int ApproverId { get; set; }
+    public int? ApproverId { get; set; }
 
-    public DateTime ApproveDate { get; set; }
+    public DateTime? ApproveDate { get; set; }
 
-    public virtual Account Approver { get; set; } = null!;
+    public virtual Account? Approver { get; set; }
 
     public virtual ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
 
@@ -42,5 +42,5 @@ public partial class Post
     public virtual ICollection<Hit> Hits { get; set; } = new List<Hit>();
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
-    public virtual ICollection<PostTag> PostTags { get; set; } = new List<PostTag>();
+    
 }
