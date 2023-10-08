@@ -1,26 +1,20 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using AcademicBlog.Domain.Entities;
-using AcademicBlog.Domain.Interfaces;
-using AcademicBlog.Domain.Interfaces.Services;
+using AcademicBlog.Repository.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Identity.Client;
 
 namespace AcademicBlog.Pages.Auth
 {
     public class LoginModel : PageModel
     {
-        private readonly IRepository<Account> _accountRepository;
-        private readonly ILogger<LoginModel> _logger;
-
-        public LoginModel(IRepository<Account> accountRepository, ILogger<LoginModel> logger)
+        private readonly IAccountRepository _accountRepository;
+        
+        public LoginModel(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
-            _logger = logger;
         }
 
         [BindProperty]
@@ -38,8 +32,7 @@ namespace AcademicBlog.Pages.Auth
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; } = null!;
-            [Display(Name = "Remember me?")]
-            public bool RememberMe { get; set; }
+            
         }
         public IActionResult OnGetAsync(string? returnUrl = null)
         {
@@ -52,8 +45,7 @@ namespace AcademicBlog.Pages.Auth
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine(Input.Email);
-            Console.WriteLine(Input.Password);
+            
             if (!ModelState.IsValid)
             {
                 if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
@@ -61,7 +53,7 @@ namespace AcademicBlog.Pages.Auth
                     return RedirectToPage("../Index");
                 }
             }
-            var account = await _accountRepository.GetByConditionAsync(x => x.Email == Input.Email && x.Password == Input.Password);
+            var account = await _accountRepository.Login(Input.Email, Input.Password);
             
             if (account == null)
             {
@@ -78,8 +70,7 @@ namespace AcademicBlog.Pages.Auth
             var authProperties = new AuthenticationProperties
             {
                 AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7),
-                IsPersistent = Input.RememberMe
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
             };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
             return RedirectToPage("../Index");

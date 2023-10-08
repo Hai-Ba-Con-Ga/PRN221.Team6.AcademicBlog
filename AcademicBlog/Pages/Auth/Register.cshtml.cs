@@ -1,26 +1,25 @@
-using AcademicBlog.Domain.Entities;
-using AcademicBlog.Domain.Interfaces;
-using AcademicBlog.Domain.Interfaces.Services;
-using AcademicBlog.Domain.Models;
+
+using AcademicBlog.BussinessObject;
+using AcademicBlog.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using static AcademicBlog.Pages.Auth.LoginModel;
 
 namespace AcademicBlog.Pages.Auth
 {
     public class RegisterModel : PageModel
     {
-        private readonly IRepository<Account> _accountRepository;
-        private readonly IRepository<Role> _roleRepository;
+        private readonly IAccountRepository _accountRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly ILogger<RegisterModel> _logger;
 
-        public RegisterModel(IRepository<Account> accountRepository, IRepository<Role> roleRepository, ILogger<RegisterModel> logger)
+        public RegisterModel(IAccountRepository accountRepository, IRoleRepository roleRepository, ILogger<RegisterModel> logger)
         {
             _accountRepository = accountRepository;
             _roleRepository = roleRepository;
             _logger = logger;
         }
+
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -67,14 +66,14 @@ namespace AcademicBlog.Pages.Auth
             }
             try
             {
-                var role = await _roleRepository.GetByConditionAsync(x => x.Name.Equals("User"));
+                var role = await _roleRepository.GetByName("User");
                 if (role == null)
                 {
                     throw new Exception("Role not found");
                 }
                 var account = new Account { Email = Input.Email, Password = Input.Password, Fullname = Input.Fullname, RoleId = role.Id };
-                var result =  _accountRepository.CreateAsync(account);
-                if (result.Result == 0)
+                var result = await _accountRepository.Add(account);
+                if (result == null)
                 {
                     throw new Exception("Register failed");
                 }

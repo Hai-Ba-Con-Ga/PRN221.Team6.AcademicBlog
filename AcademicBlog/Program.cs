@@ -1,15 +1,10 @@
 
-using AcademicBlog.Application.Services;
-using AcademicBlog.Domain.Entities;
-using AcademicBlog.Domain.Interfaces;
-using AcademicBlog.Domain.Interfaces.Services;
-using AcademicBlog.Infrastructure.Context;
-using AcademicBlog.Infrastructure.Repositories;
+using AcademicBlog.BussinessObject;
+using AcademicBlog.Repository;
+using AcademicBlog.Repository.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -29,9 +24,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AcademicBlogDbContext>()
                 .AddDefaultTokenProviders();
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
 
 
 var app = builder.Build();
