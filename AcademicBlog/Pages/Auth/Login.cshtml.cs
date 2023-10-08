@@ -1,3 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using AcademicBlog.Repository.Interface;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,8 +10,70 @@ namespace AcademicBlog.Pages.Auth
 {
     public class LoginModel : PageModel
     {
-        public void OnGet()
+        private readonly IAccountRepository _accountRepository;
+        
+        public LoginModel(IAccountRepository accountRepository)
         {
+            _accountRepository = accountRepository;
+        }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public string ReturnUrl { get; set; }
+        [TempData]
+        public string ErrorMessage { get; set; }
+
+        public class InputModel
+        {
+            [Required]
+            [EmailAddress]
+            public string Email { get; set; } = null!;
+            [Required]
+            [DataType(DataType.Password)]
+            public string Password { get; set; } = null!;
+            
+        }
+        public IActionResult OnGetAsync(string? returnUrl = null)
+        {
+            if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("../Index");
+            }
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
+                {
+                    return RedirectToPage("../Index");
+                }
+            }
+            var account = await _accountRepository.Login(Input.Email, Input.Password);
+            
+            if (account == null)
+            {
+                ErrorMessage = "Invalid login attempt.";
+                return Page();
+            }
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, account.Fullname),
+                new Claim(ClaimTypes.Email, account.Email),
+                new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                AllowRefresh = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+            };
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+            return RedirectToPage("../Index");
         }
     }
 }
