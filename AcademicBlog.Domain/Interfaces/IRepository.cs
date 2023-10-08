@@ -3,21 +3,16 @@
 namespace AcademicBlog.Domain.Interfaces;
 public interface IRepository<T> where T : class
 {
-    Task DeleteAsync(int id, bool saveChange = true);
-    Task DeleteAsync(T entity, bool saveChange = true);
+    Task<int> CreateAsync(T entity);
+    Task<T> DeleteAsync(T entity);
+    Task<T> DeleteAsync(int id);
+    Task<T> UpdateAsync(T entity);
+    Task<T> UpdateAsync(int id, T entity);
 
-    Task DeleteRangeAsync(IEnumerable<T> entities, bool saveChange = true);
-    T Find(params object[] keyValues);
-    Task<T> FindAsync(params object[] keyValues);
-    Task<IList<T>> GetAllAsync();
-    Task InsertAsync(T entity, bool saveChange = true);
-
-    Task InsertRangeAsync(IEnumerable<T> entities, bool saveChange = true);
-
-    Task UpdateAsync(T entity, bool saveChange = true);
-
-    Task UpdateRangeAsync(IEnumerable<T> entities, bool saveChange = true);
-    Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
-
-
-}
+    Task<T> GetByIdAsync(int id);
+    Task<T> GetByConditionAsync(Expression<Func<T, bool>> expression);
+    Task<IEnumerable<T>> GetAllAsync();
+    Task<IEnumerable<T>> GetMultiByConditionAsync(Expression<Func<T, bool>> expression);
+    Task<IEnumerable<T>> GetMultiPagingAsync(Expression<Func<T, bool>> expression, int index = 0, int size = 10);
+    Task<int> CountAsync(Expression<Func<T, bool>> expression);
+    }

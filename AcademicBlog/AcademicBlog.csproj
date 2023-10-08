@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Auth\Signup.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -29,6 +25,7 @@
 		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
 	</ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AcademicBlog.Application\AcademicBlog.Application.csproj" />
     <ProjectReference Include="..\AcademicBlog.Domain\AcademicBlog.Domain.csproj" />
     <ProjectReference Include="..\AcademicBlog.Infrastructure\AcademicBlog.Infrastructure.csproj" />
   </ItemGroup>
@@ -38,17 +35,5 @@
 	<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />
 	</Target>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Auth\Signup.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Auth\Signup.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Auth\Signup.cshtml" />
-  </ItemGroup>
 
 </Project>

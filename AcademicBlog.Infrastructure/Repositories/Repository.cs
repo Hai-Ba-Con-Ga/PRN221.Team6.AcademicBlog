@@ -1,91 +1,107 @@
 ﻿using AcademicBlog.Domain.Interfaces;
+using AcademicBlog.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AcademicBlog.Infrastructure.Repositories;
 public class Repository<T> : IRepository<T> where T : class
 {
-    public DbSet<T> Entities => DbContext.Set<T>();
+    protected DbSet<T> dbSet;
 
-    public DbContext DbContext { get; private set; }
+    protected AcademicBlogDbContext _context;
 
-    public Repository(DbContext dbContext)
+    public Repository(AcademicBlogDbContext context)
     {
-        DbContext = dbContext;
+        _context = context;
+        dbSet = context.Set<T>();
+    }
+    public async Task<int> CreateAsync(T entity)
+    {
+        await dbSet.AddAsync(entity);
+        int rowEffect = await _context.SaveChangesAsync();
+        return rowEffect;
     }
 
-    public async Task DeleteAsync(int id, bool saveChange = true)
+    public async Task<T> DeleteAsync(T entity)
     {
-        var entity = await Entities.FindAsync(id);
-        await DeleteAsync(entity);
-        if (saveChange)
+        if (entity == null)
         {
-            await DbContext.SaveChangesAsync();
+            return null;
         }
+        dbSet.Remove(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+
     }
 
-    public async Task DeleteAsync(T entity, bool saveChange = true)
+    public async Task<T> DeleteAsync(int id)
     {
-        Entities.Remove(entity);
-        if (saveChange)
+        var entity = await dbSet.FindAsync(id);
+        if (entity == null)
         {
-            await DbContext.SaveChangesAsync();
+            return null;
         }
+        dbSet.Remove(entity);
+        await _context.SaveChangesAsync();
+        return entity;
     }
-
-    public async Task DeleteRangeAsync(IEnumerable<T> entities, bool saveChange = true)
+    public async Task<T> UpdateAsync(T entity)
     {
-        // is, or, as, in..
-        var enumerable = entities as T[] ?? entities.ToArray();
-        if (enumerable.Any())
+        if (entity == null)
         {
-            Entities.RemoveRange(enumerable);
+            return null;
         }
-        if (saveChange)
-        {
-            await DbContext.SaveChangesAsync();
-        }
+        dbSet.Update(entity);
+        await _context.SaveChangesAsync();
+        return entity;
     }
-
-    public T Find(params object[] keyValues) => Entities.Find(keyValues);
-
-    public virtual async Task<T> FindAsync(params object[] keyValues) => await Entities.FindAsync(keyValues);
-
-    public async Task<IList<T>> GetAllAsync() => await Entities.ToListAsync<T>();
-
-    public async Task InsertAsync(T entity, bool saveChange = true)
+    public async Task<T> UpdateAsync(int id, T entity)
     {
-        await Entities.AddAsync(entity);
-        if (saveChange)
+        if (entity == null)
         {
-            //luu du lieu xuong database thong qua EFC duoi dang asyncronous
-            await DbContext.SaveChangesAsync();
+            return null;
         }
-    }
-
-    public async Task InsertRangeAsync(IEnumerable<T> entities, bool saveChange = true)
-    {
-        await DbContext.AddRangeAsync(entities);
-        if (saveChange)
+        var entityUpdate = await dbSet.FindAsync(id);
+        if (entityUpdate == null)
         {
-            await DbContext.SaveChangesAsync();
+            return null;
         }
+        _context.Entry(entityUpdate).CurrentValues.SetValues(entity);
+        await _context.SaveChangesAsync();
+        return entity;
     }
-
-    public async Task UpdateAsync(T entity, bool saveChange = true)
+    public async Task<T> GetByIdAsync(int id)
     {
-        Entities.Update(entity);
-        if (saveChange)
-        {
-            await DbContext.SaveChangesAsync();
-        }
+        var entity = await dbSet.FindAsync(id);
+        return entity;
     }
-
-    public async Task UpdateRangeAsync(IEnumerable<T> entities, bool saveChange = true)
+    public async Task<T> GetByConditionAsync(Expression<Func<T, bool>> expression)
     {
-        Entities.UpdateRange(entities);
+        var entity = await dbSet.FirstOrDefaultAsync(expression);
+        return entity;
     }
-    //First, FirstOrDefault, Single, SingleOrDefault, Last, LastOrDefault
-    public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate) => await Entities.FirstOrDefaultAsync(predicate);
+    public async Task<IEnumerable<T>> GetAllAsync()
+    {
+        var entities = await dbSet.ToListAsync();
+        return entities;
+    }
+    public async Task<IEnumerable<T>> GetMultiByConditionAsync(Expression<Func<T, bool>> expression)
+    {
+        var entities = await dbSet.Where(expression).ToListAsync();
+        return entities;
+    }
+    public async Task<IEnumerable<T>> GetMultiPagingAsync(Expression<Func<T, bool>> expression, int index = 0, int size = 10)
+    {
+        var entities = await dbSet.Where(expression).Skip(index * size).Take(size).ToListAsync();
+        return entities;
+    }
+    public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
+    {
+        var count = await dbSet.CountAsync(expression);
+        return count;
+    }
+    }
+    
 
 
-}
+

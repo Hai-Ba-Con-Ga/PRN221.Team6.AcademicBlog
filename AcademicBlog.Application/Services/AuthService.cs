@@ -8,7 +8,11 @@ namespace AcademicBlog.Application.Services
     public class AuthService : IAuthService
     {
         private readonly IRepository<Account> _accountRepository;
-        private readonly IRepository<Role> _roleRepository; 
+        private readonly IRepository<Role> _roleRepository;
+
+        public AuthService()
+        {
+        }
 
         public AuthService(IRepository<Account> accountRepository, IRepository<Role> roleRepository)
         {
@@ -18,14 +22,14 @@ namespace AcademicBlog.Application.Services
 
         public async Task Delete(int id)
         {
-            var account = await _accountRepository.FindAsync(id);
+            var account = await _accountRepository.GetByIdAsync(id);
             await _accountRepository.DeleteAsync(account);
            
         }
 
         public async Task<Account> Login(string email, string password)
         {
-            var account = await _accountRepository.FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
+            var account = await _accountRepository.GetByConditionAsync(x => x.Email == email && x.Password == password);
             if (account == null)
             {
                 throw new Exception("Email or password is incorrect");
@@ -36,7 +40,7 @@ namespace AcademicBlog.Application.Services
 
         public async Task<Account> Register(SignupModel model)
         {
-            var account = await _accountRepository.FirstOrDefaultAsync(x => x.Email == model.Email);
+            var account = await _accountRepository.GetByConditionAsync(x => x.Email == model.Email);
             if (account != null)
             {
                 throw new Exception("Email is already in use");
@@ -46,16 +50,16 @@ namespace AcademicBlog.Application.Services
                 Email = model.Email,
                 Password = model.Password,
                 Fullname = model.Fullname,
-                RoleId = (await _roleRepository.FirstOrDefaultAsync(x => x.Name == "User")).Id
+                RoleId = (await _roleRepository.GetByConditionAsync(x => x.Name == "User")).Id
             };
-            await _accountRepository.InsertAsync(account);
+            await _accountRepository.CreateAsync(account);
             return account;
             
         }
 
         public async Task<Account> Update(int id, UpdateAccountModel model)
         {
-            var account = _accountRepository.Find(id);
+            var account = await _accountRepository.GetByIdAsync(id);
             if (account == null)
             {
                 throw new Exception("Account not found");
