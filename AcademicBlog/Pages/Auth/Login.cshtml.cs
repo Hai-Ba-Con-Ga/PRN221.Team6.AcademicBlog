@@ -11,7 +11,7 @@ namespace AcademicBlog.Pages.Auth
     public class LoginModel : PageModel
     {
         private readonly IAccountRepository _accountRepository;
-        
+
         public LoginModel(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
@@ -32,7 +32,7 @@ namespace AcademicBlog.Pages.Auth
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; } = null!;
-            
+
         }
         public IActionResult OnGetAsync(string? returnUrl = null)
         {
@@ -45,7 +45,7 @@ namespace AcademicBlog.Pages.Auth
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
+
             if (!ModelState.IsValid)
             {
                 if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
@@ -54,25 +54,37 @@ namespace AcademicBlog.Pages.Auth
                 }
             }
             var account = await _accountRepository.Login(Input.Email, Input.Password);
-            
+
             if (account == null)
             {
                 ErrorMessage = "Invalid login attempt.";
                 return Page();
             }
             var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, account.Fullname),
-                new Claim(ClaimTypes.Email, account.Email),
-                new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
-            };
+                {
+                    new Claim(ClaimTypes.Name, account.Email),
+                    new Claim(ClaimTypes.Role, account.Role.Name),
+                    new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
+                };
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+           
             var authProperties = new AuthenticationProperties
             {
                 AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                IsPersistent = true,
             };
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+            var principal = new ClaimsPrincipal(claimsIdentity);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
+            
+
+            //but isAuthenticated false after login how to fix it
+            
+
+
+
+
             return RedirectToPage("../Index");
         }
     }

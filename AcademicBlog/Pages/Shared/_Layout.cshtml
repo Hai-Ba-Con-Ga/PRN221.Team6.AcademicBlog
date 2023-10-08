@@ -126,11 +126,31 @@
                         </button>
                         </div> *@
                         @* TODO: Conditional Render *@
-                        <a class="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                           target="_blank" rel="noopener" href="/login">
-                            Login/Register
-                        </a>
-                        <div class="relative group">
+                        @{
+                            Console.WriteLine(User.Identity.IsAuthenticated);
+                            if (User.Identity != null && User.Identity.IsAuthenticated)
+                            {
+                                <div class="relative group">
+                                    <span id="profile-toggle" class="rounded-full w-[2.5rem] aspect-square overflow-hidden cursor-pointer block">
+                                        <img src="http://source.unsplash.com/random" class="w-full h-full object-cover" />
+                                    </span>
+                                    <ul id="profile-menu" class="absolute mt-2 space-y-2 bg-white border border-gray-200 rounded-lg shadow-md" style="display: none;">
+                                        <li><a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a></li>
+                                        <li><a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                Console.WriteLine("User is not authenticated");
+                                <a class="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                                   target="_blank" rel="noopener" href="/login">
+                                    Login/Register
+                                </a>
+                            }
+                        }
+                        
+                        @* <div class="relative group">
                             <span id="profile-toggle" class="rounded-full w-[2.5rem] aspect-square overflow-hidden cursor-pointer block">
                                 <img src="http://source.unsplash.com/random" class="w-full h-full object-cover" />
                             </span>
@@ -139,7 +159,7 @@
                                 <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
                             </ul>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </nav>

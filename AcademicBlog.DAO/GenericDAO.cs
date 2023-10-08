@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,10 +45,68 @@ namespace AcademicBlog.DAO
         {
             return await _context.Set<T>().FindAsync(id);
         }
+
+        //get id include
+        public virtual async Task<T> GetByIdAsync(int id, Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            return await query.FirstOrDefaultAsync(e => e.ToString().Contains(id.ToString()));
+        }
+
+        //get id filter and include 
+        public virtual async Task<T> GetByIdAsync(int id, Expression<Func<T, bool>>? filter = null, Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            return await query.FirstOrDefaultAsync(e => e.ToString().Contains(id.ToString()));
+        }
+        
+
+
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }
+
+        //include
+        public virtual async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            return await query.ToListAsync();
+        }
+
+        
+
         public virtual async Task<T> AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
@@ -83,12 +142,61 @@ namespace AcademicBlog.DAO
             return await _context.Set<T>().CountAsync();
         }
 
-        //paging and sorting
-        public virtual async Task<IEnumerable<T>> GetByPageAsync(int page, int pageSize)
-        {
-            return await _context.Set<T>().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-        }
+        //paging and sorting and include
         
+        public virtual async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, Expression<Func<T, object>>[]? includeProperties = null, int? page = null, int? pageSize = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            if (page != null && pageSize != null)
+            {
+                query = query.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+            }
+
+            return await query.ToListAsync();
+        }
+        //get all limit order and include
+        public virtual async Task<IEnumerable<T>> GetAllAsync(int limit, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            return await query.Take(limit).ToListAsync();
+        }
+
+
         //search
         public virtual async Task<IEnumerable<T>> GetByKeywordAsync(string keyword)
         {
@@ -103,8 +211,26 @@ namespace AcademicBlog.DAO
         //get one by condition
         public virtual async Task<T> GetOneByConditionAsync(Func<T, bool> expression)
         {
+      
             return await Task.FromResult(_context.Set<T>().Where(expression).FirstOrDefault());
         }
+
+        //get one by condition include
+        public virtual async Task<T> GetOneByConditionAsync(Func<T, bool> expression, Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return await Task.FromResult(query.Where(expression).FirstOrDefault());
+        }
+        
+
 
 
     }
