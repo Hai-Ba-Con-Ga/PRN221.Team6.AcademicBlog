@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AcademicBlog.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/output.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.1/cdn.js" defer></script>
+</head>
+<body class="font-inter antialiased bg-gray-100 text-gray-600"
+      :class="{ 'sidebar-expanded': sidebarExpanded }"
+      x-data="{ page: 'dashboard', sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }"
+      x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
+    <div>
+        <script>
+            if (localStorage.getItem('sidebar-expanded') == 'true') {
+                document.querySelector('body').classList.add('sidebar-expanded');
+            } else {
+                document.querySelector('body').classList.remove('sidebar-expanded');
+            }
+        </script>
+        <div class="flex h-screen overflow-hidden">
+            @Html.Partial("Admin/_AdminSidebar")
+            <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+                @Html.Partial("Admin/_AdminHeader")
+
+                <main>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
