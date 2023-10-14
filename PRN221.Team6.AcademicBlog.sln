@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicBlog.DAO", "AcademicBlog.DAO\AcademicBlog.DAO.csproj", "{2FDC320B-3B2C-4D78-AE15-BEA7B54FDA82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademicBlog.DAO", "AcademicBlog.DAO\AcademicBlog.DAO.csproj", "{2FDC320B-3B2C-4D78-AE15-BEA7B54FDA82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicBlog.Repository", "AcademicBlog.Repository\AcademicBlog.Repository.csproj", "{E8C899FD-B866-4E55-B300-D8B52395BA49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademicBlog.Repository", "AcademicBlog.Repository\AcademicBlog.Repository.csproj", "{E8C899FD-B866-4E55-B300-D8B52395BA49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicBlog.BussinessObject", "AcademicBlog.BussinessObject\AcademicBlog.BussinessObject.csproj", "{17ABE7E1-1867-4451-BE83-E382F25C4EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademicBlog.BussinessObject", "AcademicBlog.BussinessObject\AcademicBlog.BussinessObject.csproj", "{17ABE7E1-1867-4451-BE83-E382F25C4EE3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademicBlog", "AcademicBlog\AcademicBlog.csproj", "{0DC06693-E7FA-4C8B-830F-6CD2975D11A5}"
 EndProject

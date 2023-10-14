@@ -14,6 +14,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddMvc().AddRazorPagesOptions(opt =>
 {
     opt.Conventions.AddPageRoute("/Auth/Login", "/login");
+    opt.Conventions.AddPageRoute("/Auth/Register", "/register");
+    opt.Conventions.AddPageRoute("/Auth/Logout", "/logout");
 });
 
 builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
