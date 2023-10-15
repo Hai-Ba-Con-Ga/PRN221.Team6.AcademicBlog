@@ -21,8 +21,6 @@ namespace AcademicBlog.Pages
         [TempData]
         public string ErrorMessage { get; set; }
 
-
-
         public async Task<IActionResult> OnGet()
         {
             //get post
