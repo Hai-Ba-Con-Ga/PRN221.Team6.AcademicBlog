@@ -80,12 +80,9 @@ namespace AcademicBlog.Pages.Auth
             
 
             //but isAuthenticated false after login how to fix it
-            
-
-
-
 
             return RedirectToPage("../Index");
         }
+        
     }
 }
