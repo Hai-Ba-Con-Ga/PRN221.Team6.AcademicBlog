@@ -929,10 +929,6 @@ select {
   margin-left: 0.75rem;
 }
 
-.ml-4 {
-  margin-left: 1rem;
-}
-
 .ml-6 {
   margin-left: 1.5rem;
 }
@@ -2090,6 +2086,7 @@ select {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
+
 
 .text-gray-200 {
   --tw-text-opacity: 1;
