@@ -11,9 +11,9 @@ public partial class Post
 
     public string Content { get; set; } = null!;
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-    public DateTime ModifiedDate { get; set; }
+    public DateTime ModifiedDate { get; set; } = DateTime.Now;
 
     public string ThumbnailUrl { get; set; } = null!;
 

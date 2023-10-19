@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AcademicBlog.BussinessObject;
 using AcademicBlog.DAO;
+using AcademicBlog.Repository.Interface;
 
 namespace AcademicBlog.Repository
 {
-    public class CategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly GenericDAO<Category> _categoryDAO = new GenericDAO<Category>();
 
