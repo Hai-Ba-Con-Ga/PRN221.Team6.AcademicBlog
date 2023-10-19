@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AcademicBlog.BussinessObject;
 using AcademicBlog.DAO;
+using AcademicBlog.Repository.Interface;
 
 namespace AcademicBlog.Repository
 {
-    public class TagRepository
+    public class TagRepository: ITagRepository
     {
         private readonly GenericDAO<Tag> _tagDAO = new GenericDAO<Tag>();
 
@@ -22,7 +23,10 @@ namespace AcademicBlog.Repository
         {
             return await _tagDAO.AddAsync(tag);
         }
-
+        public async Task<Tag> FindByName(string name)
+        {
+            return await _tagDAO.GetOneByConditionAsync( t =>  t.Name == name );
+        }
         public async Task<Tag> Update(Tag tag)
         {
             return await _tagDAO.UpdateAsync(tag);

@@ -14,13 +14,18 @@ namespace AcademicBlog.Pages.Blogs
         public BlogPostRequest BlogPostRequest { get; set; }
         private readonly ICategoryRepository categoryRepository;
         private readonly IPostRepository postRepository;
+        private readonly ITagRepository tagRepository;
+        private readonly IPostTagRepository postTagRepository;
         public List<Category> Categories { get; set; } = new List<Category>();
-        public  BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository)
+        public  BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository)
         {
             this.categoryRepository = categoryRepository;
             this.postRepository = postRepository;
+            this.tagRepository = tagRepository;
+            this.postRepository = postRepository;   
+            this.postTagRepository = postTagRepository;
             InitializeAsync().GetAwaiter().GetResult();
-            this.postRepository = postRepository;
+
         }
         public async Task InitializeAsync()
         {
@@ -48,10 +53,27 @@ namespace AcademicBlog.Pages.Blogs
 
                 };
                 var persistedPost = await postRepository.Add(newPost);
-                if(persistedPost != null)
-                {
-                    //TODO persist tags
-                }
+                //if(persistedPost != null)
+                //{
+                //    var addTagTasks = BlogPostRequest.Tag.Select(async tag =>
+                //    {
+                //        var persistedTag = await tagRepository.FindByName(tag);
+                //        if (persistedTag is null)
+                //        {
+                //            persistedTag = await tagRepository.Add(new Tag { Name = tag });
+                //        }
+                //       /* 
+                //        * Posttag table current not have PK, migrate pk again then open this to persist posttag
+                //        * 
+                //        * await postTagRepository.Add(new()
+                //        {
+                //            PostId = persistedPost.Id,
+                //            TagId = persistedTag.Id,
+
+                //        });*/
+                //    }).ToList();
+                //    await Task.WhenAll(addTagTasks);
+                //}
             }
             return Page();
         }
