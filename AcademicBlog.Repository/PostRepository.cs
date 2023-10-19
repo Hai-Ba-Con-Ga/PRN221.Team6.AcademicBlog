@@ -47,14 +47,19 @@ namespace AcademicBlog.Repository
         //         includeProperties: new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
             
         // }
+        
 
         //get search by name
-        public async Task<IEnumerable<Post>> GetAllFrontByName(int page, int pageSize, string name)
+        public async Task<IEnumerable<Post>> GetAllFrontByName(int page, int pageSize, string keyword)
         {
+            if (string.IsNullOrEmpty(keyword))
+            {
+                return await GetAllFront(page, pageSize);
+            }
             return await _postDAO.GetAsync(
                 page: page,
                 pageSize: pageSize,
-                filter: x => x.IsPublic == true && x.Title.Contains(name),
+                filter: x => x.IsPublic == true && x.Title.Contains(keyword),
                 orderBy: x => x.OrderByDescending(y => y.CreatedDate),
                 includeProperties: new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
             

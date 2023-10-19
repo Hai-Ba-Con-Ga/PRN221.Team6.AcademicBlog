@@ -50,6 +50,13 @@ CREATE TABLE [Account] (
     CONSTRAINT [UC_Username_Email] UNIQUE ([Username], [Email])
 );
 
+-- FOLLOWING
+CREATE TABLE [Following] (
+    [ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [FollowerID] INT NOT NULL,
+    [FollowingID] INT NOT NULL
+);
+
 CREATE TABLE [Role] (
     [ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [Name] NVARCHAR(10) NOT NULL
@@ -123,6 +130,7 @@ CREATE TABLE [Category] (
     [Name] NVARCHAR(20) NOT NULL
 );
 
+
 -- Add foreign key constraints
 
 ALTER TABLE [Account] ADD CONSTRAINT [FK_Account_Role] FOREIGN KEY ([RoleID]) REFERENCES [Role]([ID]);
@@ -140,3 +148,6 @@ ALTER TABLE [Notification] ADD CONSTRAINT [FK_Notification_Account] FOREIGN KEY 
 ALTER TABLE [Notification] ADD CONSTRAINT [FK_Notification_Post] FOREIGN KEY ([PostID]) REFERENCES [Post]([ID]);
 ALTER TABLE [Hit] ADD CONSTRAINT [FK_Hit_Post] FOREIGN KEY ([PostID]) REFERENCES [Post]([ID]);
 
+
+ALTER TABLE [Following] ADD CONSTRAINT [FK_Following_Follower] FOREIGN KEY ([FollowerID]) REFERENCES [Account]([ID]);
+ALTER TABLE [Following] ADD CONSTRAINT [FK_Following_Following] FOREIGN KEY ([FollowingID]) REFERENCES [Account]([ID]);
