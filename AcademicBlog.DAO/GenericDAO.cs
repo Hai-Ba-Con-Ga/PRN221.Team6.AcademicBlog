@@ -1,4 +1,6 @@
 ﻿using AcademicBlog.BussinessObject;
+using AcademicBlog.BussinessObject.Extensions;
+using AcademicBlog.BussinessObject.PagingObject;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -105,7 +107,21 @@ namespace AcademicBlog.DAO
             return await query.ToListAsync();
         }
 
-        
+        public virtual async Task<IEnumerable<T>> GetListAsync(Pagable paging, Expression<Func<T, object>>[]? includeProperties = null) {
+            IQueryable<T> query = _context.Set<T>();
+
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            query = query.ToFilterView(paging);
+
+            return await query.ToListAsync();
+        }
 
         public virtual async Task<T> AddAsync(T entity)
         {

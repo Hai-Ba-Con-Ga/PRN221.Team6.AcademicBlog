@@ -13,7 +13,7 @@ namespace AcademicBlog.Repository
     public class PostRepository : IPostRepository
     {
         private readonly GenericDAO<Post> _postDAO = new GenericDAO<Post>();
-
+        
         public async Task<IEnumerable<Post>> GetAll(int limit)
         {
             //get limit

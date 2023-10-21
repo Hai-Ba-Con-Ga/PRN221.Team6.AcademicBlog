@@ -10,4 +10,8 @@
     <ProjectReference Include="..\AcademicBlog.DAO\AcademicBlog.DAO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>
