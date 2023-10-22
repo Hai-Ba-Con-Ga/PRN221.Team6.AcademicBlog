@@ -15,10 +15,12 @@ namespace AcademicBlog.Repository.Interface
         Task<IEnumerable<Post>> GetAllFront(int page, int pageSize);
         Task<IEnumerable<Post>> GetAllFrontByName(int page, int pageSize, string name);
         Task<IEnumerable<Post>> GetAllPost(Pagable pagable);
+        Task<Pagable> CountList(Pagable pagable);
         Task<Post> GetById(int id);
         Task<Post> Add(Post post);
         Task<Post> Update(Post post);
         void Delete(Post post);
-        
+
+
     }
 }

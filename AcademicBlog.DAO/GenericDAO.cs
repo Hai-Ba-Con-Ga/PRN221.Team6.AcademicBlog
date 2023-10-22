@@ -130,6 +130,17 @@ namespace AcademicBlog.DAO
 
             return await query.ToListAsync();
         }
+        public virtual async Task<Pagable> CountListAsync(Pagable paging)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            paging.IsCount = true;
+            query = query.ToFilterView(paging);
+            var list = await query.ToListAsync();
+            int count = list.Count();
+            paging.TotalCount = count;
+            paging.TotalPage = (int)Math.Ceiling((double)count / paging.PageSize);
+            return paging;
+        }
 
         public virtual async Task<T> AddAsync(T entity)
         {

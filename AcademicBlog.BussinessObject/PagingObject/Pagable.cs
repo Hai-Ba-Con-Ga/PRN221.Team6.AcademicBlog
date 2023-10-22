@@ -16,6 +16,7 @@ namespace AcademicBlog.BussinessObject.PagingObject
         public int PageSize { get; set; }
         public int TotalPage { get; set; }
 
+        public bool? IsCount { get; set; } = false;
         public IEnumerable<Sort> Sort { get; set; }
         public Filter Filter { get; set; }
 

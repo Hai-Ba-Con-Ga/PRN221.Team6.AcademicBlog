@@ -34,8 +34,8 @@
     <ProjectReference Include="..\AcademicBlog.BussinessObject\AcademicBlog.BussinessObject.csproj" />
     <ProjectReference Include="..\AcademicBlog.Repository\AcademicBlog.Repository.csproj" />
   </ItemGroup>
-	<Target Name="Tailwind" BeforeTargets="Build">
+	<!--<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />
-	</Target>
+	</Target>-->
 
 </Project>

@@ -22,7 +22,10 @@ namespace AcademicBlog.BussinessObject.Extensions
                 query = Sort(query, filter.Sort);
                 // EF does not apply skip and take without order
             }
+            if (!filter?.IsCount ?? false)
+            { 
                 query = Limit(query, filter.PageSize, (filter.PageIndex - 1) * filter.PageSize);
+            }
             // return the final query
             return query;
         }

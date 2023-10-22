@@ -1,9 +1,12 @@
 using AcademicBlog.BussinessObject;
+using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.Pages.Blogs.Component;
 using AcademicBlog.Repository;
 using AcademicBlog.Repository.Interface;
+using AcademicBlog.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace AcademicBlog.Pages.Blogs
 {
@@ -22,43 +25,163 @@ namespace AcademicBlog.Pages.Blogs
             Tabs = new List<TabItem>{
                 new TabItem { Text = "Lastest", Key = "lastest"},
                 new TabItem { Text = "Following", Key = "following" },
-                new TabItem { Text = "Bookmark", Key = "bookmark" }
+                new TabItem { Text = "Bookmark", Key = "bookmark" },
+                new TabItem { Text = "Pending Publication", Key = "pending" },
+
             };
         }
+        [FromQuery(Name = "tab")]
+        public string Tab { get; set; }
+        [FromQuery(Name = "searchKeyword")]
+        public string SearchKeyword { get; set; } = "";
+        [FromQuery]
 
-        [BindProperty]
-        public string SearchKeyword { get; set; }
+        public PaginationParams Paging { get; set; }
         public IEnumerable<Post> Posts { get; set; }
 
         [TempData]
         public string ErrorMessage { get; set; }
 
         //get data switch tab and paging with search name
-        public async Task<IActionResult> OnGetAsync(string tab, int page = 1, int pageSize = 9, string keyword = "")
+        public async Task<IActionResult> OnGetAsync()
         {
-            //get name identity
-            switch (tab)
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var pagable = new Pagable()
             {
-                case "lastest":
-                    Posts = await _postRepository.GetAllFrontByName(page, pageSize, keyword);
-                    break;
-                case "trending":
-                    //Posts = await _postRepository.GetAllFrontByName(page, pageSize, keyword);
-                    break;
+                PageIndex = Paging?.Page ?? 1,
+                PageSize = Paging?.PageSize ?? 10,
+                Sort = new List<Sort>()
+                        {
+                            new()
+                            {
+                                Field= "CreatedDate",
+                                Dir = "DESC"
+                            }
+                        },
+            };
+            var searchFilter = new Filter()
+            {
+                Logic = FilterLogic.OR,
+                Filters = new List<Filter>
+                        {
+                            new()
+                            {
+                                Field = "Title",
+                                Operator = "contains",
+                                Value = SearchKeyword?? ""
+                            },
+                             new()
+                            {
+                                Field = "Content",
+                                Operator = "contains",
+                                Value = SearchKeyword ?? ""
+                            }
+                        }
+            };
+            //get name identity
+            switch (Tab)
+            {
                 case "following":
-                    //Posts = await _postRepository.GetAllFrontByName(page, pageSize, keyword);
-                    break;
+                    {
+                        //TODO : get from Following table
+                        var followerIds = new List<int> { 2 };
+                        var followingFilter = new Filter()
+                        {
+                            Field = "CreatorId",
+                            Operator = FilterOps.IN,
+                            Value = followerIds
+                        };
+                        var commonFilter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                            {
+                                new ()
+                                {
+                                    Field = "IsPublic",
+                                    Operator = "eq",
+                                    Value = true
+                                },
+                                searchFilter,
+                                followingFilter
+                            }
+                        };
+                        pagable.Filter = commonFilter;
+
+                        Posts = await _postRepository.GetAllPost(pagable);
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
                 case "bookmark":
-                    var accountId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "Id").Value);
-                    Posts = (await _bookmarkRepository.GetAll(accountId, keyword, page, pageSize)).Select(x => x.Post);
+                    Posts = (await _bookmarkRepository.GetAll(accountId, SearchKeyword ?? "", Paging.Page, Paging.PageSize)).Select(x => x.Post);
                     break;
+                case "pending":
+                    {
+
+                        var filter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                        {
+                            new ()
+                            {
+                                Field = "IsPublic",
+                                Operator = "eq",
+                                Value = false
+                            },
+                            new()
+                            {
+                                Field = "ApproverID",
+                                Operator = "eq",
+                                Value = null
+                            },
+                            new Filter()
+                            {
+                                Field = "CreatorId",
+                                Operator = "eq",
+                                Value = accountId
+                            }
+                        }
+                        };
+                        pagable.Filter = filter;
+                        Posts = await _postRepository.GetAllPost(pagable);
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
+
                 default:
-                    Posts = await _postRepository.GetAllFrontByName(page, pageSize, keyword);
-                    break;
+                    {
+
+                        var lastestFilter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                        {
+                            new ()
+                            {
+                                Field = "IsPublic",
+                                Operator = "eq",
+                                Value = true
+                            },
+                            searchFilter
+                        }
+                        };
+                        pagable.Filter = lastestFilter;
+
+                        Posts = await _postRepository.GetAllPost(pagable);
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
             }
             return Page();
         }
-        
+
 
         //get data with search name
         //public async Task<IActionResult> OnGetLoadDataByNameAsync(int page, int pageSize)

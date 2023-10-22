@@ -105,9 +105,18 @@ namespace AcademicBlog.Repository
             _postDAO.DeleteAsync(post);
         }
 
-        public Task<IEnumerable<Post>> GetAllPost(Pagable pagable)
+        public  async Task<IEnumerable<Post>> GetAllPost(Pagable pagable)
         {
-            return _postDAO.GetListAsync(pagable, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
+            var list = await _postDAO.GetListAsync(pagable, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
+            return list;
+
+        }
+        public async Task<Pagable> CountList(Pagable pagable)
+        {
+            var countObj = await _postDAO.CountListAsync(pagable);
+            pagable.TotalCount = countObj.TotalCount;
+            pagable.TotalPage = countObj.TotalPage;
+            return pagable;
         }
     }
 }
