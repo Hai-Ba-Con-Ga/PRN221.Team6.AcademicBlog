@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
+using System.Collections;
 
 namespace AcademicBlog.BussinessObject.Extensions
 {
@@ -20,8 +21,8 @@ namespace AcademicBlog.BussinessObject.Extensions
             {
                 query = Sort(query, filter.Sort);
                 // EF does not apply skip and take without order
-                query = Limit(query, filter.PageSize, (filter.PageIndex - 1) * filter.PageSize);
             }
+                query = Limit(query, filter.PageSize, (filter.PageIndex - 1) * filter.PageSize);
             // return the final query
             return query;
         }
@@ -32,10 +33,11 @@ namespace AcademicBlog.BussinessObject.Extensions
             if ((filter != null) && (filter.Logic != null))
             {
                 var filters = GetAllFilters(filter);
-                filters.ToList().ForEach(f =>
-                {
-                    if (!FieldExistsInType<T>(f.Field)) throw new Exception($"Field {f.Field} is not exist");
-                });
+                // Phong - Temp disable check, this prevent checked nested filter
+                //filters.ToList().ForEach(f =>
+                //{
+                //    if (!FieldExistsInType<T>(f.Field)) throw new Exception($"Field {f.Field} is not exist");
+                //});
                 var values = filters.Select(f => f.Value).ToArray();
                 var where = Transform(filter, filters);
                 queryable = queryable.Where(where, values);
@@ -74,6 +76,8 @@ namespace AcademicBlog.BussinessObject.Extensions
         {"endswith", "EndsWith"},
         {"contains", "Contains"},
         {"doesnotcontain", "Contains"},
+        {"in", "in"},
+
         };
 
         public static IList<Filter> GetAllFilters(Filter filter)
@@ -113,15 +117,27 @@ namespace AcademicBlog.BussinessObject.Extensions
             var comparison = Operators[filter.Operator];
             if (filter.Operator == "doesnotcontain")
             {
-                return String.Format("({0} != null && !{0}.ToString().{1}(@{2}))",
+                return String.Format("({0} != null && !{0}.{1}(@{2}))",
                     filter.Field, comparison, index);
             }
             if (comparison == "StartsWith" ||
                 comparison == "EndsWith" ||
                 comparison == "Contains")
             {
-                return String.Format("({0} != null && {0}.ToString().{1}(@{2}))",
+                return String.Format("({0} != null && {0}.{1}(@{2}))",
                 filter.Field, comparison, index);
+            }
+            if (filter.Operator == "in")
+            {
+                // Handle the "in" operator by generating multiple conditions for each value in the list
+                var valueList = (IEnumerable)filter.Value;
+                var conditions = new List<string>();
+                foreach (var value in valueList)
+                {
+                    conditions.Add($"{filter.Field} = {value}");
+                    index++;
+                }
+                return $"({string.Join(" OR ", conditions)})";
             }
             return String.Format("{0} {1} @{2}", filter.Field, comparison, index);
         }

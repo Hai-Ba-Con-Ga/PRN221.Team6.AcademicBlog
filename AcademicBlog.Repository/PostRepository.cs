@@ -1,4 +1,5 @@
 ﻿using AcademicBlog.BussinessObject;
+using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.DAO;
 using AcademicBlog.Repository.Interface;
 using System;
@@ -102,6 +103,11 @@ namespace AcademicBlog.Repository
         public void Delete(Post post)
         {
             _postDAO.DeleteAsync(post);
+        }
+
+        public Task<IEnumerable<Post>> GetAllPost(Pagable pagable)
+        {
+            return _postDAO.GetListAsync(pagable, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
         }
     }
 }

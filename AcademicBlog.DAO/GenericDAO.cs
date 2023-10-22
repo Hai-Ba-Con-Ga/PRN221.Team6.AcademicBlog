@@ -122,6 +122,14 @@ namespace AcademicBlog.DAO
 
             return await query.ToListAsync();
         }
+        public virtual async Task<IEnumerable<T>> GetListAsync(Pagable paging)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            query = query.ToFilterView(paging);
+
+            return await query.ToListAsync();
+        }
 
         public virtual async Task<T> AddAsync(T entity)
         {

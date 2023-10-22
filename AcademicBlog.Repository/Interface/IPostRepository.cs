@@ -1,4 +1,5 @@
 using AcademicBlog.BussinessObject;
+using AcademicBlog.BussinessObject.PagingObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace AcademicBlog.Repository.Interface
         Task<IEnumerable<Post>> GetAll(int page, int pageSize);
         Task<IEnumerable<Post>> GetAllFront(int page, int pageSize);
         Task<IEnumerable<Post>> GetAllFrontByName(int page, int pageSize, string name);
-        Task<IEnumerable<Post>> GetAllPost();
+        Task<IEnumerable<Post>> GetAllPost(Pagable pagable);
         Task<Post> GetById(int id);
         Task<Post> Add(Post post);
         Task<Post> Update(Post post);
