@@ -60,7 +60,7 @@ module.exports = {
             }),
         },
   },
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('flowbite-typography') ,require('@tailwindcss/forms'), require('@tailwindcss/typography')],
   variants: {
     extend: {},
   },

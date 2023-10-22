@@ -38,6 +38,8 @@ builder.Services.AddScoped<IBookmarkRepository, BookmarkRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IPostTagRepository, PostTagRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
 
 
 
