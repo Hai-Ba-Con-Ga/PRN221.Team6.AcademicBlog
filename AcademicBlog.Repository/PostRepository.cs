@@ -2,6 +2,7 @@
 using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.DAO;
 using AcademicBlog.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,9 @@ namespace AcademicBlog.Repository
     public class PostRepository : IPostRepository
     {
         private readonly GenericDAO<Post> _postDAO = new GenericDAO<Post>();
-        
+        private readonly GenericDAO<Comment> _commnetDAO = new GenericDAO<Comment>();
+
+
         public async Task<IEnumerable<Post>> GetAll(int limit)
         {
             //get limit
@@ -77,17 +80,20 @@ namespace AcademicBlog.Repository
         }
         
         //get id include
-        public async Task<Post> GetById(int id)
+        public async Task<Post?> GetById(int id)
         {
-            return await _postDAO.GetByIdAsync(id, includeProperties: new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
+            var post = (await _postDAO.Find(post => post.IsPublic == true && post.Id == id, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator, x=> x.Comments })).FirstOrDefault();
+            return post;
+            
         }
 
         //get id include for front
-        public async Task<Post> GetByIdFront(int id)
+        public async Task<Post?> GetByIdFront(int id)
         {
-            return await _postDAO.GetByIdAsync(id, 
+            return await _postDAO.GetByIdAsync(id,
             filter: x => x.IsPublic == true,
             includeProperties: new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
+            //return (await _postDAO.Find(post => post.IsPublic == true && post.Id == id, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator })).FirstOrDefault();
         }
 
 
@@ -109,7 +115,6 @@ namespace AcademicBlog.Repository
         {
             var list = await _postDAO.GetListAsync(pagable, new Expression<Func<Post, object>>[] { x => x.Category, x => x.Creator });
             return list;
-
         }
         public async Task<Pagable> CountList(Pagable pagable)
         {
@@ -118,5 +123,6 @@ namespace AcademicBlog.Repository
             pagable.TotalPage = countObj.TotalPage;
             return pagable;
         }
+       
     }
 }

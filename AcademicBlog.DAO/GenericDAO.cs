@@ -264,8 +264,21 @@ namespace AcademicBlog.DAO
             }
             return await Task.FromResult(query.Where(expression).FirstOrDefault());
         }
-        
 
+        public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate, Expression<Func<T, object>>[]? includeProperties = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = query.Where(predicate);
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return query;
+        }
 
 
     }
