@@ -37,6 +37,7 @@ namespace AcademicBlog.Pages.Blogs
         [FromQuery]
 
         public PaginationParams Paging { get; set; }
+
         public IEnumerable<Post> Posts { get; set; }
 
         [TempData]

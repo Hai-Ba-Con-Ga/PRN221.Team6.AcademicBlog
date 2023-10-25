@@ -22,6 +22,8 @@ namespace AcademicBlog.Pages.Blogs
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
         public Post Post { get; set; }
+        public bool IsDisplayFollowingButton { get; set; } = false;
+        public bool IsFollowed { get; set; } = false;
         public IDictionary<int, CommentObject> Comments { get; set; }
         public ICollection<CommentObject> PrimaryComments { get; set; } = new List<CommentObject>();
 
@@ -77,6 +79,34 @@ namespace AcademicBlog.Pages.Blogs
                 PostId = Id,
                 ModifiedDate = DateTime.Now,
             });
+            }
+            await Console.Out.WriteLineAsync(CommentContent);
+            return await OnGet();
+        }
+
+        [BindProperty]
+
+        public int ParentId { get;set; }
+
+        [BindProperty]
+
+        public string CurrentPath { get; set; }
+
+        public async Task<IActionResult> OnPostCommentReplyAsync()
+        {
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId >= 0)
+            {
+                await _commnentRepository.Add(new()
+                {
+                    Content = CommentContent,
+                    Path = $"{CurrentPath}{ParentId}/",
+                    CreatorId = accountId,
+                    CreatedDate = DateTime.Now,
+                    PostId = Id,
+                    ModifiedDate = DateTime.Now,
+                    ParentId = ParentId
+                });
             }
             await Console.Out.WriteLineAsync(CommentContent);
             return await OnGet();
