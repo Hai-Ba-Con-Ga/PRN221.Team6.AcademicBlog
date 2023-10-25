@@ -2,6 +2,7 @@
 using AcademicBlog.BussinessObject.Extensions;
 using AcademicBlog.BussinessObject.PagingObject;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -107,17 +108,14 @@ namespace AcademicBlog.DAO
             return await query.ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<T>> GetListAsync(Pagable paging, Expression<Func<T, object>>[]? includeProperties = null) {
+        public async Task<IEnumerable<T>> GetListAsync<TProperty>(Pagable paging, Func<IQueryable<T>, IIncludableQueryable<T, TProperty>> include) 
+        {
+
             IQueryable<T> query = _context.Set<T>();
 
 
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties)
-                {
-                    query = query.Include(includeProperty);
-                }
-            }
+            query = include(query);
+
             query = query.ToFilterView(paging);
 
             return await query.ToListAsync();
@@ -135,8 +133,7 @@ namespace AcademicBlog.DAO
             IQueryable<T> query = _context.Set<T>();
             paging.IsCount = true;
             query = query.ToFilterView(paging);
-            var list = await query.ToListAsync();
-            int count = list.Count();
+            int count = query.Count();
             paging.TotalCount = count;
             paging.TotalPage = (int)Math.Ceiling((double)count / paging.PageSize);
             return paging;
@@ -265,18 +262,12 @@ namespace AcademicBlog.DAO
             return await Task.FromResult(query.Where(expression).FirstOrDefault());
         }
 
-        public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate, Expression<Func<T, object>>[]? includeProperties = null)
+        public virtual async Task<IEnumerable<T>> Find<TProperty>(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, TProperty>> include)
         {
             IQueryable<T> query = _context.Set<T>();
-            query = query.Where(predicate);
+            query = include(query);
 
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties)
-                {
-                    query = query.Include(includeProperty);
-                }
-            }
+            query = query.Where(predicate);
             return query;
         }
 
