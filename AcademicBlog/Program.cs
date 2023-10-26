@@ -25,7 +25,16 @@ builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
 });
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+    opt => {
+        opt.LoginPath = "/login";
+        opt.AccessDeniedPath = "/login";
+        opt.Cookie.Name = "AcademicBlog";
+        opt.Cookie.HttpOnly = true;
+        opt.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
+        opt.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    }
+);
 
 //builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 //                .AddEntityFrameworkStores<AcademicBlogDbContext>()
@@ -43,11 +52,6 @@ builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IFollowingRepository, FollowingRepository>();
 builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 builder.Services.AddScoped<CategoryMiddleware, CategoryMiddleware>();
-
-
-
-
-
 
 
 
