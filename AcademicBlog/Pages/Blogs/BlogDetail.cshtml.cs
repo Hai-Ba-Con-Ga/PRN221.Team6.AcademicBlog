@@ -82,7 +82,8 @@ namespace AcademicBlog.Pages.Blogs
                 }).ToDictionary(post => post.Id);
             }
             // Follow 
-            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+            AccountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+            
             var followingConnection = (await _followingRepository.GetList(new()
             {
                 PageIndex = 1,
@@ -96,7 +97,7 @@ namespace AcademicBlog.Pages.Blogs
                             {
                                 Field = "FollowerId",
                                 Operator = "eq",
-                                Value = accountId
+                                Value = AccountId
                             },
                             new()
                             {
@@ -108,7 +109,7 @@ namespace AcademicBlog.Pages.Blogs
                 }
 
             })).FirstOrDefault();
-            if(accountId < 0 || Post.CreatorId == accountId)
+            if(AccountId < 0 || Post.CreatorId == AccountId)
             {
                 IsDisplayFollowingButton = false;
             }
@@ -126,7 +127,7 @@ namespace AcademicBlog.Pages.Blogs
                             {
                                 Field = "CreatorId",
                                 Operator = "eq",
-                                Value = accountId
+                                Value = AccountId
                             },
                             new()
                             {
@@ -151,7 +152,7 @@ namespace AcademicBlog.Pages.Blogs
                             {
                                 Field = "CreatorId",
                                 Operator = "eq",
-                                Value = accountId
+                                Value = AccountId
                             },
                             new()
                             {
