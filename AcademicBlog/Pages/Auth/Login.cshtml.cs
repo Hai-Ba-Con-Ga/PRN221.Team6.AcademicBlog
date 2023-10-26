@@ -34,12 +34,13 @@ namespace AcademicBlog.Pages.Auth
             public string Password { get; set; } = null!;
 
         }
-        public IActionResult OnGetAsync(string? returnUrl = null)
+        public IActionResult OnGetAsync([FromQuery] string? returnUrl = null)
         {
             if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
             {
-                return RedirectToPage("../Index");
+                return RedirectToPage(returnUrl ?? "/Index");
             }
+            ReturnUrl = returnUrl ?? "/Index";
             return Page();
         }
 
@@ -50,7 +51,7 @@ namespace AcademicBlog.Pages.Auth
             {
                 if (HttpContext.User.Identity != null && HttpContext.User.Identity.IsAuthenticated)
                 {
-                    return RedirectToPage("../Index");
+                    return Redirect(ReturnUrl);
                 }
             }
             var account = await _accountRepository.Login(Input.Email, Input.Password);
@@ -77,11 +78,11 @@ namespace AcademicBlog.Pages.Auth
             };
             var principal = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
-            
+
 
             //but isAuthenticated false after login how to fix it
 
-            return RedirectToPage("../Index");
+            return RedirectToPage(ReturnUrl);
         }
         
     }

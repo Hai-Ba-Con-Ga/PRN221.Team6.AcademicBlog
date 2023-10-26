@@ -1,6 +1,7 @@
 using AcademicBlog.BussinessObject;
 using AcademicBlog.Pages.Blogs.Component;
 using AcademicBlog.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace AcademicBlog.Pages.Blogs
 {
+
     public class BlogWritingModel : PageModel
     {
         [BindProperty]
@@ -17,12 +19,12 @@ namespace AcademicBlog.Pages.Blogs
         private readonly ITagRepository tagRepository;
         private readonly IPostTagRepository postTagRepository;
         public List<Category> Categories { get; set; } = new List<Category>();
-        public  BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository)
+        public BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository)
         {
             this.categoryRepository = categoryRepository;
             this.postRepository = postRepository;
             this.tagRepository = tagRepository;
-            this.postRepository = postRepository;   
+            this.postRepository = postRepository;
             this.postTagRepository = postTagRepository;
             InitializeAsync().GetAwaiter().GetResult();
 
@@ -34,22 +36,24 @@ namespace AcademicBlog.Pages.Blogs
 
         public async Task<IActionResult> OnGetAsync()
         {
-            
+
             return Page();
         }
-      
-        public async Task<IActionResult> OnPostAsync() {
+
+        public async Task<IActionResult> OnPostAsync()
+        {
             Console.WriteLine(BlogPostRequest);
-            if (User is not null) {
+            if (User is not null)
+            {
                 string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
                 var newPost = new Post()
-            {
-                CategoryId =  BlogPostRequest.Category,
-                Title = BlogPostRequest.Title,
-                Content = BlogPostRequest.Content,
-                ThumbnailUrl = BlogPostRequest.Thumbnail,
-                CreatorId = int.Parse(userId),
+                {
+                    CategoryId = BlogPostRequest.Category,
+                    Title = BlogPostRequest.Title,
+                    Content = BlogPostRequest.Content,
+                    ThumbnailUrl = BlogPostRequest.Thumbnail,
+                    CreatorId = int.Parse(userId),
 
                 };
                 var persistedPost = await postRepository.Add(newPost);
@@ -74,6 +78,9 @@ namespace AcademicBlog.Pages.Blogs
                 //    }).ToList();
                 //    await Task.WhenAll(addTagTasks);
                 //}
+            } else
+            {
+                return Redirect("/Auth/Login?returnUrl=/Blogs/BlogWriting");
             }
             return Page();
         }

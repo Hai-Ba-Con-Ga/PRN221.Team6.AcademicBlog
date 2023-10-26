@@ -3,6 +3,7 @@ using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.Repository;
 using AcademicBlog.Repository.DTO;
 using AcademicBlog.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
@@ -177,9 +178,15 @@ namespace AcademicBlog.Pages.Blogs
         }
         [BindProperty]
         public string CommentContent { get; set; }
+
+        [Authorize]
         public async Task<IActionResult> OnPostCommentAsync()
         {
             var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value??"-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
             if(accountId >= 0) {
             await _commnentRepository.Add(new() { 
                 Content = CommentContent,
@@ -201,10 +208,15 @@ namespace AcademicBlog.Pages.Blogs
         [BindProperty]
 
         public string CurrentPath { get; set; }
+        [Authorize]
 
         public async Task<IActionResult> OnPostCommentReplyAsync()
         {
             var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
             if (accountId >= 0)
             {
                 await _commnentRepository.Add(new()
@@ -227,10 +239,15 @@ namespace AcademicBlog.Pages.Blogs
         [BindProperty]
 
         public int CreatorId { get; set; } 
+        [Authorize]
 
         public async Task<IActionResult> OnPostFollowAsync()
         {
             var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
             if (accountId >= 0)
             {
                 var followingConnection = (await _followingRepository.GetList(new()
@@ -291,10 +308,14 @@ namespace AcademicBlog.Pages.Blogs
 
         public string ActionFavorite { get; set; } //favorite / unfavorite
        
-
+        [Authorize]
         public async Task<IActionResult> OnPostFavoriteAsync()
         {
             var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
             if (accountId >= 0)
             {
                 var favoriteConnection = (await _favoriteRepository.GetList(new()
@@ -355,10 +376,14 @@ namespace AcademicBlog.Pages.Blogs
 
         public string ActionBookmark { get; set; } //bookmark/unbookmark
 
-
+        [Authorize]
         public async Task<IActionResult> OnPostBookmarkAsync()
         {
             var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
             if (accountId >= 0)
             {
                 var bookmarkConnection = (await _bookmarkRepository.GetList(new()
