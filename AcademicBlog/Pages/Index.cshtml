@@ -8,14 +8,15 @@
 }
 
 <div class="bg-white ">
-        <div class="container px-8 mx-auto xl:px-5  max-w-screen-xl py-5 lg:py-8">
-            <div class="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 ">
-                @foreach (var post in Model.Posts)
-                {
-                    <div class="group cursor-pointer">
+    <div class="container px-8 mx-auto xl:px-5  max-w-screen-xl py-5 lg:py-8">
+        <div class="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-2 ">
+            @foreach (var post in Model.Posts.Skip(0).Take(2))
+            {
+              
+                <div class="group cursor-pointer">
                     <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
                         <a class="relative block aspect-square"
-                           href="/post/14-architectural-design-ideas-for-spacious-interior">
+                           href="/blogs/@post.Id">
                             <img alt="Thumbnail"
                                  loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
                                  sizes="(max-width: 768px) 30vw, 33vw"
@@ -64,18 +65,76 @@
                         </div>
                     </div>
                 </div>
-                    
-                    
-                }
 
-               
-            </div>
-            <div class="mt-10 flex justify-center">
-                <a class="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300"
-                   href="/blogs"><span>View all Posts</span></a>
-            </div>
+
+            }
+        </div>
+        <div class="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 ">
+
+            @foreach (var post in Model.Posts.Skip(2))
+            {
+                <div class="group cursor-pointer">
+                    <div class=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800">
+                        <a class="relative block aspect-square"
+                           href="/blogs/@post.Id">
+                            <img alt="Thumbnail"
+                                 loading="lazy" decoding="async" data-nimg="fill" class="object-cover transition-all"
+                                 sizes="(max-width: 768px) 30vw, 33vw"
+                                 srcset="@Html.DisplayFor(modelItem => post.ThumbnailUrl)"
+                                 src="@Html.DisplayFor(modelItem => post.ThumbnailUrl)"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </a>
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="flex gap-3">
+                                <a href="/category/@Html.DisplayFor(modelItem  => post.Category.Name)">
+                                    <span class="inline-block text-xs font-medium tracking-wider uppercase   mt-5 text-blue-600">@Html.DisplayFor(modelItem  => post.Category.Name)</span>
+                                </a>
+                            </div>
+                            <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2    dark:text-white">
+                                <a href="/post/14-architectural-design-ideas-for-spacious-interior">
+                                    <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                        @Html.DisplayFor(modelItem => post.Title)
+                                    </span>
+                                </a>
+                            </h2>
+                            <div class="hidden">
+                                <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                    <a href="/post/14-architectural-design-ideas-for-spacious-interior">
+                                        It is a cliche
+                                        philosophical question, but it touches on something fundamental about how humans
+                                        relate to the world around them.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                                <a href="/author/mario-sanchez">
+                                    <div class="flex items-center gap-3">
+                                        <div class="relative h-5 w-5 flex-shrink-0">
+                                            <img alt="Mario Sanchez"
+                                                 loading="lazy" decoding="async" data-nimg="fill"
+                                                 class="rounded-full object-cover" sizes="20px"
+                                                 srcset="@Html.DisplayFor(modelItem => post.Creator.AvatarUrl)"
+                                                 src="@Html.DisplayFor(modelItem => post.Creator.AvatarUrl)"
+                                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                        </div><span class="truncate text-sm">@Html.DisplayFor(modelItem => post.Creator.Fullname)</span>
+                                    </div>
+                                </a><span class="text-xs text-gray-300 dark:text-gray-600">•</span><time class="truncate text-sm" datetime="@Html.DisplayFor(modelItem => post.CreatedDate)">@Html.DisplayFor(modelItem => post.CreatedDate)</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="mt-10 flex justify-center">
+            <a class="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300"
+               href="/blogs"><span>View all Posts</span></a>
         </div>
     </div>
+</div>
 @*     <div class="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800">
         <div class="text-sm text-center">Copyright © 2023 Stablo. All rights reserved.</div>
         <div class="mt-1 text-sm text-center text-gray-500 dark:text-gray-600">
@@ -108,9 +167,10 @@
         </a>
     </div> *@
 <h3 class="bg-white pt-12 sm:pt-16  max-w-screen-xl mx-auto px-6  lg:px-8 font-bold text-3xl">
-    Feature Post</h3>
+    Feature Post
+</h3>
 <div class="bg-white py-24 sm:py-32  max-w-screen-xl mx-auto ">
-    
+
     <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 lg:grid-cols-2 lg:px-8">
         <article class="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-lg">
             <time datetime="2020-03-16" class="block text-sm leading-6 text-gray-600">Mar 16, 2020</time>

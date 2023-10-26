@@ -9,7 +9,7 @@ using AcademicBlog.DAO;
 
 namespace AcademicBlog.Repository
 {
-    public class BookmarkRepository : IBookmarkRepository
+    public class BookmarkRepository : BaseRepository<Bookmark>, IBookmarkRepository
     {
         private readonly GenericDAO<Bookmark> _bookmarkDAO = new GenericDAO<Bookmark>();
 

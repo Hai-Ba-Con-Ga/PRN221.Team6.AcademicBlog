@@ -15,20 +15,25 @@ namespace AcademicBlog.Pages.Blogs
     {
         private readonly IPostRepository _postRepository;
         private readonly IBookmarkRepository _bookmarkRepository;
-
+        private  int AccountId { get; set; }
+        
 
         public List<TabItem> Tabs { get; set; }
         public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository)
         {
             _postRepository = postRepository;
             _bookmarkRepository = bookmarkRepository;
+            AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
             Tabs = new List<TabItem>{
                 new TabItem { Text = "Lastest", Key = "lastest"},
-                new TabItem { Text = "Following", Key = "following" },
-                new TabItem { Text = "Bookmark", Key = "bookmark" },
-                new TabItem { Text = "Pending Publication", Key = "pending" },
-
             };
+            if(AccountId > 0)
+            {
+                Tabs.Add(new TabItem { Text = "Following", Key = "following" });
+                Tabs.Add(new TabItem { Text = "Bookmark", Key = "bookmark" });
+                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "pending" });
+               
+            }
         }
         [FromQuery(Name = "tab")]
         public string Tab { get; set; }
@@ -46,7 +51,7 @@ namespace AcademicBlog.Pages.Blogs
         //get data switch tab and paging with search name
         public async Task<IActionResult> OnGetAsync()
         {
-            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+           
             var pagable = new Pagable()
             {
                 PageIndex = Paging?.Page ?? 1,
@@ -116,7 +121,7 @@ namespace AcademicBlog.Pages.Blogs
                         break;
                     }
                 case "bookmark":
-                    Posts = (await _bookmarkRepository.GetAll(accountId, SearchKeyword ?? "", Paging.Page, Paging.PageSize)).Select(x => x.Post);
+                    Posts = (await _bookmarkRepository.GetAll(AccountId, SearchKeyword ?? "", Paging.Page, Paging.PageSize)).Select(x => x.Post);
                     break;
                 case "pending":
                     {
@@ -142,7 +147,7 @@ namespace AcademicBlog.Pages.Blogs
                             {
                                 Field = "CreatorId",
                                 Operator = "eq",
-                                Value = accountId
+                                Value = AccountId
                             }
                         }
                         };

@@ -39,6 +39,10 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IPostTagRepository, PostTagRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IFollowingRepository, FollowingRepository>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+
+
 
 
 

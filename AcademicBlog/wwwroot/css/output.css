@@ -1601,6 +1601,10 @@ select {
   order: 2;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .-my-12 {
   margin-top: -3rem;
   margin-bottom: -3rem;
@@ -4496,6 +4500,10 @@ select {
 
   .xl\:w-2\/3 {
     width: 66.666667%;
+  }
+
+  .xl\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-3 {

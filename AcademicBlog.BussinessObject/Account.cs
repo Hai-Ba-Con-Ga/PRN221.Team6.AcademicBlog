@@ -30,4 +30,8 @@ public partial class Account
     public virtual ICollection<Post> PostCreators { get; set; } = new List<Post>();
 
     public virtual Role Role { get; set; } = null!;
+    public virtual ICollection<Skill> Skills { get; set; } = new List<Skill>();
+    public virtual ICollection<Following> FollowingFollowers { get; set; } = new List<Following>();
+
+    public virtual ICollection<Following> FollowingFollowingNavigations { get; set; } = new List<Following>();
 }

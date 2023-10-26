@@ -42,5 +42,8 @@ public partial class Post
     public virtual ICollection<Hit> Hits { get; set; } = new List<Hit>();
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
-    
+
+    public virtual ICollection<Skill> Skills { get; set; } = new List<Skill>();
+
+
 }
