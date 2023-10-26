@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using AcademicBlog.BussinessObject;
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +12,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AcademicBlog.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/output.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.1/cdn.js" defer></script>
+
    
 </head>
 
@@ -101,9 +104,59 @@
                             Home
                         </a>
                         <a class="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                           target="" rel="" href="/about">
-                            Category
+                           target="" rel="" href="/blogs">
+                            Blogs
                         </a>
+                        <div x-data="{ isOpen: false }" class="relative inline-block text-left">
+                            <div>
+                                <button type="button"
+                                        class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400  hover:bg-gray-50"
+                                        id="menu-button"
+                                        aria-expanded="true"
+                                        aria-haspopup="true"
+                                @@click="isOpen = !isOpen">
+                                    Category
+                                    <svg x-bind:class="{ 'rotate-180': isOpen }"
+                                         class="-mr-1 h-5 w-5 text-gray-400"
+                                         viewBox="0 0 20 20"
+                                         fill="currentColor"
+                                         aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                              clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Dropdown menu with Alpine.js directives -->
+                            <div x-show="isOpen"
+                                 x-transition:enter="transition ease-out duration-100"
+                                 x-transition:enter-start="transform opacity-0 scale-95"
+                                 x-transition:enter-end="transform opacity-100 scale-100"
+                                 x-transition:leave="transition ease-in duration-75"
+                                 x-transition:leave-start="transform opacity-100 scale-100"
+                                 x-transition:leave-end="transform opacity-0 scale-95"
+                                 x-on:click.away="isOpen = false"
+                                 class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                 role="menu"
+                                 aria-orientation="vertical"
+                                 aria-labelledby="menu-button"
+                                 tabindex="-1">
+                                <div class="py-1" role="none">
+                                    <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                    @foreach (var category in (IEnumerable<Category>)Context.Items?["Categories"])
+                                    {
+                                        <a href="/category/@category.Id" class="text-gray-700 block px-4 py-2 text-sm hover:text-blue-500" role="menuitem" tabindex="-1" id="menu-item-0">@category.Name</a>
+
+                                    }
+                                 @*    <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a> *@
+                                   @*  <form method="POST" action="#" role="none">
+                                        <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                                    </form> *@
+                                </div>
+                            </div>
+                        </div>
                         <a class="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
                            target="" rel="" href="/contact">
                             Tags
@@ -167,9 +220,9 @@
 
     </header>
     <!--Container-->
-    @* <div class="container w-full md:max-w-3xl mx-auto pt-20"> *@
+    <div class=" w-full md:max-w-8xl mx-auto px-8">
     @RenderBody()
-    @* </div> *@
+    </div> 
     <!--/container-->
     @*    <footer class="bg-white border-t border-gray-400 shadow">
     <div class="container max-w-4xl mx-auto flex py-8">

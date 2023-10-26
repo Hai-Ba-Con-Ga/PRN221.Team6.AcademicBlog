@@ -52,7 +52,7 @@ namespace AcademicBlog.Pages.Blogs
         {
             Post = await _postRepository.GetById(Id);
             if (Post == null)
-            {
+        {
                 ErrorMessage = "Post not found";
                 return RedirectToPage("/Index");
             }

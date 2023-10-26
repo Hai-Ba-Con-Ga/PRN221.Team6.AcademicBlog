@@ -15,25 +15,20 @@ namespace AcademicBlog.Pages.Blogs
     {
         private readonly IPostRepository _postRepository;
         private readonly IBookmarkRepository _bookmarkRepository;
+        private readonly IFollowingRepository _followingRepository;
         private  int AccountId { get; set; }
         
 
         public List<TabItem> Tabs { get; set; }
-        public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository)
+        public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository, IFollowingRepository followingRepository)
         {
             _postRepository = postRepository;
             _bookmarkRepository = bookmarkRepository;
-            AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+            _followingRepository = followingRepository;
             Tabs = new List<TabItem>{
                 new TabItem { Text = "Lastest", Key = "lastest"},
             };
-            if(AccountId > 0)
-            {
-                Tabs.Add(new TabItem { Text = "Following", Key = "following" });
-                Tabs.Add(new TabItem { Text = "Bookmark", Key = "bookmark" });
-                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "pending" });
-               
-            }
+          
         }
         [FromQuery(Name = "tab")]
         public string Tab { get; set; }
@@ -51,7 +46,14 @@ namespace AcademicBlog.Pages.Blogs
         //get data switch tab and paging with search name
         public async Task<IActionResult> OnGetAsync()
         {
-           
+            AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+            if (AccountId > 0)
+            {
+                Tabs.Add(new TabItem { Text = "Following", Key = "following" });
+                Tabs.Add(new TabItem { Text = "Bookmark", Key = "bookmark" });
+                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "pending" });
+
+            }
             var pagable = new Pagable()
             {
                 PageIndex = Paging?.Page ?? 1,
@@ -90,7 +92,19 @@ namespace AcademicBlog.Pages.Blogs
                 case "following":
                     {
                         //TODO : get from Following table
-                        var followerIds = new List<int> { 2 };
+                        var followings = (await _followingRepository.Find(f => f.FollowerId == AccountId)).ToList();
+                        var followerIds = new List<int>();
+                        if(followings.Count > 0)
+                        {
+                            followings.Select(
+                                f => f.FollowingId
+                            ).ToList().ForEach(f => followerIds.Add(f));
+                        }else
+                        {
+                            followerIds.Add(-1);
+                        }
+
+
                         var followingFilter = new Filter()
                         {
                             Field = "CreatorId",
