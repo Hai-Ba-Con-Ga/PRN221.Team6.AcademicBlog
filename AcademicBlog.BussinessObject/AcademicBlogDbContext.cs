@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+=======
+>>>>>>> dc16f26 (feat: add skill)
 
 namespace AcademicBlog.BussinessObject;
 
@@ -27,28 +30,23 @@ public partial class AcademicBlogDbContext : DbContext
 
     public virtual DbSet<Favourite> Favourites { get; set; }
 
+    public virtual DbSet<Following> Followings { get; set; }
+
     public virtual DbSet<Hit> Hits { get; set; }
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
     public virtual DbSet<Post> Posts { get; set; }
 
-    public virtual DbSet<PostTag> PostTags { get; set; }
-
     public virtual DbSet<Role> Roles { get; set; }
 
-    public virtual DbSet<Tag> Tags { get; set; }
     public virtual DbSet<Skill> Skills { get; set; }
-    public virtual DbSet<Following> Followings { get; set; }
+
+    public virtual DbSet<Tag> Tags { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-        optionsBuilder
-           .UseLoggerFactory(loggerFactory) // Attach the logger factory
-                .EnableSensitiveDataLogging()   // Include sensitive data in logs
-            .UseSqlServer("server =wyvernpserver.tech; database = AcademicBlogDB;uid=sa;pwd=ThanhPhong2506;TrustServerCertificate=True");
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("server =wyvernpserver.tech; database = AcademicBlogDB;uid=sa;pwd=ThanhPhong2506;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -63,34 +61,42 @@ public partial class AcademicBlogDbContext : DbContext
             entity.HasIndex(e => new { e.Username, e.Email }, "UC_Username_Email").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ApproveDate).HasColumnType("datetime");
+            entity.Property(e => e.ApproverId).HasColumnName("ApproverID");
+            entity.Property(e => e.Bio).HasColumnType("text");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Fullname).HasMaxLength(50);
             entity.Property(e => e.Password).HasMaxLength(20);
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.Username).HasMaxLength(20);
 
+            entity.HasOne(d => d.Approver).WithMany(p => p.InverseApprover)
+                .HasForeignKey(d => d.ApproverId)
+                .HasConstraintName("FK_Account_Account");
+
             entity.HasOne(d => d.Role).WithMany(p => p.Accounts)
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Account_Role");
+
             entity.HasMany(d => d.Skills).WithMany(p => p.Accounts)
-               .UsingEntity<Dictionary<string, object>>(
-                   "AccountSkill",
-                   r => r.HasOne<Skill>().WithMany()
-                       .HasForeignKey("SkillId")
-                       .OnDelete(DeleteBehavior.ClientSetNull)
-                       .HasConstraintName("FK_AccSkill_Skill"),
-                   l => l.HasOne<Account>().WithMany()
-                       .HasForeignKey("AccountId")
-                       .OnDelete(DeleteBehavior.ClientSetNull)
-                       .HasConstraintName("FK_AccSkill_Acc"),
-                   j =>
-                   {
-                       j.HasKey("AccountId", "SkillId").HasName("PK_AccSkill");
-                       j.ToTable("AccountSkill");
-                       j.IndexerProperty<int>("AccountId").HasColumnName("accountId");
-                       j.IndexerProperty<int>("SkillId").HasColumnName("skillId");
-                   });
+                .UsingEntity<Dictionary<string, object>>(
+                    "AccountSkill",
+                    r => r.HasOne<Skill>().WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_AccSkill_Skill"),
+                    l => l.HasOne<Account>().WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_AccSkill_Acc"),
+                    j =>
+                    {
+                        j.HasKey("AccountId", "SkillId").HasName("PK_AccSkill");
+                        j.ToTable("AccountSkill");
+                        j.IndexerProperty<int>("AccountId").HasColumnName("AccountID");
+                        j.IndexerProperty<int>("SkillId").HasColumnName("SkillID");
+                    });
         });
 
         modelBuilder.Entity<Bookmark>(entity =>
@@ -117,22 +123,7 @@ public partial class AcademicBlogDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Bookmark_Post");
         });
-        modelBuilder.Entity<Following>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Followin__3214EC27BEFF90D9");
-            entity.ToTable("Following");
-            entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.FollowerId).HasColumnName("FollowerID");
-            entity.Property(e => e.FollowingId).HasColumnName("FollowingID");
-            entity.HasOne(d => d.Follower).WithMany(p => p.FollowingFollowers)
-                .HasForeignKey(d => d.FollowerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Following_Follower");
-            entity.HasOne(d => d.FollowingNavigation).WithMany(p => p.FollowingFollowingNavigations)
-                .HasForeignKey(d => d.FollowingId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Following_Following");
-        });
+
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Category__3214EC27489DE8C0");
@@ -154,9 +145,9 @@ public partial class AcademicBlogDbContext : DbContext
             entity.HasIndex(e => e.PostId, "IX_Comment_PostID");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.CreatedDate).HasPrecision(3);
             entity.Property(e => e.CreatorId).HasColumnName("CreatorID");
-            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedDate).HasPrecision(3);
             entity.Property(e => e.ParentId).HasColumnName("ParentID");
             entity.Property(e => e.Path).HasMaxLength(255);
             entity.Property(e => e.PostId).HasColumnName("PostID");
@@ -188,6 +179,27 @@ public partial class AcademicBlogDbContext : DbContext
                 .HasForeignKey(d => d.PostId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Favourite_Post");
+        });
+
+        modelBuilder.Entity<Following>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Followin__3214EC27BEFF90D9");
+
+            entity.ToTable("Following");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.FollowerId).HasColumnName("FollowerID");
+            entity.Property(e => e.FollowingId).HasColumnName("FollowingID");
+
+            entity.HasOne(d => d.Follower).WithMany(p => p.FollowingFollowers)
+                .HasForeignKey(d => d.FollowerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Following_Follower");
+
+            entity.HasOne(d => d.FollowingNavigation).WithMany(p => p.FollowingFollowingNavigations)
+                .HasForeignKey(d => d.FollowingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Following_Following");
         });
 
         modelBuilder.Entity<Hit>(entity =>
@@ -262,7 +274,6 @@ public partial class AcademicBlogDbContext : DbContext
 
             entity.HasOne(d => d.Approver).WithMany(p => p.PostApprovers)
                 .HasForeignKey(d => d.ApproverId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Post_Approver");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Posts)
@@ -315,11 +326,45 @@ public partial class AcademicBlogDbContext : DbContext
             //          j.IndexerProperty<int>("PostId").HasColumnName("PostID");
             //          j.IndexerProperty<int>("TagId").HasColumnName("TagID");
             //      });
+
+            entity.HasMany(d => d.Tags).WithMany(p => p.Posts)
+                .UsingEntity<Dictionary<string, object>>(
+                    "PostTag",
+                    r => r.HasOne<Tag>().WithMany()
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_PostTag_Tag"),
+                    l => l.HasOne<Post>().WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_PostTag_Post"),
+                    j =>
+                    {
+                        j.HasKey("PostId", "TagId").HasName("PK__PostTag__7C45AF9C10732B7F");
+                        j.ToTable("PostTag");
+                        j.HasIndex(new[] { "PostId" }, "IX_PostTag_PostID");
+                        j.HasIndex(new[] { "TagId" }, "IX_PostTag_TagID");
+                        j.IndexerProperty<int>("PostId").HasColumnName("PostID");
+                        j.IndexerProperty<int>("TagId").HasColumnName("TagID");
+                    });
         });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC27E8245A8B");
+
+            entity.ToTable("Role");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Name).HasMaxLength(10);
+        });
+
         modelBuilder.Entity<Skill>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__skill__3213E83F6DBB2C02");
-            entity.ToTable("skill");
+
+            entity.ToTable("Skill");
+
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Code)
                 .HasMaxLength(150)
@@ -330,6 +375,7 @@ public partial class AcademicBlogDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
         });
+<<<<<<< HEAD
         modelBuilder.Entity<PostTag>(entity =>
     {
         entity
@@ -378,6 +424,21 @@ public partial class AcademicBlogDbContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
         }
+=======
+
+        modelBuilder.Entity<Tag>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC27A0DFC654");
+
+            entity.ToTable("Tag");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Name).HasMaxLength(20);
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+>>>>>>> dc16f26 (feat: add skill)
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

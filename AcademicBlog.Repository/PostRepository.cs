@@ -82,7 +82,7 @@ namespace AcademicBlog.Repository
         //get id include
         public async Task<Post?> GetById(int id)
         {
-            var post = (await _postDAO.Find(post => post.IsPublic == true && post.Id == id,  t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p=>p.Category).Include(p => p.Creator))).FirstOrDefault();
+            var post = (await _postDAO.Find(post => post.Id == id,  t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p=>p.Category).Include(p => p.Creator))).FirstOrDefault();
             return post;
             
         }

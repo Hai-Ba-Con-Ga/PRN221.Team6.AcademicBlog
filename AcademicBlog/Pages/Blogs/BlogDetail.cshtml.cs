@@ -21,14 +21,13 @@ namespace AcademicBlog.Pages.Blogs
 
         public int AccountId { get; set; } = 0;
 
-        public BlogDetailModel(IPostRepository postRepository, ICommentRepository commnentRepository,IFollowingRepository followingRepository, IFavoriteRepository favoriteRepository, IBookmarkRepository bookmarkRepository)
+        public BlogDetailModel(IPostRepository postRepository, ICommentRepository commnentRepository, IFollowingRepository followingRepository, IFavoriteRepository favoriteRepository, IBookmarkRepository bookmarkRepository)
         {
             _postRepository = postRepository;
             _commnentRepository = commnentRepository;
             _followingRepository = followingRepository;
             _favoriteRepository = favoriteRepository;
             _bookmarkRepository = bookmarkRepository;
-            AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
 
         }
 
@@ -37,32 +36,54 @@ namespace AcademicBlog.Pages.Blogs
         public int Id { get; set; }
         public Post Post { get; set; }
         public bool IsDisplayFollowingButton { get; set; } = true;
+        public bool IsDisplayApproveButton { get; set; } = false;
         public bool IsFollowed { get; set; } = true;
-        
+
         public bool IsBookmark { get; set; } = false;
         public bool IsFavorite { get; set; } = false;
+        public bool IsApprove { get; set; } = false;
+        public bool IsReject { get; set; } = false;
 
         public IDictionary<int, CommentObject> Comments { get; set; }
         public ICollection<CommentObject> PrimaryComments { get; set; } = new List<CommentObject>();
 
-        
+
 
         [TempData]
         public string ErrorMessage { get; set; }
         public async Task<IActionResult> OnGet()
         {
+            AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+            Console.WriteLine(AccountId);
             Post = await _postRepository.GetById(Id);
             if (Post == null)
-        {
+            {
                 ErrorMessage = "Post not found";
                 return RedirectToPage("/Index");
             }
+            //check post is public or not
+            if (!Post.IsPublic && AccountId < 0)
+            {
+                ErrorMessage = "Post not found";
+                return RedirectToPage("/Index");
+            }
+            
+            if (!Post.IsPublic && !User.IsInRole("Mod"))
+            {
+                if (Post.CreatorId != AccountId)
+                {
+                    ErrorMessage = "Post not found";
+                    return RedirectToPage("/Index");
+                }
+            }
+            
+
             var childrenGroup = Post.Comments.GroupBy(p => p.ParentId).ToDictionary(p => p.Key, p => p.Select(p => p.Id).ToList());
             if (Post.Comments is not null)
             {
                 Comments = Post.Comments.Select(p =>
                 {
-                    var cmtObj =  new CommentObject()
+                    var cmtObj = new CommentObject()
                     {
                         Id = p.Id,
                         Content = p.Content,
@@ -75,7 +96,7 @@ namespace AcademicBlog.Pages.Blogs
                         PostId = p.PostId,
                         ChildrenId = childrenGroup.ContainsKey(p.Id) ? childrenGroup[p.Id] : null
                     };
-                    if(p.ParentId == 0)
+                    if (p.ParentId == 0)
                     {
                         PrimaryComments.Add(cmtObj);
                     }
@@ -84,7 +105,7 @@ namespace AcademicBlog.Pages.Blogs
             }
             // Follow 
             AccountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
-            
+
             var followingConnection = (await _followingRepository.GetList(new()
             {
                 PageIndex = 1,
@@ -110,11 +131,11 @@ namespace AcademicBlog.Pages.Blogs
                 }
 
             })).FirstOrDefault();
-            if(AccountId < 0 || Post.CreatorId == AccountId)
+            if (AccountId < 0 || Post.CreatorId == AccountId)
             {
                 IsDisplayFollowingButton = false;
             }
-            if(followingConnection is null) { IsFollowed = false; }
+            if (followingConnection is null) { IsFollowed = false; }
             var bookmarkConnection = (await _bookmarkRepository.GetList(new()
             {
                 PageIndex = 1,
@@ -165,13 +186,26 @@ namespace AcademicBlog.Pages.Blogs
                 }
 
             })).FirstOrDefault();
-            if(bookmarkConnection is not null)
+            if (bookmarkConnection is not null)
             {
                 IsBookmark = true;
             }
-            if(favoriteConnection is not null)
+            if (favoriteConnection is not null)
             {
                 IsFavorite = true;
+            }
+
+            if (AccountId > 0 && User.IsInRole("Mod") && Post.Status == 0)
+            {
+                IsDisplayApproveButton = true;
+                if (Post.Status == 1)
+                {
+                    IsApprove = true;
+                }
+                if (Post.Status == 2)
+                {
+                    IsReject = true;
+                }
             }
             return Page();
 
@@ -182,20 +216,22 @@ namespace AcademicBlog.Pages.Blogs
         [Authorize]
         public async Task<IActionResult> OnPostCommentAsync()
         {
-            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value??"-1");
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
             if (accountId < 0)
             {
                 return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
             }
-            if(accountId >= 0) {
-            await _commnentRepository.Add(new() { 
-                Content = CommentContent,
-                Path = "/",
-                CreatorId = accountId,
-                CreatedDate = DateTime.Now,
-                PostId = Id,
-                ModifiedDate = DateTime.Now,
-            });
+            if (accountId >= 0)
+            {
+                await _commnentRepository.Add(new()
+                {
+                    Content = CommentContent,
+                    Path = "/",
+                    CreatorId = accountId,
+                    CreatedDate = DateTime.Now,
+                    PostId = Id,
+                    ModifiedDate = DateTime.Now,
+                });
             }
             await Console.Out.WriteLineAsync(CommentContent);
             return await OnGet();
@@ -203,7 +239,7 @@ namespace AcademicBlog.Pages.Blogs
 
         [BindProperty]
 
-        public int ParentId { get;set; }
+        public int ParentId { get; set; }
 
         [BindProperty]
 
@@ -238,7 +274,7 @@ namespace AcademicBlog.Pages.Blogs
         public string ActionFollow { get; set; } //follow / unfollow
         [BindProperty]
 
-        public int CreatorId { get; set; } 
+        public int CreatorId { get; set; }
         [Authorize]
 
         public async Task<IActionResult> OnPostFollowAsync()
@@ -279,7 +315,7 @@ namespace AcademicBlog.Pages.Blogs
                 {
                     case "follow":
                         {
-                            if(followingConnection == null)
+                            if (followingConnection == null)
                             {
                                 await _followingRepository.Add(new()
                                 {
@@ -299,7 +335,7 @@ namespace AcademicBlog.Pages.Blogs
                             break;
                         }
                 }
-                
+
             }
             return await OnGet();
         }
@@ -307,7 +343,7 @@ namespace AcademicBlog.Pages.Blogs
         [BindProperty]
 
         public string ActionFavorite { get; set; } //favorite / unfavorite
-       
+
         [Authorize]
         public async Task<IActionResult> OnPostFavoriteAsync()
         {
@@ -440,5 +476,46 @@ namespace AcademicBlog.Pages.Blogs
             return await OnGet();
         }
 
+        public async Task<IActionResult> OnPostApproveAsync()
+        {
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
+            if (accountId >= 0)
+            {
+                var post = await _postRepository.GetById(Id);
+                if (post is not null)
+                {
+                    post.Status = 1;
+                    post.ApproverId = accountId;
+                    post.ApproveDate = DateTime.Now;
+                    await _postRepository.Update(post);
+                }
+            }
+            return await OnGet();
+        }
+
+        public async Task<IActionResult> OnPostRejectAsync()
+        {
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
+            if (accountId >= 0)
+            {
+                var post = await _postRepository.GetById(Id);
+                if (post is not null)
+                {
+                    post.Status = 2;
+                    post.ApproverId = accountId;
+                    post.ApproveDate = DateTime.Now;
+                    await _postRepository.Update(post);
+                }
+            }
+            return await OnGet();
+        }
     }
 }

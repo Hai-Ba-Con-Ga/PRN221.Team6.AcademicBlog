@@ -17,6 +17,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(opt =>
     opt.Conventions.AddPageRoute("/Auth/Login", "/login");
     opt.Conventions.AddPageRoute("/Auth/Register", "/register");
     opt.Conventions.AddPageRoute("/Auth/Logout", "/logout");
+    opt.Conventions.AddPageRoute("/Auth/RegisterLecturer", "/register-lecturer");
 });
 
 builder.Services.AddDbContext<AcademicBlogDbContext>(options =>
@@ -52,6 +53,7 @@ builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IFollowingRepository, FollowingRepository>();
 builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 builder.Services.AddScoped<CategoryMiddleware, CategoryMiddleware>();
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
 
 

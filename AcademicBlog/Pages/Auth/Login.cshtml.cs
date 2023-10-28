@@ -61,6 +61,11 @@ namespace AcademicBlog.Pages.Auth
                 ErrorMessage = "Invalid login attempt.";
                 return Page();
             }
+            if (account.IsActive == false)
+            {
+                ErrorMessage = "Account pending approval. Please check your email again!";
+                return Page();
+            }
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, account.Email),

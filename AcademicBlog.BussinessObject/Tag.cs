@@ -10,4 +10,5 @@ public partial class Tag
     public string Name { get; set; } = null!;
 
     //public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+    public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 }

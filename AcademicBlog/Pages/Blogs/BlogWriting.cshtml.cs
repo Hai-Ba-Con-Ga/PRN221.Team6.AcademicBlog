@@ -18,17 +18,23 @@ namespace AcademicBlog.Pages.Blogs
         private readonly IPostRepository postRepository;
         private readonly ITagRepository tagRepository;
         private readonly IPostTagRepository postTagRepository;
+        private readonly ISkillRepository skillRepository;
         public List<Category> Categories { get; set; } = new List<Category>();
-        public BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository)
+
+        public List<Skill> Skills { get; set; } = null!;
+
+        public List<int> InputSkills { get; set; } = null!;
+        
+        public BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository, ISkillRepository skillRepository)
         {
             this.categoryRepository = categoryRepository;
             this.postRepository = postRepository;
             this.tagRepository = tagRepository;
-            this.postRepository = postRepository;
             this.postTagRepository = postTagRepository;
-            InitializeAsync().GetAwaiter().GetResult();
-
+            this.skillRepository = skillRepository;
         }
+        
+
         public async Task InitializeAsync()
         {
             Categories = (await categoryRepository.GetAll()).ToList();
@@ -36,7 +42,8 @@ namespace AcademicBlog.Pages.Blogs
 
         public async Task<IActionResult> OnGetAsync()
         {
-
+            
+            Skills = (await skillRepository.GetAll()).ToList();
             return Page();
         }
 
@@ -75,6 +82,32 @@ namespace AcademicBlog.Pages.Blogs
                 {
                     tags.ForEach(tag => postTagRepository.Add(new() { PostId = persistedPost.Id, TagId = tag.Id }));
                 }
+
+                var skills = await skillRepository.GetAll();
+                persistedPost.Skills = skills.ToList();
+                await postRepository.Update(persistedPost);
+
+                //if(persistedPost != null)
+                //{
+                //    var addTagTasks = BlogPostRequest.Tag.Select(async tag =>
+                //    {
+                //        var persistedTag = await tagRepository.FindByName(tag);
+                //        if (persistedTag is null)
+                //        {
+                //            persistedTag = await tagRepository.Add(new Tag { Name = tag });
+                //        }
+                //       /* 
+                //        * Posttag table current not have PK, migrate pk again then open this to persist posttag
+                //        * 
+                //        * await postTagRepository.Add(new()
+                //        {
+                //            PostId = persistedPost.Id,
+                //            TagId = persistedTag.Id,
+
+                //        });*/
+                //    }).ToList();
+                //    await Task.WhenAll(addTagTasks);
+                //}
             } else
             {
                 return Redirect("/Auth/Login?returnUrl=/Blogs/BlogWriting");

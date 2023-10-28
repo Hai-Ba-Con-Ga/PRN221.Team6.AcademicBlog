@@ -11,9 +11,9 @@ public partial class Post
 
     public string Content { get; set; } = null!;
 
-    public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public DateTime CreatedDate { get; set; }
 
-    public DateTime ModifiedDate { get; set; } = DateTime.Now;
+    public DateTime ModifiedDate { get; set; }
 
     public string ThumbnailUrl { get; set; } = null!;
 
@@ -26,6 +26,8 @@ public partial class Post
     public int? ApproverId { get; set; }
 
     public DateTime? ApproveDate { get; set; }
+
+    public int? Status { get; set; }
 
     public virtual Account? Approver { get; set; }
 
@@ -47,4 +49,5 @@ public partial class Post
 
     //public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 
+    public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }
