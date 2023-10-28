@@ -1,0 +1,82 @@
+﻿@page "/profile/{id}"
+@model AcademicBlog.Profile.IndexModel
+@{
+}
+
+<div>
+    <div class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
+        <div class="flex flex-col items-center justify-center">
+            <div class="relative h-20 w-20 overflow-hidden rounded-full">
+                <img alt="Mario Sanchez"
+                     loading="lazy"
+                     decoding="async"
+                     data-nimg="fill"
+                     class="object-cover"
+                     style="position: absolute; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; color: transparent;"
+                     sizes="(max-width: 320px) 100vw, 320px"
+                     src="https://source.unsplash.com/random" />
+            </div>
+            <h1 class="text-brand-primary mt-2 text-3xl font-semibold tracking-tight dark:text-white lg:text-3xl lg:leading-tight">Mario Sanchez</h1>
+            <div class="mx-auto mt-2 flex max-w-xl flex-col px-5 text-center text-gray-500">
+                <p>
+                    Mario is a Staff Engineer specialising in Frontend at <a href="https://vercel.com/" rel="noopener" target="_blank">Vercel</a>, as well as being a co-founder of Acme and the content management system Sanity. Prior to
+                    this, he was a Senior Engineer at Apple.
+                </p>
+            </div>
+        </div>
+        <div class="mt-16 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105 dark:bg-gray-800">
+                    <a class="relative block aspect-square" href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                        <img alt="Thumbnail"
+                             style="position: absolute; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; color: transparent;"
+                             sizes="(max-width: 768px) 30vw, 33vw"
+                             src="https://source.unsplash.com/random" />
+                    </a>
+                </div>
+                <div class="">
+                    <div>
+                        <div class="flex gap-3">
+                            <a href="/category/personal-growth">
+                                <span class="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-emerald-700">Personal Growth</span>
+                            </a>
+                        </div>
+                        <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2 dark:text-white">
+                            <a href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                                <span class="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+                                    3 Meaningful Ways to Practice Self-Care as an Introvert
+                                </span>
+                            </a>
+                        </h2>
+                        <div class="hidden">
+                            <p class="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
+                                <a href="/post/3-meaningful-ways-to-practice-self-care-as-an-introvert">
+                                    While AI has proved superior at complex calculations &amp; predictions, creativity seemed to be the domain that machines can’t take over.
+                                </a>
+                            </p>
+                        </div>
+                        <div class="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                            <a href="/author/mario-sanchez">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative h-5 w-5 flex-shrink-0">
+                                        <img alt="Mario Sanchez"
+                                             loading="lazy"
+                                             decoding="async"
+                                             data-nimg="fill"
+                                             class="rounded-full object-cover"
+                                             style="position: absolute; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; color: transparent;"
+                                             sizes="20px"
+                                             src="https://source.unsplash.com/random" />
+                                    </div>
+                                    <span class="truncate text-sm">Mario Sanchez</span>
+                                </div>
+                            </a>
+                            <span class="text-xs text-gray-300 dark:text-gray-600">•</span>
+                            <time class="truncate text-sm" datetime="2022-10-18T14:49:00.000Z">October 18, 2022</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
