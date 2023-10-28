@@ -18,80 +18,121 @@ URL: https://flowbite.com/docs/components/typography/
                         <img class="mr-4 w-16 h-16 rounded-full" src="@Model.Post.Creator?.AvatarUrl" alt="">
                         <div>
                             <div>
-                                <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">@Model.Post.Creator.Fullname</a>
+                                <a href="#" rel="author"
+                                   class="text-xl font-bold text-gray-900 dark:text-white">@Model.Post.Creator.Fullname</a>
                                 <form asp-page-handler="Follow" method="post" class="flex gap-2">
                                     <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
                                     @if (Model.IsDisplayFollowingButton)
                                     {
-                                        <button type="submit" name="actionFollow" value="@(Model.IsFollowed ? "unfollow" : "follow" )">
+                                        <button type="submit" name="actionFollow"
+                                                value="@(Model.IsFollowed ? "unfollow" : "follow" )">
                                             @(Model.IsFollowed ? "Unfollow" : "Follow"
                                                 )
                                         </button>
                                     }
-
                                 </form>
 
                             </div>
-                            <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">@Model.Post.CreatedDate</time></p>
+                            <p class="text-base text-gray-500 dark:text-gray-400 flex-wrap">
+                                <time pubdate datetime="2022-02-08"
+                                      title="February 8th, 2022">@Model.Post.CreatedDate</time>
+                                <form asp-page-handler="Approve" method="post" class="flex gap-2">
+                                    
+                                    <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
+                                    @if (Model.IsDisplayApproveButton)
+                                    {
+                                        Console.WriteLine("aaaa");
+                                        <button type="submit" name="actionApprove"
+                                                value="@(Model.IsApprove ? "Unapprove" : "Approve")">
+                                            @(Model.IsApprove ? "Unapprove" : "Approve")
+                                        </button>
+                                    }
+                                </form>
+                                <form asp-page-handler="Reject" method="post" class="flex gap-2">
+                                    <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
+                                    @if (Model.IsDisplayApproveButton)
+                                    {
+                                        <button type="submit" name="actionReject"
+                                                value="@(Model.IsReject ? "UnReject" : "Reject")">
+                                            @(Model.IsReject ? "UnReject" : "Reject")
+                                        </button>
+                                    }
+                                </form>
+                            </p>
                         </div>
                     </div>
                     @if (Model.AccountId > 0)
                     {
-                    <div class="flex gap-2">
-                        
-                            
-                        <form asp-page-handler="Favorite" method="post">
-                            <button type="submit" name="actionFavorite" value="@(Model.IsFavorite ? "unfavorite" : "favorite")">
-                                @if (Model.IsFavorite)
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #ff0000;">
-                                        <path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z"></path>
-                                    </svg>
-                                }
-                                else
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
-                                        <path d="M12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412l7.332 7.332c.17.299.498.492.875.492a.99.99 0 0 0 .792-.409l7.415-7.415c2.354-2.354 2.354-6.049-.002-8.416a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595zm6.791 1.61c1.563 1.571 1.564 4.025.002 5.588L12 18.586l-6.793-6.793c-1.562-1.563-1.561-4.017-.002-5.584.76-.756 1.754-1.172 2.799-1.172s2.035.416 2.789 1.17l.5.5a.999.999 0 0 0 1.414 0l.5-.5c1.512-1.509 4.074-1.505 5.584-.002z"></path>
-                                    </svg>
-                                }
-                            </button>
-                        </form>
+                        <div class="flex gap-2">
 
-                        <form asp-page-handler="Bookmark" method="post">
-                            <button type="submit" name="actionBookmark" value="@(Model.IsBookmark ? "unbookmark" : "bookmark")">
-                                @if (Model.IsBookmark)
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #0077cc;">
-                                        <path d="M12 11.222 14.667 13l-.89-3.111L16 8l-2.667-.333L12 5l-1.333 2.667L8 8l2.223 1.889L9.333 13z"></path>
-                                        <path d="M19 21.723V4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v17.723l7-4.571 7 4.571zM8 8l2.667-.333L12 5l1.333 2.667L16 8l-2.223 1.889.89-3.111L12 11.222 9.333 13l.89-3.111L8 8z"></path>
-                                    </svg>
-                                }
-                                else
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
-                                        <path d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z"></path>
-                                    </svg>
-                                }
-                            </button>
-                        </form>
-                    </div>
-                        }
+
+                            <form asp-page-handler="Favorite" method="post">
+                                <button type="submit" name="actionFavorite"
+                                        value="@(Model.IsFavorite ? "unfavorite" : "favorite")">
+                                    @if (Model.IsFavorite)
+                                    {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                             style="fill: #ff0000;">
+                                            <path d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z">
+                                            </path>
+                                        </svg>
+                                    }
+                                    else
+                                    {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                             style="fill: rgba(0, 0, 0, 1);">
+                                            <path d="M12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412l7.332 7.332c.17.299.498.492.875.492a.99.99 0 0 0 .792-.409l7.415-7.415c2.354-2.354 2.354-6.049-.002-8.416a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595zm6.791 1.61c1.563 1.571 1.564 4.025.002 5.588L12 18.586l-6.793-6.793c-1.562-1.563-1.561-4.017-.002-5.584.76-.756 1.754-1.172 2.799-1.172s2.035.416 2.789 1.17l.5.5a.999.999 0 0 0 1.414 0l.5-.5c1.512-1.509 4.074-1.505 5.584-.002z">
+                                            </path>
+                                        </svg>
+                                    }
+                                </button>
+                            </form>
+
+                            <form asp-page-handler="Bookmark" method="post">
+                                <button type="submit" name="actionBookmark"
+                                        value="@(Model.IsBookmark ? "unbookmark" : "bookmark")">
+                                    @if (Model.IsBookmark)
+                                    {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                             style="fill: #0077cc;">
+                                            <path d="M12 11.222 14.667 13l-.89-3.111L16 8l-2.667-.333L12 5l-1.333 2.667L8 8l2.223 1.889L9.333 13z">
+                                            </path>
+                                            <path d="M19 21.723V4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v17.723l7-4.571 7 4.571zM8 8l2.667-.333L12 5l1.333 2.667L16 8l-2.223 1.889.89-3.111L12 11.222 9.333 13l.89-3.111L8 8z">
+                                            </path>
+                                        </svg>
+                                    }
+                                    else
+                                    {
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                             style="fill: rgba(0, 0, 0, 1);">
+                                            <path d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z">
+                                            </path>
+                                        </svg>
+                                    }
+                                </button>
+                            </form>
+                        </div>
+                    }
 
 
                 </address>
-                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">@Model.Post.Title</h1>
+                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+                    @Model.Post.Title
+                </h1>
             </header>
             @Html.Raw(Model.Post.Content)
             <section class="not-format">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (@(Model.Post.Comments?.Count ?? 0))</h2>
+                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+                        Discussion
+                        (@(Model.Post.Comments?.Count ?? 0))
+                    </h2>
                 </div>
 
                 <form class="mb-6" method="post" asp-page-handler="Comment">
                     <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                         <label for="comment" class="sr-only">Your comment</label>
-                        <textarea id="comment" rows="6"
-                                  name="commentContent"
+                        <textarea id="comment" rows="6" name="commentContent"
                                   class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                                   placeholder="Write a comment..." required></textarea>
                     </div>
@@ -132,49 +173,69 @@ URL: https://flowbite.com/docs/components/typography/
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             <article class="max-w-xs">
                 <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
+                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png"
+                         class="mb-5 rounded-lg" alt="Image 1">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">Our first office</a>
                 </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+                <p class="mb-4 text-gray-500 dark:text-gray-400">
+                    Over the past year, Volosoft has undergone many
+                    changes! After months of preparation.
+                </p>
+                <a href="#"
+                   class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                     Read in 2 minutes
                 </a>
             </article>
             <article class="max-w-xs">
                 <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png" class="mb-5 rounded-lg" alt="Image 2">
+                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png"
+                         class="mb-5 rounded-lg" alt="Image 2">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">Enterprise design tips</a>
                 </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+                <p class="mb-4  text-gray-500 dark:text-gray-400">
+                    Over the past year, Volosoft has undergone many
+                    changes! After months of preparation.
+                </p>
+                <a href="#"
+                   class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                     Read in 12 minutes
                 </a>
             </article>
             <article class="max-w-xs">
                 <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png" class="mb-5 rounded-lg" alt="Image 3">
+                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png"
+                         class="mb-5 rounded-lg" alt="Image 3">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">We partnered with Google</a>
                 </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+                <p class="mb-4  text-gray-500 dark:text-gray-400">
+                    Over the past year, Volosoft has undergone many
+                    changes! After months of preparation.
+                </p>
+                <a href="#"
+                   class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                     Read in 8 minutes
                 </a>
             </article>
             <article class="max-w-xs">
                 <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 rounded-lg" alt="Image 4">
+                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png"
+                         class="mb-5 rounded-lg" alt="Image 4">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">Our first project with React</a>
                 </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+                <p class="mb-4  text-gray-500 dark:text-gray-400">
+                    Over the past year, Volosoft has undergone many
+                    changes! After months of preparation.
+                </p>
+                <a href="#"
+                   class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                     Read in 4 minutes
                 </a>
             </article>

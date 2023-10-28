@@ -82,7 +82,7 @@ namespace AcademicBlog.Repository
         //get id include
         public async Task<Post?> GetById(int id)
         {
-            var post = (await _postDAO.Find(post => post.IsPublic == true && post.Id == id,  t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p=>p.Category).Include(p => p.Creator))).FirstOrDefault();
+            var post = (await _postDAO.Find(post => post.Id == id,  t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p=>p.Category).Include(p => p.Creator))).FirstOrDefault();
             return post;
             
         }
@@ -113,7 +113,7 @@ namespace AcademicBlog.Repository
 
         public  async Task<IEnumerable<Post>> GetAllPost(Pagable pagable)
         {
-            var list = await _postDAO.GetListAsync(pagable, t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p => p.Category).Include(p => p.Creator));
+            var list = await _postDAO.GetListAsync(pagable, t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p => p.Category).Include(p => p.Creator).Include(p => p.Skills));
             return list;
         }
         public async Task<Pagable> CountList(Pagable pagable)

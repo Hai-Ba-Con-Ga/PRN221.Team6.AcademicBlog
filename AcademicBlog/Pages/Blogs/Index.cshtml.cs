@@ -16,19 +16,22 @@ namespace AcademicBlog.Pages.Blogs
         private readonly IPostRepository _postRepository;
         private readonly IBookmarkRepository _bookmarkRepository;
         private readonly IFollowingRepository _followingRepository;
-        private  int AccountId { get; set; }
-        
+        private readonly ISkillRepository _skillRepository;
+        private readonly IAccountRepository _accountRepository;
+        private int AccountId { get; set; }
+
 
         public List<TabItem> Tabs { get; set; }
-        public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository, IFollowingRepository followingRepository)
+        public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository, IFollowingRepository followingRepository, ISkillRepository skillRepository, IAccountRepository accountRepository)
         {
             _postRepository = postRepository;
             _bookmarkRepository = bookmarkRepository;
             _followingRepository = followingRepository;
+            _skillRepository = skillRepository;
+            _accountRepository = accountRepository;
             Tabs = new List<TabItem>{
                 new TabItem { Text = "Lastest", Key = "lastest"},
             };
-          
         }
         [FromQuery(Name = "tab")]
         public string Tab { get; set; }
@@ -38,7 +41,7 @@ namespace AcademicBlog.Pages.Blogs
 
         public PaginationParams Paging { get; set; }
 
-        public IEnumerable<Post> Posts { get; set; }
+        public List<Post> Posts { get; set; } = new List<Post>();
 
         [TempData]
         public string ErrorMessage { get; set; }
@@ -51,8 +54,14 @@ namespace AcademicBlog.Pages.Blogs
             {
                 Tabs.Add(new TabItem { Text = "Following", Key = "following" });
                 Tabs.Add(new TabItem { Text = "Bookmark", Key = "bookmark" });
-                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "pending" });
+                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "mypending" });
 
+            }
+            if (AccountId > 0 && User.IsInRole("Mod"))
+            {
+                Tabs.Add(new TabItem { Text = "Approve", Key = "approve" });
+                Tabs.Add(new TabItem { Text = "Pending", Key = "pending" });
+                Tabs.Add(new TabItem { Text = "Reject", Key = "reject" });
             }
             var pagable = new Pagable()
             {
@@ -94,12 +103,13 @@ namespace AcademicBlog.Pages.Blogs
                         //TODO : get from Following table
                         var followings = (await _followingRepository.Find(f => f.FollowerId == AccountId)).ToList();
                         var followerIds = new List<int>();
-                        if(followings.Count > 0)
+                        if (followings.Count > 0)
                         {
                             followings.Select(
                                 f => f.FollowingId
                             ).ToList().ForEach(f => followerIds.Add(f));
-                        }else
+                        }
+                        else
                         {
                             followerIds.Add(-1);
                         }
@@ -128,16 +138,16 @@ namespace AcademicBlog.Pages.Blogs
                         };
                         pagable.Filter = commonFilter;
 
-                        Posts = await _postRepository.GetAllPost(pagable);
+                        Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
                         Paging.PageCount = count.TotalPage;
                         break;
                     }
                 case "bookmark":
-                    Posts = (await _bookmarkRepository.GetAll(AccountId, SearchKeyword ?? "", Paging.Page, Paging.PageSize)).Select(x => x.Post);
+                    Posts = ((await _bookmarkRepository.GetAll(AccountId, SearchKeyword ?? "", Paging.Page, Paging.PageSize)).Select(x => x.Post)).ToList();
                     break;
-                case "pending":
+                case "mypending":
                     {
 
                         var filter = new Filter()
@@ -166,13 +176,125 @@ namespace AcademicBlog.Pages.Blogs
                         }
                         };
                         pagable.Filter = filter;
-                        Posts = await _postRepository.GetAllPost(pagable);
+                        Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
                         Paging.PageCount = count.TotalPage;
                         break;
                     }
+                case "approve":
+                    {
+                        var filter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                        {
+                            new ()
+                            {
+                                Field = "IsPublic",
+                                Operator = "eq",
+                                Value = true
+                            },
+                            new()
+                            {
+                                Field = "Status",
+                                Operator = "neq",
+                                Value = 1
+                            },
+                            new()
+                            {
+                                Field = "ApproverID",
+                                Operator = "eq",
+                                Value = AccountId
+                            }
+                        }
+                        };
+                        pagable.Filter = filter;
+                        Posts = (await _postRepository.GetAllPost(pagable)).ToList();
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
+                case "pending":
+                    {
+                        var filter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                        {
+                            new ()
+                            {
+                                Field = "IsPublic",
+                                Operator = "eq",
+                                Value = false
+                            },
+                            new()
+                            {
+                                Field = "Status",
+                                Operator = "eq",
+                                Value = 0
+                            },
+                            new()
+                            {
+                                Field = "CreatorId",
+                                Operator = "neq",
+                                Value = AccountId
+                            },
 
+                        }
+                        };
+                        pagable.Filter = filter;
+
+                        var posts = await _postRepository.GetAllPost(pagable);
+                        var accountSkillIds = (await _accountRepository.GetSkillById(AccountId)).Skills.Select(s => s.Id).ToList();
+                        foreach (var post in posts)
+                        {
+                            var postSkillIds = post.Skills.Select(s => s.Id).ToList();
+                            if (postSkillIds.Intersect(accountSkillIds).Count() != 0)
+                            {
+                                Posts.Add(post);
+                            }
+                        }
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
+                case "reject":
+                    {
+                        var filter = new Filter()
+                        {
+                            Logic = FilterLogic.AND,
+                            Filters = new List<Filter>()
+                        {
+                            new ()
+                            {
+                                Field = "IsPublic",
+                                Operator = "eq",
+                                Value = false
+                            },
+                            new()
+                            {
+                                Field = "Status",
+                                Operator = "eq",
+                                Value = 2
+                            },
+                            new()
+                            {
+                                Field = "ApproverID",
+                                Operator = "eq",
+                                Value = AccountId
+                            }
+                        }
+                        };
+                        pagable.Filter = filter;
+                        Posts = (await _postRepository.GetAllPost(pagable)).ToList();
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
+                    }
                 default:
                     {
 
@@ -192,7 +314,7 @@ namespace AcademicBlog.Pages.Blogs
                         };
                         pagable.Filter = lastestFilter;
 
-                        Posts = await _postRepository.GetAllPost(pagable);
+                        Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
                         Paging.PageCount = count.TotalPage;

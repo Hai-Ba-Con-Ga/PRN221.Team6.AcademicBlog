@@ -17,7 +17,7 @@ public partial class Post
 
     public string ThumbnailUrl { get; set; } = null!;
 
-    public bool IsPublic { get; set; }
+    public bool IsPublic { get; set; } = false;
 
     public int CreatorId { get; set; }
 
@@ -26,6 +26,8 @@ public partial class Post
     public int? ApproverId { get; set; }
 
     public DateTime? ApproveDate { get; set; }
+
+    public int? Status { get; set; } = 0;
 
     public virtual Account? Approver { get; set; }
 
@@ -45,6 +47,5 @@ public partial class Post
 
     public virtual ICollection<Skill> Skills { get; set; } = new List<Skill>();
 
-    //public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
-
+    public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }

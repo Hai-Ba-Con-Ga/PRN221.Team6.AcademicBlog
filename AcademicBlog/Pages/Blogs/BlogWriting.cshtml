@@ -11,11 +11,11 @@
             <label for="title" class="block text-sm font-bold leading-6 text-gray-900">Title</label>
             <div class="mt-2 relative">
                 <input type="text" name="title" id="title" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="" aria-describedby="title-description">
-                 <div id="title-error-icon" class="hidden pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                     <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                     </svg>
-                 </div>
+                <div id="title-error-icon" class="hidden pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                    <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    </svg>
+                </div>
             </div>
             <p class="mt-2 text-sm text-red-600" id="title-error-text"></p>
             <p class="mt-2 text-sm text-gray-500" id="title-description">Choose a cool title for your blog</p>
@@ -31,7 +31,7 @@
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                 </div>
-                <input id="file" type="file" name="file" class="hidden"/>
+                <input id="file" type="file" name="file" class="hidden" />
                 <input id="thumbnail" type="text" value="" name="thumbnail" class="hidden" />
 
             </label>
@@ -58,6 +58,15 @@
                     <div class="flex gap-2" id="tag-container"></div>
                 </div>
             </div>
+        </div>
+        <div class="flex gap-5 mt-10">
+            <label class="block text-gray-700">Choose Skills</label>
+            @foreach (var item in Model.Skills)
+            {
+                <input type="checkbox" name="InputSkills" id="@item.Id" value="@item.Id" />
+                <label for="@item.Id">@item.Name</label>
+            }
+
         </div>
         <div class="my-4">
             <label for="content" class="block text-sm font-bold leading-6 text-gray-900 text-2xl mb-2">Content</label>
@@ -233,71 +242,71 @@
     });
 </script>
 <script>
-        // Get references to the form and submit button
-        const form = document.getElementById("writeForm");
-        const submitButton = document.getElementById("btnSubmit");
-        const contentControl = document.getElementById("content");
-        const hiddenThumbnail = document.getElementById("thumbnail");
-        const inputFile = document.getElementById("file");
+    // Get references to the form and submit button
+    const form = document.getElementById("writeForm");
+    const submitButton = document.getElementById("btnSubmit");
+    const contentControl = document.getElementById("content");
+    const hiddenThumbnail = document.getElementById("thumbnail");
+    const inputFile = document.getElementById("file");
 
-        // Add a click event listener to the submit button
-        submitButton.addEventListener("click", async function () {
-            const errorClass = "ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500";
-            if (!$("#title").val().trim()) {
-                $("#title").addClass(errorClass);
-                $("#title-error-text").append("Title cannot be empty");
-                $("#title-error-icon").removeClass("hidden");
-                return;
-            } else {
-                $("#title").removeClass(errorClass);
-                $("#title-error-text").html("");
-                $("#title-error-icon").addClass("hidden");
+    // Add a click event listener to the submit button
+    submitButton.addEventListener("click", async function () {
+        const errorClass = "ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500";
+        if (!$("#title").val().trim()) {
+            $("#title").addClass(errorClass);
+            $("#title-error-text").append("Title cannot be empty");
+            $("#title-error-icon").removeClass("hidden");
+            return;
+        } else {
+            $("#title").removeClass(errorClass);
+            $("#title-error-text").html("");
+            $("#title-error-icon").addClass("hidden");
+        }
+
+        //TODO get file from inputFile, if exist use aws-sdk v2 with global var is AWS to upload to S3 then set Attribute value of hiddenThumbnail is url of that that object
+        if (inputFile.files.length > 0) {
+            $("#thumbnail-error-text").html("")
+            const file = inputFile.files[0];
+
+            // Upload the file to S3 using the AWS SDK v2
+            const s3 = new AWS.S3({
+                credentials: {
+                    accessKeyId: "AKIAWPKX6GSPLAZFCWG5",
+                    secretAccessKey: "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"
+                },
+                region: "ap-southeast-1"
+            }); // Assuming AWS is properly configured
+
+            const params = {
+                Bucket: "momkitchen",
+                Key: "demo/academicblog/" + file.name, // Set the path and filename as needed
+                Body: file
+            };
+
+            try {
+                const data = await s3.upload(params).promise();
+                console.log(data);
+                // Set the value of hiddenThumbnail to the URL of the uploaded object
+                hiddenThumbnail.setAttribute("value", data.Location);
+            } catch (error) {
+                console.error("Error uploading file to S3:", error);
             }
-           
-            //TODO get file from inputFile, if exist use aws-sdk v2 with global var is AWS to upload to S3 then set Attribute value of hiddenThumbnail is url of that that object
-            if (inputFile.files.length > 0) {
-                $("#thumbnail-error-text").html("")
-                const file = inputFile.files[0];
-
-                // Upload the file to S3 using the AWS SDK v2
-                const s3 = new AWS.S3({
-                    credentials: {
-                        accessKeyId: "AKIAWPKX6GSPLAZFCWG5",
-                        secretAccessKey: "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"
-                    },
-                    region: "ap-southeast-1"
-                }); // Assuming AWS is properly configured
-
-                const params = {
-                    Bucket: "momkitchen",
-                    Key: "demo/academicblog/" + file.name, // Set the path and filename as needed
-                    Body: file
-                };
-
-                try {
-                    const data = await s3.upload(params).promise();
-                    console.log(data);
-                    // Set the value of hiddenThumbnail to the URL of the uploaded object
-                    hiddenThumbnail.setAttribute("value", data.Location);
-                } catch (error) {
-                    console.error("Error uploading file to S3:", error);
-                }
-            } else {
+        } else {
             $("#thumbnail-error-text").html("Choose a thumbnail please")
-            }
-            
-            if (!editor.getData()) {
-                $(".editor-container").addClass(errorClass);
-                $("#content-error-text").append("Content cannot be null")
-                return;
-            } else {
-                $(".editor-container").removeClass(errorClass);
-                $("#content-error-text").html("")
+        }
 
-            }
-            contentControl.setAttribute("value", editor.getData())
-            form.submit();
-        });
+        if (!editor.getData()) {
+            $(".editor-container").addClass(errorClass);
+            $("#content-error-text").append("Content cannot be null")
+            return;
+        } else {
+            $(".editor-container").removeClass(errorClass);
+            $("#content-error-text").html("")
+
+        }
+        contentControl.setAttribute("value", editor.getData())
+        form.submit();
+    });
 </script>
 @* Validatation *@
 <script>
@@ -317,9 +326,9 @@
                 // Customize error placement
                 error.insertAfter("#title-error-text"); //Append error message to the validationErrors div
                 console.error(error);
-               
+
             },
-             
+
             errorClass: "text-red-600",
         });
 
