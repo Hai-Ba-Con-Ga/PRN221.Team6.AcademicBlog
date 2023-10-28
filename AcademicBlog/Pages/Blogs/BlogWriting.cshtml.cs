@@ -47,37 +47,34 @@ namespace AcademicBlog.Pages.Blogs
             {
                 string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+                var tags = new List<Tag>();
+                var remainTags = new List<Tag>();
+                BlogPostRequest.Tag.AsParallel().ToList().ForEach(async tag =>
+                {
+                    var persistedTag = await tagRepository.FindByName(tag);
+                    if (persistedTag is null)
+                    {
+                        remainTags.Add(new() { Name=tag});
+                    }else
+                    {
+                        tags.Add(persistedTag);
+                    }
+                });
+
+                tags.AddRange(await tagRepository.AddRange(remainTags));
                 var newPost = new Post()
                 {
                     CategoryId = BlogPostRequest.Category,
-                    Title = BlogPostRequest.Title,
+                    Title = BlogPostRequest?.Title ?? "Untitled",
                     Content = BlogPostRequest.Content,
-                    ThumbnailUrl = BlogPostRequest.Thumbnail,
-                    CreatorId = int.Parse(userId),
-
+                    ThumbnailUrl = BlogPostRequest?.Thumbnail?? "https://source.unplash.com/random",
+                    CreatorId = int.Parse(userId)
                 };
                 var persistedPost = await postRepository.Add(newPost);
-                //if(persistedPost != null)
-                //{
-                //    var addTagTasks = BlogPostRequest.Tag.Select(async tag =>
-                //    {
-                //        var persistedTag = await tagRepository.FindByName(tag);
-                //        if (persistedTag is null)
-                //        {
-                //            persistedTag = await tagRepository.Add(new Tag { Name = tag });
-                //        }
-                //       /* 
-                //        * Posttag table current not have PK, migrate pk again then open this to persist posttag
-                //        * 
-                //        * await postTagRepository.Add(new()
-                //        {
-                //            PostId = persistedPost.Id,
-                //            TagId = persistedTag.Id,
-
-                //        });*/
-                //    }).ToList();
-                //    await Task.WhenAll(addTagTasks);
-                //}
+                if(persistedPost is not null)
+                {
+                    tags.ForEach(tag => postTagRepository.Add(new() { PostId = persistedPost.Id, TagId = tag.Id }));
+                }
             } else
             {
                 return Redirect("/Auth/Login?returnUrl=/Blogs/BlogWriting");

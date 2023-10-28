@@ -141,11 +141,23 @@ namespace AcademicBlog.DAO
 
         public virtual async Task<T> AddAsync(T entity)
         {
+            _context.Entry(entity).State = EntityState.Added;
             await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
+        public virtual async Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                _context.Entry(entity).State = EntityState.Added;
+                await _context.Set<T>().AddAsync(entity);
+            }
 
+            await _context.SaveChangesAsync();
+
+            return entities;
+        }
         public virtual async Task<T> UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
@@ -270,10 +282,9 @@ namespace AcademicBlog.DAO
             query = query.Where(predicate);
             return query;
         }
-        public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+        public async virtual  Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
         {
             IQueryable<T> query = _context.Set<T>();
-
             query = query.Where(predicate);
             return query;
         }

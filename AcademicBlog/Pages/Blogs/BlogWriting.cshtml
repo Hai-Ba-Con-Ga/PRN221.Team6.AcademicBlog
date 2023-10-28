@@ -81,7 +81,7 @@
                             <p class="text-sm font-semibold">Published</p>
                         </div>
                         <button type="button" class="inline-flex items-center rounded-l-none rounded-r-md bg-indigo-600 p-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-gray-50" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
-                            <span class="sr-only">Change published status</span>
+                            <span class="sr-only whitespace-nowrap">Change published status</span>
                             <svg class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                             </svg>
@@ -98,7 +98,7 @@
                         From: "opacity-100"
                         To: "opacity-0"
                     -->
-                    <ul class="absolute right-0 z-10 mt-2 w-72 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
+                    <ul class="hidden absolute right-0 z-10 mt-2 w-72 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0">
                         <!--
                           Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
@@ -164,7 +164,7 @@
             const existingChips = list.getElementsByClassName("tag-chip");
             const existingChipTexts = Array.from(existingChips).map(chip => chip.textContent.toLowerCase());
 
-            if (existingChipTexts.includes(inputValue.toLowerCase())) {
+            if (existingChipTexts.includes(inputValue.toLowerCase().replaceAll(" ", "")+"x")) {
                 alert("This tag already exists.");
                 return;
             }
@@ -177,11 +177,26 @@
 
             // Create a chip element
             const chip = document.createElement("span");
-            chip.className = "tag-chip inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset " + badgeEnum[Math.floor(Math.random() * badgeEnum.length)]; // You should define a CSS class for the chip style
+            chip.className = "tag-chip inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset relative whitespace-nowrap " + badgeEnum[Math.floor(Math.random() * badgeEnum.length)]; // You should define a CSS class for the chip style
             chip.textContent = inputValue;
+            const deleteButton = document.createElement("button");
+            deleteButton.value = inputValue;
+            deleteButton.className = "w-4 h-4 rounded-full bg-red-500 text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 "
+            deleteButton.innerHTML = "x";
+            deleteButton.type = "button";
+            deleteButton.onclick = (e) => {
+                // console.log("button value ", e.target.value);
 
+                const existingChips = list.getElementsByClassName("tag-chip");
+                const existingChipTexts = Array.from(existingChips).filter(chip => chip.textContent == e.target.value+"x")?.[0];
+                // console.log("Node delete", existingChipTexts);
+                if (existingChipTexts){
+                list.removeChild(existingChipTexts);
+                } 
+            }
+            chip.appendChild(deleteButton);
             // Append both elements to the list
-            list.appendChild(hiddenInput);
+            chip.appendChild(hiddenInput);
             list.appendChild(chip);
 
             // Clear the input field

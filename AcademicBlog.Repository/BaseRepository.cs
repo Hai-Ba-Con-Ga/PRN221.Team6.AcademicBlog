@@ -76,5 +76,12 @@ namespace AcademicBlog.Repository
         {
              return _genericDAO.Find(predicate, include);
         }
+
+       
+
+        public Task<IEnumerable<T>> AddRange(IEnumerable<T> entities)
+        {
+            return _genericDAO.AddRangeAsync(entities);
+        }
     }
 }

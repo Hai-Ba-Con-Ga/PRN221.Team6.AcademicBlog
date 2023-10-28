@@ -53,7 +53,9 @@
             <div class="mt-10 space-y-20 lg:mt-10 lg:space-y-20">
                 @foreach (var post in Model.Posts)
                 {
-                    <article class="relative isolate flex flex-col gap-8 lg:flex-row shadow-lg cursor-pointer rounded-2xl" onclick="event.stopPropagation(); window.location.href='/blogs/@post.Id'">
+
+
+                    <article class="relative isolate flex flex-col gap-8 lg:flex-row shadow-lg cursor-pointer rounded-2xl" >
                         <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
                             <img src="@Html.DisplayFor(modelItem => post.ThumbnailUrl)" alt="@Html.DisplayFor(modelItem => post.ThumbnailUrl)" class="absolute inset-0 h-full w-full rounded-l-2xl  bg-gray-50 object-cover">
                             <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
@@ -77,7 +79,7 @@
                                     <img src="@Html.DisplayFor(modelItem => post.Creator.AvatarUrl)" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                                     <div class="text-sm leading-6">
                                         <p class="font-semibold text-gray-900">
-                                            <a href="#" onclick="event.stopPropagation(); window.location.href='/profile/@post.CreatorId'">
+                                            <a href="#" onclick="window.location.href='/profile/@post.CreatorId'">
                                                 <span class="absolute inset-0"></span>
                                                 @Html.DisplayFor(modelItem => post.Creator.Fullname)
                                             </a>
@@ -87,6 +89,8 @@
                             </div>
                         </div>
                     </article>
+
+
                 }
                 @* <article class="relative isolate flex flex-col gap-8 lg:flex-row">
                 <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">

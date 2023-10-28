@@ -21,6 +21,7 @@ namespace AcademicBlog.Repository.Interface
         Task<Pagable> CountList(Pagable pagable);
         Task<T> GetById(int id);
         Task<T> Add(T post);
+        Task<IEnumerable<T>> AddRange(IEnumerable<T> entities);
         Task<T> Update(T post);
         Task Delete(T post);
 

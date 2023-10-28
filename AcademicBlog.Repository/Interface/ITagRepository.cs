@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AcademicBlog.Repository.Interface
 {
-    public interface ITagRepository
+    public interface ITagRepository:IBaseRepository<Tag>
     {
         public  Task<Tag> FindByName(string name);
         public  Task<Tag> Add(Tag tag);

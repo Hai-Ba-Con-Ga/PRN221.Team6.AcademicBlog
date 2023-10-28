@@ -10,7 +10,7 @@ using AcademicBlog.Repository.Interface;
 
 namespace AcademicBlog.Repository
 {
-    public class TagRepository: ITagRepository
+    public class TagRepository:BaseRepository<Tag>, ITagRepository
     {
         private readonly GenericDAO<Tag> _tagDAO = new GenericDAO<Tag>();
 

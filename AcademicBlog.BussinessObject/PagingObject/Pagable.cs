@@ -10,8 +10,8 @@ namespace AcademicBlog.BussinessObject.PagingObject
     public class Pagable
     {
         public Pagable() { }
-        public int PageIndex { get; set; }
-        public int TotalCount { get; set; }
+        public int PageIndex { get; set; } = 1;
+        public int TotalCount { get; set; } = 20;
 
         public int PageSize { get; set; }
         public int TotalPage { get; set; }
