@@ -11,13 +11,13 @@ public partial class Post
 
     public string Content { get; set; } = null!;
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-    public DateTime ModifiedDate { get; set; }
+    public DateTime ModifiedDate { get; set; } = DateTime.Now;
 
     public string ThumbnailUrl { get; set; } = null!;
 
-    public bool IsPublic { get; set; }
+    public bool IsPublic { get; set; } = false;
 
     public int CreatorId { get; set; }
 
@@ -27,7 +27,7 @@ public partial class Post
 
     public DateTime? ApproveDate { get; set; }
 
-    public int? Status { get; set; }
+    public int? Status { get; set; } = 0;
 
     public virtual Account? Approver { get; set; }
 

@@ -21,9 +21,9 @@ namespace AcademicBlog.Pages.Blogs
         private readonly ISkillRepository skillRepository;
         public List<Category> Categories { get; set; } = new List<Category>();
 
-        public List<Skill> Skills { get; set; } = null!;
+        public List<Skill> Skills { get; set; } = new List<Skill>();
 
-        public List<int> InputSkills { get; set; } = null!;
+        public List<int> InputSkills { get; set; } = new List<int>();
         
         public BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository, ISkillRepository skillRepository)
         {
@@ -42,7 +42,7 @@ namespace AcademicBlog.Pages.Blogs
 
         public async Task<IActionResult> OnGetAsync()
         {
-            
+            Categories = (await categoryRepository.GetAll()).ToList();
             Skills = (await skillRepository.GetAll()).ToList();
             return Page();
         }

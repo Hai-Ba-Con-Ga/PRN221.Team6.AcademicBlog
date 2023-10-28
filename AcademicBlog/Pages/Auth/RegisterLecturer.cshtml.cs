@@ -91,7 +91,7 @@ namespace AcademicBlog.Pages.Auth
                 {
                     throw new Exception("Email already exist");
                 }
-                var account = new Account { Email = Input.Email, Password = Input.Password, Fullname = Input.Fullname, RoleId = role.Id, IsActive = false };
+                var account = new Account { Email = Input.Email, Password = Input.Password, Fullname = Input.Fullname, RoleId = role.Id };
                 var skills = await _skillRepository.GetByIds(Input.Skills);
                 
                 var result = await _accountRepository.Add(account);
@@ -100,6 +100,7 @@ namespace AcademicBlog.Pages.Auth
                     throw new Exception("Register failed");
                 }
                 result.Skills = skills.ToList();
+                result.IsActive = false;
                 await _accountRepository.Update(account);
 
                 return RedirectToPage("/Auth/Login");

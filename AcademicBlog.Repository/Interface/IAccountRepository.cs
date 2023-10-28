@@ -16,5 +16,6 @@ namespace AcademicBlog.Repository.Interface
         Task<Account> Update(Account account);
         Task<Account> Delete(int id);
         Task<Account> GetByEmail(string email);
+        Task<Account> GetSkillById(int id);
     }
 }

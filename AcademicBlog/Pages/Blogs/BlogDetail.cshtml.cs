@@ -489,6 +489,7 @@ namespace AcademicBlog.Pages.Blogs
                 if (post is not null)
                 {
                     post.Status = 1;
+                    post.IsPublic = true;
                     post.ApproverId = accountId;
                     post.ApproveDate = DateTime.Now;
                     await _postRepository.Update(post);
@@ -510,6 +511,7 @@ namespace AcademicBlog.Pages.Blogs
                 if (post is not null)
                 {
                     post.Status = 2;
+                    post.IsPublic = false;  
                     post.ApproverId = accountId;
                     post.ApproveDate = DateTime.Now;
                     await _postRepository.Update(post);

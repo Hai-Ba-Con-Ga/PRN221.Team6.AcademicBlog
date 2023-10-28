@@ -113,7 +113,7 @@ namespace AcademicBlog.Repository
 
         public  async Task<IEnumerable<Post>> GetAllPost(Pagable pagable)
         {
-            var list = await _postDAO.GetListAsync(pagable, t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p => p.Category).Include(p => p.Creator));
+            var list = await _postDAO.GetListAsync(pagable, t => t.Include(i => i.Comments).ThenInclude(c=>c.Creator).Include(p => p.Category).Include(p => p.Creator).Include(p => p.Skills));
             return list;
         }
         public async Task<Pagable> CountList(Pagable pagable)

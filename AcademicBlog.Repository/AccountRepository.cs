@@ -22,6 +22,15 @@ namespace AcademicBlog.Repository
         {
             return await _accountDAO.GetByIdAsync(id);
         }
+
+        public async Task<Account> GetSkillById(int id)
+        {
+            return await _accountDAO.GetOneByConditionAsync(
+
+                    expression: x => x.Id == id,
+                    includeProperties: new Expression<Func<Account, object>>[] { x => x.Skills }
+                );
+        }
         public async Task<Account> Login(string email, string password)
         {
             return await _accountDAO.GetOneByConditionAsync(
