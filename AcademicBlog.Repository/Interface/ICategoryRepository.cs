@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AcademicBlog.Repository.Interface
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository:IBaseRepository<Category>
     {
         Task<IEnumerable<Category>> GetAll();
     }

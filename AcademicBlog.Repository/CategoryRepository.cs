@@ -10,7 +10,7 @@ using AcademicBlog.Repository.Interface;
 
 namespace AcademicBlog.Repository
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
         private readonly GenericDAO<Category> _categoryDAO = new GenericDAO<Category>();
 

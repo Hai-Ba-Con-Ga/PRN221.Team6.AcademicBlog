@@ -270,6 +270,13 @@ namespace AcademicBlog.DAO
             query = query.Where(predicate);
             return query;
         }
+        public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            query = query.Where(predicate);
+            return query;
+        }
 
 
     }

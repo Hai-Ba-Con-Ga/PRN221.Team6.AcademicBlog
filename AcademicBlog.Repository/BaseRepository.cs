@@ -65,7 +65,16 @@ namespace AcademicBlog.Repository
         public Task<T> Update(T post)
         {
             return _genericDAO.UpdateAsync(post);
+        }
 
+        public Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+        {
+            return _genericDAO.Find(predicate);
+        }
+
+        public Task<IEnumerable<T>> Find<TProperty>(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, TProperty>> include)
+        {
+             return _genericDAO.Find(predicate, include);
         }
     }
 }
