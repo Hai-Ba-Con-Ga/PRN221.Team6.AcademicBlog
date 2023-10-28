@@ -47,7 +47,5 @@ public partial class Post
 
     public virtual ICollection<Skill> Skills { get; set; } = new List<Skill>();
 
-    //public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
-
     public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }

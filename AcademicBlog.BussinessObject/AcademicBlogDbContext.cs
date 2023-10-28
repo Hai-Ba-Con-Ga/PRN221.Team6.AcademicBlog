@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-=======
->>>>>>> dc16f26 (feat: add skill)
 
 namespace AcademicBlog.BussinessObject;
 
@@ -286,8 +281,6 @@ public partial class AcademicBlogDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Post_Account");
 
-
-
             entity.HasMany(d => d.Skills).WithMany(p => p.Posts)
                 .UsingEntity<Dictionary<string, object>>(
                     "PostSkill",
@@ -303,29 +296,9 @@ public partial class AcademicBlogDbContext : DbContext
                     {
                         j.HasKey("PostId", "SkillId");
                         j.ToTable("PostSkill");
-                        j.IndexerProperty<int>("PostId").HasColumnName("postId");
-                        j.IndexerProperty<int>("SkillId").HasColumnName("skillId");
+                        j.IndexerProperty<int>("PostId").HasColumnName("PostID");
+                        j.IndexerProperty<int>("SkillId").HasColumnName("SkillID");
                     });
-            //entity.HasMany(d => d.Tags).WithMany(p => p.Posts)
-            //  .UsingEntity<Dictionary<string, object>>(
-            //      "PostTag",
-            //      r => r.HasOne<Tag>().WithMany()
-            //          .HasForeignKey("TagId")
-            //          .OnDelete(DeleteBehavior.ClientSetNull)
-            //          .HasConstraintName("FK_PostTag_Tag"),
-            //      l => l.HasOne<Post>().WithMany()
-            //          .HasForeignKey("PostId")
-            //          .OnDelete(DeleteBehavior.ClientSetNull)
-            //          .HasConstraintName("FK_PostTag_Post"),
-            //      j =>
-            //      {
-            //          j.HasKey("PostId", "TagId").HasName("PK__PostTag__7C45AF9C10732B7F");
-            //          j.ToTable("PostTag");
-            //          j.HasIndex(new[] { "PostId" }, "IX_PostTag_PostID");
-            //          j.HasIndex(new[] { "TagId" }, "IX_PostTag_TagID");
-            //          j.IndexerProperty<int>("PostId").HasColumnName("PostID");
-            //          j.IndexerProperty<int>("TagId").HasColumnName("TagID");
-            //      });
 
             entity.HasMany(d => d.Tags).WithMany(p => p.Posts)
                 .UsingEntity<Dictionary<string, object>>(
@@ -375,56 +348,6 @@ public partial class AcademicBlogDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
         });
-<<<<<<< HEAD
-        modelBuilder.Entity<PostTag>(entity =>
-    {
-        entity
-            .HasKey(e => new { e.TagId, e.PostId });
-        //.ToTable("PostTag");
-        entity.ToTable("PostTag");
-
-        entity.HasIndex(e => e.PostId, "IX_PostTag_PostID");
-
-        entity.HasIndex(e => e.TagId, "IX_PostTag_TagID");
-
-        entity.Property(e => e.PostId).HasColumnName("PostID");
-        entity.Property(e => e.TagId).HasColumnName("TagID");
-
-        entity.HasOne(d => d.Post).WithMany()
-            .HasForeignKey(d => d.PostId)
-            .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK_PostTag_Post");
-
-        entity.HasOne(d => d.Tag).WithMany()
-            .HasForeignKey(d => d.TagId)
-            .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK_PostTag_Tag");
-    });
-
-        modelBuilder.Entity<Role>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("PK__Role__3214EC27E8245A8B");
-
-                entity.ToTable("Role");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.Name).HasMaxLength(10);
-            });
-
-            modelBuilder.Entity<Tag>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC27A0DFC654");
-
-                entity.ToTable("Tag");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.Name).HasMaxLength(20);
-            });
-
-
-        OnModelCreatingPartial(modelBuilder);
-        }
-=======
 
         modelBuilder.Entity<Tag>(entity =>
         {
@@ -438,7 +361,6 @@ public partial class AcademicBlogDbContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
->>>>>>> dc16f26 (feat: add skill)
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
