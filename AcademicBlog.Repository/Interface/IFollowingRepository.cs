@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 namespace AcademicBlog.Repository.Interface
 {
     public interface IFollowingRepository:IBaseRepository<Following>
-    {
+    { 
+        Task<IEnumerable<Following>> GetFollowers(int Id, Pagable? pagable);
+        Task<IEnumerable<Following>> GetFollowing(int Id, Pagable? pagable);
+
     }
 }

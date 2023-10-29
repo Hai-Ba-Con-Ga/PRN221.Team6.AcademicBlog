@@ -1,3 +1,4 @@
+using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.BussinessObject;
 using AcademicBlog.Pages.Blogs.Component;
 using AcademicBlog.Repository.Interface;
@@ -5,15 +6,14 @@ using AcademicBlog.Repository;
 using AcademicBlog.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Identity.Client;
 using System.Security.Claims;
-using AcademicBlog.BussinessObject.PagingObject;
 using Microsoft.EntityFrameworkCore;
 
 namespace AcademicBlog.Pages.Profile
 {
-    public class IndexModel : PageModel
+    public class ProfileMeModel : PageModel
     {
+
         private readonly IPostRepository _postRepository;
         private readonly IBookmarkRepository _bookmarkRepository;
         private readonly IFollowingRepository _followingRepository;
@@ -36,11 +36,10 @@ namespace AcademicBlog.Pages.Profile
 
         public Account Account { get; set; } = new Account();
 
-        public IEnumerable<Account> FollowingRelationAccounts{get;set;}
-        public bool IsDisplayFollowingButton { get; set; } = true;
-        public bool IsFollowed { get; set; } = true;
+        public IEnumerable<Account> FollowingRelationAccounts { get; set; }
 
-        public IndexModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository, IFollowingRepository followingRepository, IAccountRepository accountRepository) {
+        public ProfileMeModel(IPostRepository postRepository, IBookmarkRepository bookmarkRepository, IFollowingRepository followingRepository, IAccountRepository accountRepository)
+        {
 
             Tabs = new List<TabItem>{
                 new TabItem { Text = "Blogs", Key = "blogs"},
@@ -58,47 +57,11 @@ namespace AcademicBlog.Pages.Profile
         public async Task<IActionResult> OnGetAsync()
         {
             AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
-            if (Id is not null)
+            if (AccountId >= 0)
             {
-                if(Id == AccountId)
-                {
-                    return Redirect("/profile/me");
-                }
+                Id = AccountId;
                 Account = await _accountRepository.GetById((int)Id);
             }
-
-            var followingConnection = (await _followingRepository.GetList(new()
-            {
-                PageIndex = 1,
-                PageSize = 1,
-                Filter = new()
-                {
-                    Logic = "and",
-                    Filters = new List<Filter>()
-                        {
-                            new()
-                            {
-                                Field = "FollowerId",
-                                Operator = "eq",
-                                Value = AccountId
-                            },
-                            new()
-                            {
-                                  Field = "FollowingId",
-                                Operator = "eq",
-                                Value = Id
-                            }
-                        }
-                }
-
-            })).FirstOrDefault();
-            if (AccountId < 0 || Id == AccountId)
-            {
-                IsDisplayFollowingButton = false;
-            }
-            if (followingConnection is null) { IsFollowed = false; }
-
-
 
 
             switch (Tab)
@@ -225,13 +188,13 @@ namespace AcademicBlog.Pages.Profile
                         break;
                     }
                 default:
-                    
+
+                    {
+                        Pagable pagable = new()
                         {
-                            Pagable pagable = new()
-                            {
-                                PageIndex = Paging.Page,
-                                PageSize = Paging.PageSize,
-                                Sort = new List<Sort>()
+                            PageIndex = Paging.Page,
+                            PageSize = Paging.PageSize,
+                            Sort = new List<Sort>()
                         {
                             new()
                             {
@@ -239,10 +202,10 @@ namespace AcademicBlog.Pages.Profile
                                 Dir = "DESC"
                             }
                         },
-                                Filter = new()
-                                {
-                                    Logic = "and",
-                                    Filters = new List<Filter>()
+                            Filter = new()
+                            {
+                                Logic = "and",
+                                Filters = new List<Filter>()
                             {
                                 new()
                                 {
@@ -276,87 +239,19 @@ namespace AcademicBlog.Pages.Profile
                                     }
                                 }
                             }
-                                }
-                            };
-                            Posts = await _postRepository.GetAllPost(pagable);
-                            var count = await _postRepository.CountList(pagable);
-                            Paging.Total = count.TotalCount;
-                            Paging.PageCount = count.TotalPage;
-                            break;
-                        }
-                    
-            }
-          
-
-            return Page();
-        }
-        [BindProperty]
-
-        public string ActionFollow { get; set; } //follow / unfollow
-        [BindProperty]
-
-        public int CreatorId { get; set; }
-        public async Task<IActionResult> OnPostFollowAsync()
-        {
-            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
-            if (accountId < 0)
-            {
-                return Redirect($"/Auth/Login?returnUrl=/Profile/{Id}");
-            }
-            if (accountId >= 0)
-            {
-                var followingConnection = (await _followingRepository.GetList(new()
-                {
-                    PageIndex = 1,
-                    PageSize = 1,
-                    Filter = new()
-                    {
-                        Logic = "and",
-                        Filters = new List<Filter>()
-                        {
-                            new()
-                            {
-                                Field = "FollowerId",
-                                Operator = "eq",
-                                Value = accountId
-                            },
-                            new()
-                            {
-                                  Field = "FollowingId",
-                                Operator = "eq",
-                                Value = CreatorId
                             }
-                        }
+                        };
+                        Posts = await _postRepository.GetAllPost(pagable);
+                        var count = await _postRepository.CountList(pagable);
+                        Paging.Total = count.TotalCount;
+                        Paging.PageCount = count.TotalPage;
+                        break;
                     }
 
-                })).FirstOrDefault();
-                switch (ActionFollow)
-                {
-                    case "follow":
-                        {
-                            if (followingConnection == null)
-                            {
-                                await _followingRepository.Add(new()
-                                {
-                                    FollowerId = accountId,
-                                    FollowingId = CreatorId,
-                                });
-                            }
-                            break;
-                        }
-                    case "unfollow":
-                        {
-
-                            if (followingConnection != null)
-                            {
-                                await _followingRepository.Delete(followingConnection);
-                            }
-                            break;
-                        }
-                }
-
             }
-            return await OnGetAsync();
+
+
+            return Page();
         }
     }
 }

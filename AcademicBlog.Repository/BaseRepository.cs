@@ -14,7 +14,7 @@ namespace AcademicBlog.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly GenericDAO<T> _genericDAO = new GenericDAO<T>();
+        protected readonly GenericDAO<T> _genericDAO = new GenericDAO<T>();
         public Task<T> Add(T post)
         {
             return _genericDAO.AddAsync(post);

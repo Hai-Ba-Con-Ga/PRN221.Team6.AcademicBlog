@@ -14,9 +14,22 @@
     <div class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
         <div class="flex flex-col items-center justify-center">
             <div class="relative h-20 w-20 overflow-hidden rounded-full">
-                <img alt="Mario Sanchez" loading="lazy" decoding="async" data-nimg="fill" class="object-cover" sizes="(max-width: 320px) 100vw, 320px" srcset="https://source.unsplash.com/random" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                <img alt="Mario Sanchez" loading="lazy" decoding="async" data-nimg="fill" class="object-cover" sizes="(max-width: 320px) 100vw, 320px" srcset="@(Model?.Account?.AvatarUrl ?? "https://source.unsplash.com/random")" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
             </div>
-            <h1 class="text-brand-primary mt-2 text-3xl font-semibold tracking-tight dark:text-white lg:text-3xl lg:leading-tight">Mario Sanchez</h1>
+            <h1 class="text-brand-primary mt-2 text-3xl font-semibold tracking-tight dark:text-white lg:text-3xl lg:leading-tight">@Model?.Account?.Fullname</h1>
+            <form asp-page-handler="Follow" method="post" class="flex gap-2 my-2">
+                <input type="hidden" name="creatorId" value="@Model.Id" />
+                @if (Model.IsDisplayFollowingButton)
+                {
+                    <button type="submit" name="actionFollow" value="@(Model.IsFollowed ? "unfollow" : "follow" )" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        @* <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg> *@
+                        @(Model.IsFollowed ? "Unfollow" : "Follow"
+                            )
+                    </button>
+                }
+            </form>
             <div class="mx-auto mt-2 flex max-w-xl flex-col px-5 text-center text-gray-500">
                 <p>Mario is a Staff Engineer specialising in Frontend at <a href="https://vercel.com/" rel="noopener" target="_blank">Vercel</a>, as well as being a co-founder of Acme and the content management system Sanity. Prior to this, he was a Senior Engineer at Apple. </p>
             </div>
@@ -37,20 +50,24 @@
                     <!-- Current: "bg-indigo-100 text-indigo-700", Default: "text-gray-500 hover:text-gray-700" -->
                     @foreach (var tab in Model.Tabs)
                     {
-                        <a href="?tab=@tab.Key" class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm  @(currentTab==tab.Key? "bg-indigo-100 text-indigo-700 font-bold" : "font-medium")">@tab.Text</a>
+                        <a type="button" value="@tab.Key" href="?tab=@tab.Key"   class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm  @(currentTab==tab.Key? "bg-indigo-100 text-indigo-700 font-bold" : "font-medium")">@tab.Text</a>
                     }
                 </nav>
             </div>
         </div>
+
         <form action="" method="get" id="form" class="mt-4">
             <input id="page" type="hidden" name="page" value="@Model.Paging.Page" />
+            <input id="tab" type="hidden" name="tabField" value="@Model.Tab" />
+
             <div class="relative mt-2 rounded-md shadow-sm">
-                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+               @*  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <!svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.6)" style="transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></!svg>
-                </div>
+                </div> *@
                 @* <input type="text" value="@(Model?.SearchKeyword ?? "")" name="searchKeyword" id="adw" class="block w-[20rem] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-lg sm:text-sm sm:leading-6" placeholder="Keyword ..."> *@
             </div>
         </form>
+        @if (Model.Tab is null || Model.Tab.Equals("blogs") ){
         <div class="grid gap-10 mt-20 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
             @foreach (var post in Model.Posts)
             {
@@ -107,10 +124,33 @@
                 </div>
             }
         </div>
-        @{
+        }else if(Model.Tab.Equals("following") || Model.Tab.Equals("follower")){
+            <div class="bg-white">
+    <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6">
+          @foreach (var account in Model.FollowingRelationAccounts){
+                      <li>
+        <img class="mx-auto h-24 w-24 rounded-full" src="@(account?.AvatarUrl ?? "https://source.unsplash.com/random")" alt="">
+        <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">
+            <a href="/profile/@account.Id">
+            @account.Fullname
+            </a>
+            </h3>
+        <p class="text-sm leading-6 text-gray-600">#@account.Username</p>
+      </li>
+            }
+   
+
+      <!-- More people... -->
+    </ul>
+  </div>
+
+          
+        }
+
+         @{
             int from = (int)(Model.Paging.Page - 1) * (int)Model.Paging.PageSize;
             int to = (from + (int)Model.Paging.PageSize) > Model.Paging.Total ? Model.Paging.Total : from + (int)Model.Paging.PageSize;
-        }
+        } 
         <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-8" aria-label="Pagination">
             <div class="hidden sm:block">
                 <p class="text-sm text-gray-700">
@@ -133,6 +173,7 @@
                 <button id="next" @(isNext ? "" : "disabled") class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 @(isNext ? "hover:border-gray-300  text-gray-900" : "text-gray-300 cursor-not-allowed") ">Next</button>
             </div>
         </nav>
+
     </div>
 </div>
 
@@ -150,6 +191,12 @@
         }
     next.onclick = () => {
         pageField.setAttribute("value", "@nextPage");
+        $('#form').submit();
+    }
+    const tabField = document.getElementById("tabField");
+    const changeTab = (e)=> {
+        const tabKey = e.target?.value ?? "blogs";
+        tabField.setAttribute("value", tabKey);
         $('#form').submit();
     }
 </script>
