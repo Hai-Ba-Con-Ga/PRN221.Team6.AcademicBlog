@@ -61,6 +61,9 @@ namespace AcademicBlog.Pages.Profile
             {
                 Id = AccountId;
                 Account = await _accountRepository.GetById((int)Id);
+            }else
+            {
+                return Redirect($"/Auth/Login?returnUrl=/profile/me");
             }
 
 

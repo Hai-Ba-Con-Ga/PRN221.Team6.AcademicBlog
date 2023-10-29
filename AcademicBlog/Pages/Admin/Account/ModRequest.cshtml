@@ -1,0 +1,110 @@
+﻿@page "/admin/modrequest"
+@model AcademicBlog.Pages.Admin.Account.ModRequestModel
+@{
+    Layout = "/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<form action="" method="get" id="form" class="mt-4">
+    <input id="page" type="hidden" name="page" value="@Model.Paging.Page" />
+
+    <div class="relative mt-2 rounded-md shadow-sm">
+        @*  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <!svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.6)" style="transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></!svg>
+        </div> *@
+        @* <input type="text" value="@(Model?.SearchKeyword ?? "")" name="searchKeyword" id="adw" class="block w-[20rem] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-lg sm:text-sm sm:leading-6" placeholder="Keyword ..."> *@
+    </div>
+</form>
+<div class="grid gap-4 md:grid-cols-3 sm:grid-cols-2 py-4 px-3">
+    @foreach(var account in Model.RequestAccount)
+    {    
+    <div class="relative flex w-full max-w-[30rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-md bg-white py-2 px-4 pb-4">
+        <div class="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+            <img src="@(account?.AvatarUrl ?? "https://source.unsplash.com/random")"
+                 alt="tania andrew"
+                 class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center" />
+            <div class="flex w-full flex-col gap-0.5">
+                <div class="flex items-center justify-between">
+                    <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                        @account?.Fullname
+                    </h5>
+                </div>
+                <p class="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
+                    @account?.Email
+                </p>
+            </div>
+        </div>
+        <div class="p-0 mb-6">
+            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                    "@(account?.Bio ??"I found solution to all my design needs from Creative Tim. I use them as a freelancer in my hobby projects for fun! And its really affordable, very humble guys !!!")"
+            </p>
+        </div>
+        <div class="p-0 mb-6 flex gap-1">
+                @foreach(var skill in account.Skills)
+                {
+                    <span class="tag-chip inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset relative whitespace-nowrap @Utils.Utils.GetRandomPastelColor()">@skill?.Name</span>
+                }
+        </div>
+        <div class="flex justify-center gap-4">
+            <form method="post" asp-page-handler="Approval">
+                <input type="hidden" name="accountId" value="@account.Id"/>
+                <button type="submit" name="approvalAction" value="approve" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    Approve
+                </button>
+                <button type="submit" name="approvalAction" value="reject" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+                    Reject
+                </button>
+            </form>
+        </div>
+    </div>
+    }
+    @{
+        int from = (int)(Model.Paging.Page - 1) * (int)Model.Paging.PageSize;
+        int to = (from + (int)Model.Paging.PageSize) > Model.Paging.Total ? Model.Paging.Total : from + (int)Model.Paging.PageSize;
+    }
+</div>
+    <nav class="flex items-center justify-between border-t  px-4 py-3 sm:px-6 mt-8" aria-label="Pagination">
+        <div class="hidden sm:block">
+            <p class="text-sm text-gray-700">
+                Showing
+                <span class="font-medium">@(from + 1)</span>
+                to
+                <span class="font-medium">@to</span>
+                of
+                <span class="font-medium">@Model.Paging.Total</span>
+                results
+            </p>
+        </div>
+        @{
+
+            bool isPrevious = Model.Paging.Page > 1;
+            bool isNext = Model.Paging.Page < Model.Paging.PageCount;
+        }
+        <div class="flex flex-1 justify-between sm:justify-end">
+            <button id="prev" @(isPrevious ? "" : "disabled") class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold  ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 @(isPrevious ? "hover:border-gray-300 text-gray-900" : "text-gray-300 cursor-not-allowed")">Previous</button>
+            <button id="next" @(isNext ? "" : "disabled") class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 @(isNext ? "hover:border-gray-300  text-gray-900" : "text-gray-300 cursor-not-allowed") ">Next</button>
+        </div>
+    </nav>
+
+<script>
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const pageField = document.getElementById("page")
+    @{
+        int nextPage = Model.Paging.Page + 1;
+        int prevPage = Model.Paging.Page - 1;
+    }
+        prev.onclick = () => {
+            pageField.setAttribute("value", "@prevPage");
+            $('#form').submit();
+        }
+    next.onclick = () => {
+        pageField.setAttribute("value", "@nextPage");
+        $('#form').submit();
+    }
+    const tabField = document.getElementById("tabField");
+    const changeTab = (e) => {
+        const tabKey = e.target?.value ?? "blogs";
+        tabField.setAttribute("value", tabKey);
+        $('#form').submit();
+    }
+</script>

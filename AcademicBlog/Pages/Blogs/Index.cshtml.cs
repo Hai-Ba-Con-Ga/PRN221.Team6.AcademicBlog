@@ -100,7 +100,7 @@ namespace AcademicBlog.Pages.Blogs
             {
                 case "following":
                     {
-                        //TODO : get from Following table
+                      
                         var followings = (await _followingRepository.Find(f => f.FollowerId == AccountId)).ToList();
                         var followerIds = new List<int>();
                         if (followings.Count > 0)

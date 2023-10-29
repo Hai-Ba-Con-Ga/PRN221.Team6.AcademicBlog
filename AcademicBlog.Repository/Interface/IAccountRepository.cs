@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AcademicBlog.Repository.Interface
 {
-    public interface IAccountRepository
+    public interface IAccountRepository:IBaseRepository<Account>
     {
         Task<IEnumerable<Account>> GetAll();
         Task<Account> Login(string email, string password);

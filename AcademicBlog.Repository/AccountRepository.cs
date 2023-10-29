@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AcademicBlog.Repository
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
         private readonly GenericDAO<Account> _accountDAO = new GenericDAO<Account>();
 

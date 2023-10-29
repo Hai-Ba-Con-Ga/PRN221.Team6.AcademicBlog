@@ -19,7 +19,7 @@ namespace AcademicBlog.Repository
         }
         public async Task<Role> GetByName(string name)
         {
-            return await _roleDAO.GetOneByConditionAsync(x=> x.Name.Equals(name));
+            return await _roleDAO.GetOneByConditionAsync(x=> x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
         public async Task<Role> GetById(int id)
         {
