@@ -122,6 +122,7 @@ public partial class AcademicBlogDbContext : DbContext
                 .HasForeignKey(d => d.PostId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Bookmark_Post");
+            
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -295,7 +296,7 @@ public partial class AcademicBlogDbContext : DbContext
                         .HasConstraintName("FK_PostSkill_Skill"),
                     l => l.HasOne<Post>().WithMany()
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK_PostSkill_Post"),
                     j =>
                     {
@@ -314,7 +315,7 @@ public partial class AcademicBlogDbContext : DbContext
                         .HasConstraintName("FK_PostTag_Tag"),
                     l => l.HasOne<Post>().WithMany()
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK_PostTag_Post"),
                     j =>
                     {

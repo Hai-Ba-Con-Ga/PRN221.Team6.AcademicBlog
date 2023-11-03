@@ -107,9 +107,9 @@ namespace AcademicBlog.Repository
         {
             return await _postDAO.UpdateAsync(post);
         }
-        public void Delete(Post post)
+        public async Task Delete(Post post)
         {
-            _postDAO.DeleteAsync(post);
+           await _postDAO.DeleteAsync(post);
         }
 
         public  async Task<IEnumerable<Post>> GetAllPost(Pagable pagable)

@@ -19,7 +19,7 @@ namespace AcademicBlog.Repository.Interface
         Task<Post> GetById(int id);
         Task<Post> Add(Post post);
         Task<Post> Update(Post post);
-        void Delete(Post post);
+        Task Delete(Post post);
 
 
     }

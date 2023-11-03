@@ -2,6 +2,7 @@
 @model AcademicBlog.Pages.Blogs.BlogDetailModel
 @using AcademicBlog.Pages.Blogs.Component.UI
 @using Markdig;
+@using System.Security.Claims;
 @{
 }
 <!--
@@ -34,15 +35,19 @@ URL: https://flowbite.com/docs/components/typography/
                                 </form>
 
                             </div>
-                            <p class="text-base text-gray-500 dark:text-gray-400 flex-wrap">
+                            <p class="text-base text-gray-500 dark:text-gray-400 flex-wrap flex gap-2">
                                 <time pubdate datetime="2022-02-08"
                                       title="February 8th, 2022">@Model.Post.CreatedDate</time>
+                            </p>
+                            <div class="flex gap-2">
+
                                 <form asp-page-handler="Approve" method="post" class="flex gap-2">
                                     
                                     <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
                                     @if (Model.IsDisplayApproveButton)
                                     {
                                         <button type="submit" name="actionApprove"
+                                                class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                                 value="@(Model.IsApprove ? "Unapprove" : "Approve")">
                                             @(Model.IsApprove ? "Unapprove" : "Approve")
                                         </button>
@@ -52,13 +57,13 @@ URL: https://flowbite.com/docs/components/typography/
                                     <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
                                     @if (Model.IsDisplayApproveButton)
                                     {
-                                        <button type="submit" name="actionReject"
+                                        <button type="submit" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" name="actionReject"
                                                 value="@(Model.IsReject ? "UnReject" : "Reject")">
                                             @(Model.IsReject ? "UnReject" : "Reject")
                                         </button>
                                     }
                                 </form>
-                            </p>
+                            </div>
                         </div>
                     </div>
                     @if (Model.AccountId > 0)
@@ -114,11 +119,20 @@ URL: https://flowbite.com/docs/components/typography/
                             @if (Model.IsOwner)
                             {
                                 
-                            <button type="button" name="edit"
+                            <button type="button" name="edit" class="flex items-start"
                                 onclick="window.location='/blogs/draft?mode=edit&id=@Model.Post.Id'"
                                   >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg>  
                             </button>
+                            }
+                            @if (Model.IsOwner || (User.FindFirst(ClaimTypes.Role)?.Value ?? "Unknown").Equals("Mod") || (User.FindFirst(ClaimTypes.Role)?.Value ?? "Unknown").Equals("Lecturer"))
+                            {
+                                 <form asp-page-handler="Delete" method="post" id="deleteForm">
+                                    <button type="button" name="delete" id="deleteButton" 
+                                            onclick="deleteHandler(event)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(155, 15, 15, 1));transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                                    </button>
+                                </form>
                             }
                         </div>
                     }
@@ -259,5 +273,15 @@ URL: https://flowbite.com/docs/components/typography/
 
         const formEle = document.querySelector(`#form-${id}`);
         formEle.classList.toggle("hidden");
+    }
+    const deleteHandler = (e)=>{
+        const deleteForm = document.getElementById("deleteForm");
+        const isConfirmed = confirm("Are you sure you want to delete?");
+
+        // If the user confirms, submit the form
+        if (isConfirmed) {
+            deleteForm.submit();
+        }
+        //TODO  show promt to confirm, if click ok then submit the form
     }
 </script>

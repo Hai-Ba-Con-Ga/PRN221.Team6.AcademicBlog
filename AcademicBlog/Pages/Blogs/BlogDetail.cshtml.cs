@@ -524,5 +524,20 @@ namespace AcademicBlog.Pages.Blogs
             }
             return await OnGet();
         }
+        public async Task<IActionResult> OnPostDeleteAsync()
+        {
+            var accountId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value ?? "-1");
+            if (accountId < 0)
+            {
+                return Redirect($"/Auth/Login?returnUrl=/Blogs/BlogDetail/{Id}");
+            }
+            if (accountId >= 0)
+            {
+                var post = await _postRepository.GetById(Id);
+                 await _postRepository.Delete(post);
+
+            }
+            return Redirect("/blogs");
+        }
     }
 }
