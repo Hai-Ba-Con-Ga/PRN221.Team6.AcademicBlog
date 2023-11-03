@@ -423,13 +423,13 @@
             // Set the background image to the selected file
 
             uploadLabel.style.display = "block";
-            uploadLabel.style.backgroundImage = `url(@Model.EditPost.ThumbnailUrl)`;
+            uploadLabel.style.backgroundImage = `url(@(Model.IsEdit ? Model.EditPost?.ThumbnailUrl: ""))`;
             uploadLabel.style.backgroundSize = "cover"; // Optional: Adjust background size as needed
             uploadLabel.style.backgroundPosition = "center";
             @{
         var converter = new Converter();
             }
-                editor.setData("@converter.Convert(Model.EditPost.Content)");
+                editor.setData("@converter.Convert(Model?.EditPost?.Content??"")");
         }
     }
 </script>
