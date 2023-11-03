@@ -3,6 +3,7 @@
 <div class="comment">
     @{
         int level = Regex.Matches(Model.Comment.Path, @"/").Count;
+
     }
 
     <article class="p-3 @(level > 1 ? $"ml-{4*(level-1)}" : "")  text-base bg-white rounded-lg dark:bg-gray-900">

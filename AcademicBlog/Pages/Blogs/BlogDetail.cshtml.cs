@@ -3,11 +3,18 @@ using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.Repository;
 using AcademicBlog.Repository.DTO;
 using AcademicBlog.Repository.Interface;
+using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using System;
+using System.Net.NetworkInformation;
 using System.Security.Claims;
+using System.Security.Principal;
+using System.Text;
+using System.Text.Json;
 
 namespace AcademicBlog.Pages.Blogs
 {
@@ -81,8 +88,7 @@ namespace AcademicBlog.Pages.Blogs
                     return RedirectToPage("/Index");
                 }
             }
-            
-
+            var filter = new ProfanityFilter.ProfanityFilter();
             var childrenGroup = Post.Comments.GroupBy(p => p.ParentId).ToDictionary(p => p.Key, p => p.Select(p => p.Id).ToList());
             if (Post.Comments is not null)
             {
@@ -91,7 +97,7 @@ namespace AcademicBlog.Pages.Blogs
                     var cmtObj = new CommentObject()
                     {
                         Id = p.Id,
-                        Content = p.Content,
+                        Content = filter.CensorString(p.Content),
                         CreatedDate = p.CreatedDate,
                         ModifiedDate = p.ModifiedDate,
                         CreatorId = p.CreatorId,
@@ -499,6 +505,57 @@ namespace AcademicBlog.Pages.Blogs
                     post.ApproveDate = DateTime.Now;
                     await _postRepository.Update(post);
                 }
+                using (var client = new HttpClient())
+                {
+                    string emailTemplate = Utils.Utils.PostApprovalEmail(true, post);
+                    var body = JsonSerializer.Serialize(new
+                    {
+                        to = post?.Creator?.Email?? "phonglethanh2@gmail.com", 
+                        content = emailTemplate
+                    });
+                    var requestContent = new StringContent(body, Encoding.UTF8, "application/json");
+                    _ = await client.PostAsync("http://notification.wyvernpserver.tech/mail/send", requestContent);
+                }
+                Pagable pagable = new()
+                {
+                    PageIndex = 1,
+                    PageSize = 20,
+                    Filter = new Filter()
+                    {
+                        Logic = "and",
+                        Filters = new List<Filter>()
+                                {
+                                    new Filter()
+                                    {
+                                        Field = "FollowingId",
+                                        Operator = "eq",
+                                        Value = Id
+                                    }
+                                }
+                    }
+                };
+                using (var client = new HttpClient())
+                {
+                    var follower = await _followingRepository.GetList(pagable, f => f.Include(f => f.Follower));
+                    var followers = follower.Select(f => f.Follower);
+                    string emailNoticeTemplate = Utils.Utils.NewPostNotificationEmail(post);
+
+                    // Create tasks for sending notifications to followers
+                    var notificationTasks = followers?.Select(async follower =>
+                    {
+                        var bodyNotice = JsonSerializer.Serialize(new
+                        {
+                            to = follower.Email ?? "phonglethanh2@gmail.com",
+                            content = emailNoticeTemplate
+                        });
+                        var requestNoticeContent = new StringContent(bodyNotice, Encoding.UTF8, "application/json");
+                        var response = await client.PostAsync("http://notification.wyvernpserver.tech/mail/send", requestNoticeContent);
+                        // Optionally, you can check the response here
+                    });
+
+                    // Await all notification tasks
+                    await Task.WhenAll(notificationTasks);
+                }
             }
             return await OnGet();
         }
@@ -520,6 +577,17 @@ namespace AcademicBlog.Pages.Blogs
                     post.ApproverId = accountId;
                     post.ApproveDate = DateTime.Now;
                     await _postRepository.Update(post);
+                }
+                string emailTemplate = Utils.Utils.PostApprovalEmail(false, post);
+                var body = JsonSerializer.Serialize(new
+                {
+                    to = post?.Creator?.Email ?? "phonglethanh2@gmail.com",
+                    content = emailTemplate
+                });
+                using (var client = new HttpClient())
+                {
+                    var requestContent = new StringContent(body, Encoding.UTF8, "application/json");
+                    _ = client.PostAsync("http://notification.wyvernpserver.tech/mail/send", requestContent);
                 }
             }
             return await OnGet();

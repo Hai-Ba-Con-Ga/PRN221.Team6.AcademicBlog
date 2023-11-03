@@ -1,4 +1,10 @@
-﻿namespace AcademicBlog.Utils
+﻿using AcademicBlog.BussinessObject;
+using Azure.Identity;
+using System.Drawing;
+using System.Numerics;
+using System.Threading.Tasks;
+
+namespace AcademicBlog.Utils
 {
     public static class Utils
     {
@@ -19,6 +25,79 @@
             var randomIndex = new Random().Next(pastelColors.Count);
             return pastelColors[randomIndex];
         }
+        public static string NewPostNotificationEmail(Post post)
+        {
+            string subject = "New Post Notification";
+            string message = $@"<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your email styles here */
+    </style>
+</head>
+<body>
+    <div style=""max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1;"">
+        <h1 style=""color: #007BFF;"">New Post Notification 📢</h1>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            Hi {post.Creator.Fullname}'s followers,
+        </p>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            We are excited to inform you that {post.Creator.Fullname} has published a new post titled &quot;{post.Title}&quot; on our platform.
+        </p>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            You can read the post by following this link: [Insert link to the post].
+        </p>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            If you have any questions or need further assistance, please don't hesitate to contact us.
+        </p>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            Enjoy reading!
+        </p>
+        <p style=""font-size: 16px; line-height: 1.5;"">
+            Sincerely,
+        </p>
+    </div>
+</body>
+</html>";
+
+            return message;
+        }
+        public static string PostApprovalEmail(bool isSucceed, Post post)
+        {
+            string subject = isSucceed ? "Post Approval Notification" : "Post Rejection Notification";
+            string result = isSucceed ? "approved" : "rejected";
+            string message = $@"<!DOCTYPE html>
+                    <html>
+                    <head>
+                        <style>
+                            /* Add your email styles here */
+                        </style>
+                    </head>
+                    <body>
+                        <div style=""max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1;"">
+                            <h1 style=""color: #007BFF;"">Post {result} Notification 🎉</h1>
+                            <p style=""font-size: 16px; line-height: 1.5;"">
+                                Hi {post.Creator.Fullname},
+                            </p>
+                            <p style=""font-size: 16px; line-height: 1.5;"">
+                                We want to inform you that your post &quot;{post.Title}&quot; has been {result} by our team.
+                                </ p >
+
+
+                                    < p style = ""font - size: 16px; line - height: 1.5; "" >
+                                Thank you for using our system. If you have any questions or need further assistance, please don't hesitate to contact us.
+                                </ p >
+
+
+                                    < p style = ""font - size: 16px; line - height: 1.5; "" >
+                                        Sincerely,
+                            </ p >
+                        </ div >
+                    </ body >
+                    </ html > ";
+
+            return message;
+        }
         public static string SystemApprovalEmail(bool isSucceed)
         {
             string succeed = @"
@@ -26,7 +105,7 @@
                   <div style=""max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1;"">
                     <h1 style=""color: #007BFF;"">Congratulations on Your Approval! 🎉</h1>
                     <p style=""font-size: 16px; line-height: 1.5;"">
-                      Dear [User's Name],
+                      Hi,
                     </p>
                     <p style=""font-size: 16px; line-height: 1.5;"">
                       We are delighted to inform you that your registration with our system has been approved by our dedicated administrative team. Congratulations on becoming an official member of our community!
@@ -38,9 +117,6 @@
                       Now that you're an approved member, we encourage you to explore all the fantastic features and benefits of our system:
                     </p>
                     <ul style=""font-size: 16px; line-height: 1.5; margin-left: 20px;"">
-                      <li>[Feature/Benefit 1]: [Provide a brief description of the first feature or benefit]</li>
-                      <li>[Feature/Benefit 2]: [Provide a brief description of the second feature or benefit]</li>
-                      <li>[Feature/Benefit 3]: [Provide a brief description of the third feature or benefit]</li>
                     </ul>
                     <p style=""font-size: 16px; line-height: 1.5;"">
                       We are confident that you will find our system to be a valuable resource that will [mention how your system will benefit the user]. Please take some time to familiarize yourself with the platform and its offerings.
@@ -55,7 +131,6 @@
                       Thank you for choosing our system, and we're excited to have you as part of our community.
                     </p>
                     <p style=""font-size: 16px; line-height: 1.5;"">Warm regards,</p>
-                    <p style=""font-size: 16px; line-height: 1.5;"">[Your Name]<br>[Your Title]<br>[Your Contact Information]</p>
                   </div>
                 </body>
             ";
@@ -64,7 +139,7 @@
                   <div style=""max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1;"">
                     <h1 style=""color: #FF3333;"">We Regret to Inform You</h1>
                     <p style=""font-size: 16px; line-height: 1.5;"">
-                      Dear [User's Name],
+                      Hi,
                     </p>
                     <p style=""font-size: 16px; line-height: 1.5;"">
                       We regret to inform you that your registration with our system has not been approved by our administrative team. We appreciate your interest but, unfortunately, we cannot proceed with your application at this time.
@@ -73,13 +148,12 @@
                       While we value every application we receive, we have carefully reviewed your submission and found that it does not meet our current requirements or criteria.
                     </p>
                     <p style=""font-size: 16px; line-height: 1.5;"">
-                      If you have any further questions or would like additional information regarding this decision, please feel free to reach out to us at [support email].
+                      If you have any further questions or would like additional information regarding this decision, please feel free to reach out to us at.
                     </p>
                     <p style=""font-size: 16px; line-height: 1.5;"">
                       We appreciate your interest and wish you the best in your endeavors. Thank you for considering our system.
                     </p>
-                    <p style=""font-size: 16px; line-height: 1.5;"">Sincerely,</p>
-                    <p style=""font-size: 16px; line-height: 1.5;"">[Your Name]<br>[Your Title]<br>[Your Contact Information]</p>
+                    <p style=""font-size: 16px; line-height: 1.5;"">Sincerely</p>
                   </div>
                 </body>
             ";

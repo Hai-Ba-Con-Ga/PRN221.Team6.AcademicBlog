@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bunkum.ProfanityFilter" Version="4.3.3" />
     <PackageReference Include="Html2Markdown" Version="5.1.0.703" />
     <PackageReference Include="Markdig" Version="0.33.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
@@ -21,6 +22,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
+    <PackageReference Include="Profanity.Detector" Version="0.1.8" />
   </ItemGroup>
 	<ItemGroup>
 		<UpToDateCheckBuilt Include="postcss.config.js" Set="Css" />
