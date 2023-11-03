@@ -1,16 +1,20 @@
 ﻿@page "/blogs/draft"
 @model AcademicBlog.Pages.Blogs.BlogWritingModel
+@using Markdig;
+@using Html2Markdown;
 @{
 }
-
+@{
+    Func<string, string> ConvertHtmlToMarkdown = (html) => Markdown.ToPlainText(html, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+}
 <div class="flex flex-col max-w-screen-xl mx-auto">
-    <h1 class="text-4xl font-bold mx-auto">Write a new blog</h1>
+    <h1 class="text-4xl font-bold mx-auto">@Model.PageTitle</h1>
     <form id="writeForm" method="post" action="">
 
         <div>
             <label for="title" class="block text-sm font-bold leading-6 text-gray-900">Title</label>
             <div class="mt-2 relative">
-                <input type="text" name="title" id="title" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="" aria-describedby="title-description">
+                <input type="text" name="title" id="title" value="@(Model.IsEdit ? Model.EditPost.Title : "")" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="" aria-describedby="title-description">
                 <div id="title-error-icon" class="hidden pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                     <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
@@ -32,7 +36,7 @@
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                 </div>
                 <input id="file" type="file" name="file" class="hidden" />
-                <input id="thumbnail" type="text" value="" name="thumbnail" class="hidden" />
+                <input id="thumbnail" type="text" value="@(Model.IsEdit ?Model.EditPost.ThumbnailUrl:"")" name="thumbnail" class="hidden" />
 
             </label>
         </div>
@@ -42,7 +46,7 @@
                 <select id="category" name="category" class="mt-4 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     @foreach (var category in Model.Categories)
                     {
-                        <option value="@category.Id">@category.Name</option>
+                        <!option value="@category.Id" @(Model.IsEdit ? Model.EditPost.CategoryId == category.Id ? "selected":"" :"" ) >@category.Name</!option>
                     }
                 </select>
             </div>
@@ -55,11 +59,47 @@
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
                     </button>
-                    <div class="flex gap-2" id="tag-container"></div>
+                    <div class="flex gap-2" id="tag-container">
+                        @if (Model.IsEdit && Model.EditPost is not null)
+                        {
+                            foreach (var tag in Model.EditPost.Tags)
+                            {
+                                <span class="tag-chip inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset relative whitespace-nowrap @Utils.Utils.GetRandomPastelColor()">
+                                    @tag.Name
+                                    <input type="hidden" name="tag" value="@tag.Name">
+                                    <button class="w-4 h-4 rounded-full bg-red-500 text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2" type="button">x</button>
+                                </span>
+                            }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
         <div class="flex gap-5 mt-10">
+            <div>
+                <label for="skill" class="block text-sm font-bold leading-6 text-gray-900 h-fit">Skills</label>
+                <select id="skill" name="skill" class="mt-4 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    @foreach (var skill in Model.Skills)
+                    {
+                        <option value="@skill.Id|@skill.Name" >@skill.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="flex gap-2 items-end" id="skill-container">
+                @if(Model.IsEdit && Model.EditPost is not null)
+                {
+                    foreach(var skill in Model.EditPost.Skills)
+                    {
+                        <span class="skill-chip h-fit inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset relative whitespace-nowrap @Utils.Utils.GetRandomPastelColor()">
+                            @skill.Name
+                            <input type="hidden" name="skill" value="@skill.Id"> <!-- Assuming value="1|SkillName" for the first option -->
+                            <button class="w-4 h-4 rounded-full bg-red-500 text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2" type="button">x</button>
+                        </span>
+                    }
+                }
+            </div>
+        </div>
+      @*   <div class="flex gap-5 mt-10">
             <label class="block text-gray-700">Choose Skills</label>
             @foreach (var item in Model.Skills)
             {
@@ -67,7 +107,7 @@
                 <label for="@item.Id">@item.Name</label>
             }
 
-        </div>
+        </div> *@
         <div class="my-4">
             <label for="content" class="block text-sm font-bold leading-6 text-gray-900 text-2xl mb-2">Content</label>
             <p class="mt-2 text-sm text-red-600" id="content-error-text"></p>
@@ -154,6 +194,8 @@
 
 <script>
     const button = document.getElementById("btn-add-tag");
+    const select = document.getElementById("skill");
+    const listSkill = document.getElementById("skill-container");
     const list = document.getElementById("tag-container");
     const input = document.getElementById("tag-enter");
     const badgeEnum = [
@@ -212,6 +254,43 @@
             input.value = "";
         }
     })
+
+    select.onchange = (e)=>{
+        const [id, name] = e.target.value?.split("|");
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "skill"; // Set the name attribute to "tag"
+        hiddenInput.value = id; // Set the value to the input value
+        const existingChips = listSkill.getElementsByClassName("skill-chip");
+        const existingChipTexts = Array.from(existingChips).map(chip => chip.textContent.toLowerCase());
+        if (existingChipTexts.includes(name.toLowerCase().replaceAll(" ", "") + "x")) {
+            alert("This skill already exists.");
+            return;
+        }
+        // Create a chip element
+        const chip = document.createElement("span");
+        chip.className = " skill-chip h-fit inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset relative whitespace-nowrap " + badgeEnum[Math.floor(Math.random() * badgeEnum.length)]; // You should define a CSS class for the chip style
+        chip.textContent = name;
+        const deleteButton = document.createElement("button");
+        deleteButton.value = name;
+        deleteButton.className = "w-4 h-4 rounded-full bg-red-500 text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 "
+        deleteButton.innerHTML = "x";
+        deleteButton.type = "button";
+        deleteButton.onclick = (e) => {
+            // console.log("button value ", e.target.value);
+
+            const existingChips = listSkill.getElementsByClassName("skill-chip");
+            const existingChipTexts = Array.from(existingChips).filter(chip => chip.textContent == name + "x")?.[0];
+            // console.log("Node delete", existingChipTexts);
+            if (existingChipTexts) {
+                listSkill.removeChild(existingChipTexts);
+            }
+        }
+        chip.appendChild(deleteButton);
+        // Append both elements to the listSkill
+        chip.appendChild(hiddenInput);
+        listSkill.appendChild(chip);
+    }
 </script>
 <script>
     const uploadInput = document.querySelector("#file");
@@ -335,3 +414,22 @@
     });
 </script>
 
+<script>
+    window.onload = () => {
+        if (@(Model.IsEdit ? "true" : "false")) {
+            const uploadLabel = document.querySelector("#upload-label");
+            const uploadPlaceholder = document.querySelector("#upload-placeholder");
+            uploadPlaceholder.style.display = "none";
+            // Set the background image to the selected file
+
+            uploadLabel.style.display = "block";
+            uploadLabel.style.backgroundImage = `url(@Model.EditPost.ThumbnailUrl)`;
+            uploadLabel.style.backgroundSize = "cover"; // Optional: Adjust background size as needed
+            uploadLabel.style.backgroundPosition = "center";
+            @{
+        var converter = new Converter();
+            }
+                editor.setData("@converter.Convert(Model.EditPost.Content)");
+        }
+    }
+</script>

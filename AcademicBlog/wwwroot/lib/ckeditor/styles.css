@@ -418,7 +418,7 @@ header nav ul li {
 }
 
 header nav ul li + li {
-	margin-left: 1em;
+/*	margin-left: 1em;*/
 }
 
 header nav ul li a {

@@ -8,6 +8,7 @@
         public int Category { get; set; } 
         public List<string> Tag { get; set; }
         public IFormFile File {  get; set; }
+        public List<int> Skill { get; set; }
 
     }
 }

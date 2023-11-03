@@ -37,6 +37,8 @@ namespace AcademicBlog.Pages.Blogs
         public string Tab { get; set; }
         [FromQuery(Name = "searchKeyword")]
         public string SearchKeyword { get; set; } = "";
+        [FromQuery(Name = "category")]
+        public List<int> CategoryIds { get; set; } = new List<int>();
         [FromQuery]
 
         public PaginationParams Paging { get; set; }
@@ -92,9 +94,20 @@ namespace AcademicBlog.Pages.Blogs
                                 Field = "Content",
                                 Operator = "contains",
                                 Value = SearchKeyword ?? ""
-                            }
+                            },
+                           
                         }
             };
+            Filter categoryFilter = null;
+            if(CategoryIds.Count > 0)
+            {
+                categoryFilter = new()
+                {
+                    Field = "CategoryId",
+                    Operator = "in",
+                    Value = CategoryIds
+                };
+            }
             //get name identity
             switch (Tab)
             {
@@ -133,11 +146,16 @@ namespace AcademicBlog.Pages.Blogs
                                     Value = true
                                 },
                                 searchFilter,
-                                followingFilter
+                                followingFilter,
                             }
                         };
                         pagable.Filter = commonFilter;
-
+                         if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
@@ -175,6 +193,12 @@ namespace AcademicBlog.Pages.Blogs
                             }
                         }
                         };
+                         if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         pagable.Filter = filter;
                         Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
@@ -210,6 +234,12 @@ namespace AcademicBlog.Pages.Blogs
                         }
                         };
                         pagable.Filter = filter;
+                        if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
@@ -240,12 +270,16 @@ namespace AcademicBlog.Pages.Blogs
                                 Field = "CreatorId",
                                 Operator = "neq",
                                 Value = AccountId
-                            },
-
+                            }
                         }
                         };
                         pagable.Filter = filter;
-
+                         if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         var posts = await _postRepository.GetAllPost(pagable);
                         var accountSkillIds = (await _accountRepository.GetSkillById(AccountId)).Skills.Select(s => s.Id).ToList();
                         foreach (var post in posts)
@@ -289,6 +323,12 @@ namespace AcademicBlog.Pages.Blogs
                         }
                         };
                         pagable.Filter = filter;
+                        if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;
@@ -309,11 +349,16 @@ namespace AcademicBlog.Pages.Blogs
                                 Operator = "eq",
                                 Value = true
                             },
-                            searchFilter
+                            searchFilter,
                         }
                         };
                         pagable.Filter = lastestFilter;
-
+                        if (categoryFilter is not null)
+                        {
+                            var filterList = pagable.Filter.Filters.ToList();
+                            filterList.Add(categoryFilter);
+                            pagable.Filter.Filters = filterList;
+                        }
                         Posts = (await _postRepository.GetAllPost(pagable)).ToList();
                         var count = await _postRepository.CountList(pagable);
                         Paging.Total = count.TotalCount;

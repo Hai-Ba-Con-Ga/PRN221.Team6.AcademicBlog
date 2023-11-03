@@ -43,6 +43,7 @@ namespace AcademicBlog.Pages.Blogs
         public bool IsFavorite { get; set; } = false;
         public bool IsApprove { get; set; } = false;
         public bool IsReject { get; set; } = false;
+        public bool IsOwner { get; set; } = false;
 
         public IDictionary<int, CommentObject> Comments { get; set; }
         public ICollection<CommentObject> PrimaryComments { get; set; } = new List<CommentObject>();
@@ -56,6 +57,10 @@ namespace AcademicBlog.Pages.Blogs
             AccountId = Convert.ToInt32(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
             Console.WriteLine(AccountId);
             Post = await _postRepository.GetById(Id);
+            if(AccountId == Post.CreatorId)
+            {
+                IsOwner = true;
+            }
             if (Post == null)
             {
                 ErrorMessage = "Post not found";

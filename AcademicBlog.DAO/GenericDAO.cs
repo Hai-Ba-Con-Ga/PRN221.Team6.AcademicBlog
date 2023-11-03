@@ -89,7 +89,7 @@ namespace AcademicBlog.DAO
 
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
         //include
@@ -105,7 +105,7 @@ namespace AcademicBlog.DAO
                 }
             }
 
-            return await query.ToListAsync();
+            return await query.AsNoTracking().ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetListAsync<TProperty>(Pagable paging, Func<IQueryable<T>, IIncludableQueryable<T, TProperty>> include) 

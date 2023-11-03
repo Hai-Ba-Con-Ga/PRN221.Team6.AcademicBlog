@@ -1,5 +1,6 @@
 ﻿@page
 @model AcademicBlog.Pages.Blogs.IndexModel
+@using AcademicBlog.BussinessObject;
 @{
     string currentTab = Request.Query["tab"].ToString();
     if (string.IsNullOrEmpty(currentTab))
@@ -33,12 +34,18 @@
 <div class="px-16 mx-auto xl:px-6  max-w-screen-xl py-2 lg:py-2 flex justify-between">
     <form action="" method="get" id="form">
         <input id="page" type="hidden" name="page" value="@Model.Paging.Page" />
+        <input id="tab" type="hidden" name="tab" value="@Model.Tab" />
+
         <div class="relative mt-2 rounded-md shadow-sm">
             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <!svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.6)" style="transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></!svg>
             </div>
             <input type="text" value="@(Model?.SearchKeyword ?? "")" name="searchKeyword" id="adw" class="block w-[20rem] rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-lg sm:text-sm sm:leading-6" placeholder="Keyword ...">
         </div>
+        @foreach(var cat in Model.CategoryIds)
+        {
+            <input type="hidden" name="category" class="category-hidden" value="@cat" />
+        }
     </form>
     <button onclick="window.location.href='/blogs/draft'" type="button" class="inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -47,7 +54,26 @@
         Write one
     </button>
 </div>
-<div class="bg-white max-w-screen-xl mx-auto">
+<div class="bg-white max-w-screen-xl mx-auto flex gap-4">
+    <div class="flex flex-col gap-2 py-5 px-4 pl-16">
+        <fieldset>
+            <legend class="text-base font-semibold leading-6 text-gray-900">Category</legend>
+            <div class="mt-4 divide-y divide-gray-200 border-b border-gray-200">
+                @foreach (var category in (IEnumerable<Category>)Model.HttpContext.Items?["Categories"])
+                {
+                    <div class="relative flex items-start py-4">
+                        <div class="min-w-0 flex-1 text-sm leading-6">
+                            <label for="person-1" class="select-none font-medium text-gray-900">@category.Name</label>
+                        </div>
+                        <div class="ml-3 flex h-6 items-center">
+                            <input name="category" type="checkbox" @(Model.CategoryIds.Contains(category.Id) ? "checked" : "") value="@category.Id" onchange="onCategoryChange(event)" class="category h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </fieldset>
+    </div>
     <div class="max-w-7xl px-6 lg:px-8 flex flex-col items-center">
         <div class=" max-w-2xl lg:max-w-4xl">
             <div class="mt-10 space-y-20 lg:mt-10 lg:space-y-20">
@@ -174,5 +200,32 @@
     next.onclick = () => {
         pageField.setAttribute("value", "@nextPage");
         $('#form').submit();
+    }
+    const onCategoryChange = (e) => {
+        const form = document.getElementById("form");
+        const value = e.target.value;
+
+        // Find existing hidden input fields with class "category-hidden"
+        const categoryFields = document.querySelectorAll(".category-hidden");
+        
+        // Check if the checkbox is checked
+        if (e.target.checked) {
+            // Create a new hidden input field for the selected category
+            const categoryField = document.createElement("input");
+            categoryField.classList.add("category-hidden");
+            categoryField.setAttribute("type", "hidden"); // Set input type to hidden
+            categoryField.setAttribute("name", "category");
+            categoryField.setAttribute("value", value);
+            categoryField.setAttribute("id", e.target.getAttribute("id"));
+            form.appendChild(categoryField);
+        } else {
+            // Remove the hidden input field for the deselected category, if it exists
+            for (const categoryField of categoryFields) {
+                if (categoryField.value === value) {
+                    form.removeChild(categoryField);
+                }
+            }
+        }
+        form.submit();
     }
 </script>

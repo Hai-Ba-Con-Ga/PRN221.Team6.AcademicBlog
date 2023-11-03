@@ -1,9 +1,11 @@
 using AcademicBlog.BussinessObject;
 using AcademicBlog.Pages.Blogs.Component;
 using AcademicBlog.Repository.Interface;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NuGet.Packaging;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 
@@ -24,7 +26,15 @@ namespace AcademicBlog.Pages.Blogs
         public List<Skill> Skills { get; set; } = new List<Skill>();
 
         public List<int> InputSkills { get; set; } = new List<int>();
-        
+
+        [FromQuery(Name = "mode")]
+        public string Mode { get; set; } = "draft"; //prototype draft/edit
+
+        [FromQuery(Name = "id")]
+        public int PostId{ get; set; }
+        public bool IsEdit { get; set; } = false;
+        public Post EditPost { get; set; }
+        public string PageTitle { get; set; } = "Write a new blog";
         public BlogWritingModel(ICategoryRepository categoryRepository, IPostRepository postRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository, ISkillRepository skillRepository)
         {
             this.categoryRepository = categoryRepository;
@@ -44,12 +54,30 @@ namespace AcademicBlog.Pages.Blogs
         {
             Categories = (await categoryRepository.GetAll()).ToList();
             Skills = (await skillRepository.GetAll()).ToList();
+            if(Mode.Equals("edit", StringComparison.OrdinalIgnoreCase))
+            {
+                IsEdit = true;
+                int userId = int.Parse(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value?? "-1");
+                var post  = (await postRepository.GetById(PostId));
+                if (post is null) return Redirect("/404");
+                if (post.CreatorId != userId) return Redirect("/403");
+                EditPost = post;
+                PageTitle = "Update blog";
+            }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine(BlogPostRequest);
+            if (Mode.Equals("edit", StringComparison.OrdinalIgnoreCase))
+            {
+                IsEdit = true;
+                int userId = int.Parse(User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-1");
+                var post = (await postRepository.GetById(PostId));
+                if (post is null) return Redirect("/404");
+                if (post.CreatorId != userId) return Redirect("/403");
+                EditPost = post;
+            }
             if (User is not null)
             {
                 string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -69,50 +97,42 @@ namespace AcademicBlog.Pages.Blogs
                 });
 
                 tags.AddRange(await tagRepository.AddRange(remainTags));
-                var newPost = new Post()
-                {
-                    CategoryId = BlogPostRequest.Category,
-                    Title = BlogPostRequest?.Title ?? "Untitled",
-                    Content = BlogPostRequest.Content,
-                    ThumbnailUrl = BlogPostRequest?.Thumbnail?? "https://source.unplash.com/random",
-                    CreatorId = int.Parse(userId)
-                };
-                var persistedPost = await postRepository.Add(newPost);
-                if(persistedPost is not null)
-                {
-                    tags.ForEach(tag => postTagRepository.Add(new() { PostId = persistedPost.Id, TagId = tag.Id }));
-                }
-
                 var skills = await skillRepository.GetAll();
-                persistedPost.Skills = skills.ToList();
-                await postRepository.Update(persistedPost);
 
-                //if(persistedPost != null)
-                //{
-                //    var addTagTasks = BlogPostRequest.Tag.Select(async tag =>
-                //    {
-                //        var persistedTag = await tagRepository.FindByName(tag);
-                //        if (persistedTag is null)
-                //        {
-                //            persistedTag = await tagRepository.Add(new Tag { Name = tag });
-                //        }
-                //       /* 
-                //        * Posttag table current not have PK, migrate pk again then open this to persist posttag
-                //        * 
-                //        * await postTagRepository.Add(new()
-                //        {
-                //            PostId = persistedPost.Id,
-                //            TagId = persistedTag.Id,
+                if (IsEdit)
+                {
+                    EditPost.CategoryId = BlogPostRequest.Category;
+                    EditPost.Content = BlogPostRequest?.Content ?? EditPost.Content;
+                    EditPost.Title = BlogPostRequest?.Title ?? EditPost.Title;
+                    EditPost.ThumbnailUrl = BlogPostRequest?.Thumbnail ?? EditPost.ThumbnailUrl;
+                    EditPost.IsPublic = false;
+                    EditPost.ApproveDate = null;
+                    EditPost.Approver = null;
+                    await postRepository.Update(EditPost);
+                }
+                else
+                {
+                    var newPost = new Post()
+                    {
+                        CategoryId = BlogPostRequest.Category,
+                        Title = BlogPostRequest?.Title ?? "Untitled",
+                        Content = BlogPostRequest?.Content ?? "",
+                        ThumbnailUrl = BlogPostRequest?.Thumbnail?? "https://source.unplash.com/random",
+                        CreatorId = int.Parse(userId)
+                    };
+                    var persistedPost = await postRepository.Add(newPost);
+                        persistedPost.Tags = tags;
+                        persistedPost.Skills = skills.ToList().FindAll(skill => this.BlogPostRequest.Skill.Contains(skill.Id));
+                        await postRepository.Update(persistedPost);
 
-                //        });*/
-                //    }).ToList();
-                //    await Task.WhenAll(addTagTasks);
-                //}
+
+                }
+                return Redirect("/blogs?tab=mypending");
+           
             } else
             {
                 return Redirect("/Auth/Login?returnUrl=/Blogs/BlogWriting");
             }
-            return Page();
         }
     }
 }

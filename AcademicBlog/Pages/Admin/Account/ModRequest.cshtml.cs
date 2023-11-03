@@ -3,11 +3,15 @@ using AcademicBlog.BussinessObject.PagingObject;
 using AcademicBlog.Repository;
 using AcademicBlog.Repository.Interface;
 using AcademicBlog.Utils;
+using Azure.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
 
 namespace AcademicBlog.Pages.Admin.Account
 {
@@ -44,7 +48,7 @@ namespace AcademicBlog.Pages.Admin.Account
             Pagable pagable = new()
             {
                 PageIndex = Paging.Page,
-                PageSize = Paging.PageSize,
+                PageSize = 9,
                 Filter = new()
                 {
                     Logic = FilterLogic.AND,
@@ -61,7 +65,32 @@ namespace AcademicBlog.Pages.Admin.Account
                             Field = "ApproverId",
                             Operator = "eq",
                             Value = null
-                        }
+                        },
+                        new()
+                        {
+                            Logic = "OR",
+                            Filters = new List<Filter>()
+                            {
+                                new Filter()
+                                {
+                                    Field = "Email",
+                                    Operator = "contains",
+                                    Value = SearchKeyword
+                                },
+                                new Filter()
+                                {
+                                    Field = "Fullname",
+                                    Operator = "contains",
+                                    Value = SearchKeyword
+                                },
+                                new Filter()
+                                {
+                                    Field = "Username",
+                                    Operator = "contains",
+                                    Value = SearchKeyword
+                                },
+                            }
+                        },
                     }
                 }
             };
@@ -83,16 +112,26 @@ namespace AcademicBlog.Pages.Admin.Account
             {
                 case "approve":
                     {
+                        
                         var account = await _accountRepository.GetById(AccountId);
                         if (account is not null)
                         {
-
                             account.IsActive = true;
                             account.ApproverId = id;
                             account.ApproveDate = DateTime.Now;
                             await _accountRepository.Update(account);
                         }
-                        //TODO send email
+                        string emailTemplate = Utils.Utils.SystemApprovalEmail(true);
+                        var body = JsonSerializer.Serialize(new
+                        {
+                            to = account?.Email, // Replace with the actual email address
+                            content = emailTemplate
+                        });
+                        using (var client = new HttpClient())
+                        {
+                            var requestContent = new StringContent(body, Encoding.UTF8, "application/json");
+                            var response = await client.PostAsync("http://notification.wyvernpserver.tech/mail/send", requestContent);
+                        }
                         break;
                     }
                 case "reject":
@@ -102,8 +141,17 @@ namespace AcademicBlog.Pages.Admin.Account
                         { 
                             await _accountRepository.Delete(account);
                         }
-                        //TODO send email
-
+                        string emailTemplate = Utils.Utils.SystemApprovalEmail(true);
+                        var body = JsonSerializer.Serialize(new
+                        {
+                            to = account?.Email, // Replace with the actual email address
+                            content = emailTemplate
+                        });
+                        using (var client = new HttpClient())
+                        {
+                            var requestContent = new StringContent(body, Encoding.UTF8, "application/json");
+                            var response = await client.PostAsync("http://notification.wyvernpserver.tech/mail/send", requestContent);
+                        }
                         break;
                     }
             }

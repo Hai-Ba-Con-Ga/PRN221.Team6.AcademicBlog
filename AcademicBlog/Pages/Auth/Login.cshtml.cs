@@ -69,6 +69,7 @@ namespace AcademicBlog.Pages.Auth
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, account.Email),
+                    new Claim("fullname", account.Fullname),
                     new Claim(ClaimTypes.Role, account.Role.Name),
                     new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
                 };
