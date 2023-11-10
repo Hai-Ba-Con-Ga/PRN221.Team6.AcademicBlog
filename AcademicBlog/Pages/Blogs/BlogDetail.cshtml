@@ -20,7 +20,7 @@ URL: https://flowbite.com/docs/components/typography/
                         <img class="mr-4 w-16 h-16 rounded-full" src="@Model.Post.Creator?.AvatarUrl" alt="">
                         <div>
                             <div>
-                                <a href="#" rel="author"
+                                <a href="/profile/@Model.Post.CreatorId" rel="author"
                                    class="text-xl font-bold text-gray-900 dark:text-white">@Model.Post.Creator.Fullname</a>
                                 <form asp-page-handler="Follow" method="post" class="flex gap-2">
                                     <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
@@ -151,7 +151,8 @@ URL: https://flowbite.com/docs/components/typography/
                         (@(Model.Post.Comments?.Count ?? 0))
                     </h2>
                 </div>
-
+                @if (User.Identity.IsAuthenticated)
+                {   
                 <form class="mb-6" method="post" asp-page-handler="Comment">
                     <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                         <label for="comment" class="sr-only">Your comment</label>
@@ -164,6 +165,7 @@ URL: https://flowbite.com/docs/components/typography/
                         Post comment
                     </button>
                 </form>
+                }
                 @{
                     int count = 0;
                 }

@@ -225,7 +225,6 @@ namespace AcademicBlog.DAO
             {
                 query = query.Where(filter);
             }
-
             if (includeProperties != null)
             {
                 foreach (var includeProperty in includeProperties)

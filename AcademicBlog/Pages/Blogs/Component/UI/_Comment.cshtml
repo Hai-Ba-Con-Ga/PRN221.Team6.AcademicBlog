@@ -25,6 +25,8 @@
             @Model.Comment.Content
         </p>
         <div class="flex gap-2 mt-4 space-x-4 flex-col">
+            @if(User.Identity.IsAuthenticated){
+
             <button type="button"
                     value="@Model.Comment.Id"
                     onclick="buttonHandler(event)"
@@ -34,6 +36,7 @@
                 </svg>
                 Reply
             </button>
+            }
             <form id="form-@Model.Comment.Id" class="mb-6 flex items-center hidden" method="post" asp-page-handler="CommentReply">
                 <input type="hidden" name="parentId" value="@Model.Comment?.Id"/>
                 <input type="hidden" name="currentPath" value="@Model.Comment?.Path" />
