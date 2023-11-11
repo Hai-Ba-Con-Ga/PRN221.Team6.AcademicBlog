@@ -1,6 +1,7 @@
 ﻿@page
 @model AcademicBlog.Pages.Blogs.IndexModel
 @using AcademicBlog.BussinessObject;
+@using Markdig;
 @{
     string currentTab = Request.Query["tab"].ToString();
     if (string.IsNullOrEmpty(currentTab))
@@ -101,7 +102,9 @@
                                         @Html.DisplayFor(modelItem => post.Title)
                                     </a>
                                 </h3>
-                                <p class="mt-5 text-sm leading-6 text-gray-600">@Html.Raw(string.Join(" ", post.Content.Split(' ').Take(20)))</p>
+                                <div class="line-clamp-5">
+                                    <p class="mt-5 text-sm leading-6 text-gray-600">@Html.Raw(Markdown.ToHtml(post.Content))</p>
+                                </div
                             </div>
                             <div class="mt-6 flex border-t border-gray-900/5 pt-6">
                                 <div class="relative flex items-center gap-x-4">

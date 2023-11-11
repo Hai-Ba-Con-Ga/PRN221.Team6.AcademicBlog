@@ -42,6 +42,7 @@ namespace AcademicBlog.Pages.Blogs
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
         public Post Post { get; set; }
+        public IEnumerable<Post> relatedPosts { get; set; } = new List<Post>();
         public bool IsDisplayFollowingButton { get; set; } = true;
         public bool IsDisplayApproveButton { get; set; } = false;
         public bool IsFollowed { get; set; } = true;
@@ -218,6 +219,21 @@ namespace AcademicBlog.Pages.Blogs
                     IsReject = true;
                 }
             }
+            relatedPosts = (await _postRepository.GetAllPost(new()
+            {
+                PageIndex = 1,
+                PageSize = 4,
+                Sort= new List<Sort>()
+                {
+                    new(){Field = "CreatedDate",Dir = "DESC"}
+                },
+                Filter = new()
+                {
+                    Field = "CategoryId",
+                    Operator= "eq",
+                    Value = Post.CategoryId
+                }
+            })).ToList();
             return Page();
 
         }
@@ -603,8 +619,8 @@ namespace AcademicBlog.Pages.Blogs
             {
                 var post = await _postRepository.GetById(Id);
                  await _postRepository.Delete(post);
-
             }
+
             return Redirect("/blogs");
         }
     }

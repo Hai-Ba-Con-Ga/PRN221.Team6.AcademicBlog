@@ -1624,6 +1624,11 @@ select {
   margin-right: auto;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1814,6 +1819,13 @@ select {
   -webkit-line-clamp: 3;
 }
 
+.line-clamp-5 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
 .block {
   display: block;
 }
@@ -1844,6 +1856,10 @@ select {
 
 .aspect-square {
   aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
 }
 
 .h-10 {
@@ -2818,6 +2834,11 @@ select {
   padding-bottom: 2rem;
 }
 
+.py-\[0\.15rem\] {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -2898,16 +2919,16 @@ select {
   padding-top: 0.75rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
 
 .pt-6 {
   padding-top: 1.5rem;
-}
-
-.pt-8 {
-  padding-top: 2rem;
 }
 
 .text-left {
@@ -3383,6 +3404,14 @@ select {
 
 li {
   margin: 0;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  /* Number of lines to show */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -4715,10 +4744,6 @@ li {
     padding-top: 0px;
   }
 
-  .lg\:pt-16 {
-    padding-top: 4rem;
-  }
-
   .lg\:pt-8 {
     padding-top: 2rem;
   }
@@ -4731,11 +4756,6 @@ li {
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .lg\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 
   .lg\:text-5xl {

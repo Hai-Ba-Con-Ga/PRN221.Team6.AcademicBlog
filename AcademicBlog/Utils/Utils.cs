@@ -159,5 +159,14 @@ namespace AcademicBlog.Utils
             ";
             return isSucceed ? succeed : reject;
         }
+        public static int CountWords(string content)
+        {
+            // Use a simple approach to count words (not perfect, but works for demonstration)
+            if (string.IsNullOrWhiteSpace(content))
+                return 0;
+
+            string[] words = content.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            return words.Length;
+        }
     }
 }

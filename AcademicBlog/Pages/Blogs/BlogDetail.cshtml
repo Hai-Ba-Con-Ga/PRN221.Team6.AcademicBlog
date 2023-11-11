@@ -3,6 +3,7 @@
 @using AcademicBlog.Pages.Blogs.Component.UI
 @using Markdig;
 @using System.Security.Claims;
+@using BussinessObject;
 @{
 }
 <!--
@@ -11,23 +12,35 @@ Install the "flowbite-typography" NPM package to apply styles and format the art
 URL: https://flowbite.com/docs/components/typography/
 -->
 <link rel="stylesheet" href="~/lib/ckeditor/styles.css" />
-<main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+<main class="pt-4 pb-16 lg:pt-8 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-            <header class="mb-4 lg:mb-6 not-format">
+        <article class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert ring-1 ring-gray-500/10 rounded-2xl overflow-hidden shadow-md">
+            <img class="mr-4 w-full aspect-video" src="@(Model.Post?.ThumbnailUrl??"https://source.unsplash.com/random")" alt="">
+
+            <header class="mb-4 lg:mb-6 not-format px-5">
                 <address class="flex items-center mb-6 not-italic justify-between">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                         <img class="mr-4 w-16 h-16 rounded-full" src="@Model.Post.Creator?.AvatarUrl" alt="">
                         <div>
-                            <div>
+                            <div class="">
                                 <a href="/profile/@Model.Post.CreatorId" rel="author"
                                    class="text-xl font-bold text-gray-900 dark:text-white">@Model.Post.Creator.Fullname</a>
-                                <form asp-page-handler="Follow" method="post" class="flex gap-2">
+                                <form asp-page-handler="Follow" method="post" class="flex gap-2 my-1">
                                     <input type="hidden" name="creatorId" value="@Model.Post.CreatorId" />
                                     @if (Model.IsDisplayFollowingButton)
                                     {
-                                        <button type="submit" name="actionFollow"
+                                        <button type="submit" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-[0.15rem] text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                                name="actionFollow"
                                                 value="@(Model.IsFollowed ? "unfollow" : "follow" )">
+                                            @if (Model.IsFollowed)
+                                            {
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg>
+                                            }
+                                            else
+                                            {
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
+                                                
+                                            }
                                             @(Model.IsFollowed ? "Unfollow" : "Follow"
                                                 )
                                         </button>
@@ -139,12 +152,21 @@ URL: https://flowbite.com/docs/components/typography/
 
 
                 </address>
-                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+                <h1 class="mb-4 text-4xl font-extrabold leading-relaxed text-gray-900 lg:mb-6 lg:text-5xl dark:text-white">
                     @Model.Post.Title
                 </h1>
             </header>
+            <div class="flex gap-2 mb-4">
+                @foreach(var tag in Model.Post?.Tags??new List<Tag>())
+                {
+                    <span>#@tag.Name</span>
+                }
+            </div>
+            <div class="px-5">
+
             @Html.Raw(Markdown.ToHtml(Model.Post.Content))
-            <section class="not-format">
+            </div>
+            <section class="not-format px-5">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
                         Discussion
@@ -196,24 +218,30 @@ URL: https://flowbite.com/docs/components/typography/
     <div class="px-4 mx-auto max-w-screen-xl">
         <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png"
-                         class="mb-5 rounded-lg" alt="Image 1">
+            @foreach(var post in Model.relatedPosts)
+            {
+            <article class="max-w-xs flex flex-col">
+                <a href="/blogs/@post.Id">
+                        <img src="@(post.ThumbnailUrl  ?? "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png")"
+                         class="mb-5 rounded-lg w-full aspect-[16/9]" alt="Image 1">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Our first office</a>
+                        <a href="/blogs/@post.Id">@post.Title</a>
                 </h2>
+                <div class="line-clamp-3 flex-1">
+
                 <p class="mb-4 text-gray-500 dark:text-gray-400">
-                    Over the past year, Volosoft has undergone many
-                    changes! After months of preparation.
+                        @Html.Raw(Markdown.ToHtml(post.Content))
                 </p>
-                <a href="#"
+                </div>
+                    <a href="/blogs/@post.Id"
                    class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                    Read in 2 minutes
+                        Read in @(Math.Ceiling((double)Utils.Utils.CountWords(post.Content) / 200)) minutes
                 </a>
             </article>
-            <article class="max-w-xs">
+               
+            }
+          @*   <article class="max-w-xs">
                 <a href="#">
                     <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png"
                          class="mb-5 rounded-lg" alt="Image 2">
@@ -263,7 +291,7 @@ URL: https://flowbite.com/docs/components/typography/
                    class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                     Read in 4 minutes
                 </a>
-            </article>
+            </article> *@
         </div>
     </div>
 </aside>
@@ -286,4 +314,7 @@ URL: https://flowbite.com/docs/components/typography/
         }
         //TODO  show promt to confirm, if click ok then submit the form
     }
+    document.addEventListener('DOMContentLoaded', function () {
+        Prism.highlightAll();
+    });
 </script>

@@ -10,3 +10,9 @@
 li {
     margin: 0;
 }
+.line-clamp-5 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+}
