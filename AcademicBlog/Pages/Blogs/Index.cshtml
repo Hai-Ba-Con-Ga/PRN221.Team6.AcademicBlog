@@ -103,7 +103,7 @@
                                     </a>
                                 </h3>
                                 <div class="line-clamp-5">
-                                    <p class="mt-5 text-sm leading-6 text-gray-600">@Html.Raw(Markdown.ToHtml(post.Content))</p>
+                                    <p class="mt-5 text-sm leading-6 text-gray-600">@Html.Raw(Markdown.ToHtml(post.Content.Replace("http","ws")))</p>
                                 </div
                             </div>
                             <div class="mt-6 flex border-t border-gray-900/5 pt-6">

@@ -29,7 +29,7 @@ namespace AcademicBlog.Pages
             Posts = await _postRepository.GetAllPost(new()
             {
                 PageIndex = 1,
-                PageSize = 9,
+                PageSize = 11,
                 Sort = new List<Sort>
                     {
                         new Sort
