@@ -84,17 +84,17 @@ namespace AcademicBlog.Utils
                                 </ p >
 
 
-                                    < p style = ""font - size: 16px; line - height: 1.5; "" >
+                                    <p style = ""font - size: 16px; line - height: 1.5; "">
                                 Thank you for using our system. If you have any questions or need further assistance, please don't hesitate to contact us.
-                                </ p >
+                                </p>
 
 
-                                    < p style = ""font - size: 16px; line - height: 1.5; "" >
+                                    <p style = ""font - size: 16px; line - height: 1.5; "">
                                         Sincerely,
-                            </ p >
-                        </ div >
-                    </ body >
-                    </ html > ";
+                            </p>
+                        </div>
+                    </body>
+                    </html> ";
 
             return message;
         }

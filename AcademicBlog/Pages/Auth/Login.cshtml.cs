@@ -66,6 +66,7 @@ namespace AcademicBlog.Pages.Auth
                 ErrorMessage = "Account pending approval. Please check your email again!";
                 return Page();
             }
+            
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, account.Email),
@@ -84,6 +85,11 @@ namespace AcademicBlog.Pages.Auth
             };
             var principal = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
+
+            if (account.Role.Name.Equals("Admin"))
+            {
+                return Redirect("/admin/modrequest");
+            }
 
 
             //but isAuthenticated false after login how to fix it
