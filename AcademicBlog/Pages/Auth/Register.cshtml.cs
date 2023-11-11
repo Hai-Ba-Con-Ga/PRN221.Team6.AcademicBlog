@@ -63,7 +63,7 @@ namespace AcademicBlog.Pages.Auth
             }
             try
             {
-                var role = await _roleRepository.GetByName("User");
+                var role = await _roleRepository.GetByName("Student");
                 if (role == null)
                 {
                     throw new Exception("Role not found");

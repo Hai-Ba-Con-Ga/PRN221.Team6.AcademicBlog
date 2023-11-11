@@ -56,14 +56,14 @@ namespace AcademicBlog.Pages.Blogs
             {
                 Tabs.Add(new TabItem { Text = "Following", Key = "following" });
                 Tabs.Add(new TabItem { Text = "Bookmark", Key = "bookmark" });
-                Tabs.Add(new TabItem { Text = "Pending Publication", Key = "mypending" });
+                Tabs.Add(new TabItem { Text = "My pending", Key = "mypending" });
 
             }
             if (AccountId > 0 && User.IsInRole("Mod"))
             {
-                Tabs.Add(new TabItem { Text = "Approve", Key = "approve" });
-                Tabs.Add(new TabItem { Text = "Pending", Key = "pending" });
-                Tabs.Add(new TabItem { Text = "Reject", Key = "reject" });
+                Tabs.Add(new TabItem { Text = "Approved", Key = "approve" });
+                Tabs.Add(new TabItem { Text = "Request", Key = "pending" });
+                Tabs.Add(new TabItem { Text = "Rejected", Key = "reject" });
             }
             var pagable = new Pagable()
             {
@@ -222,7 +222,7 @@ namespace AcademicBlog.Pages.Blogs
                             new()
                             {
                                 Field = "Status",
-                                Operator = "neq",
+                                Operator = "eq",
                                 Value = 1
                             },
                             new()

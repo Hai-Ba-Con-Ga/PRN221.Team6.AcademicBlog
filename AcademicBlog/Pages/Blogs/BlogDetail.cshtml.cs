@@ -207,7 +207,7 @@ namespace AcademicBlog.Pages.Blogs
                 IsFavorite = true;
             }
 
-            if (AccountId > 0 && User.IsInRole("Mod") && Post.Status == 0)
+            if (AccountId > 0 && User.IsInRole("Mod") && Post.Status == 0 && Post.CreatorId != AccountId)
             {
                 IsDisplayApproveButton = true;
                 if (Post.Status == 1)
