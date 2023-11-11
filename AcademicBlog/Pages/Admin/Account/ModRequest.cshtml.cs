@@ -28,7 +28,6 @@ namespace AcademicBlog.Pages.Admin.Account
         [FromQuery(Name = "searchKeyword")]
         public string SearchKeyword { get; set; } = "";
         [FromQuery]
-
         public PaginationParams Paging { get; set; }
 
         [BindProperty]
